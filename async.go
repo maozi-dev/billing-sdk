@@ -14,7 +14,7 @@ and can be ignored. The file will compile correctly when copied to the SDK.
 */
 
 // nolint
-package flexprice
+package billing
 
 import (
 	"context"

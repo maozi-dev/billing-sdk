@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	flexprice "github.com/flexprice/go-sdk"
 	"github.com/joho/godotenv"
+	flexprice "github.com/maozi-dev/billing-sdk"
 	"github.com/samber/lo"
 )
 

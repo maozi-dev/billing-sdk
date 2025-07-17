@@ -30,7 +30,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/maozi-dev/go-sdk/flexprice"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
 )
 
 func main() {
@@ -124,7 +124,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/maozi-dev/go-sdk/flexprice"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
 )
 
 func main() {
@@ -194,7 +194,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/maozi-dev/go-sdk/flexprice"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
 )
 
 func main() {
@@ -264,7 +264,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/maozi-dev/go-sdk/flexprice"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
 )
 
 func main() {
@@ -334,7 +334,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/maozi-dev/go-sdk/flexprice"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
 )
 
 func main() {
@@ -406,7 +406,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/maozi-dev/go-sdk/flexprice"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
 )
 
 func main() {
