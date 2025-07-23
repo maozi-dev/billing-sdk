@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */

@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the FlexPrice API API v1.0
+// APIClient manages communication with the Billing API API v1.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

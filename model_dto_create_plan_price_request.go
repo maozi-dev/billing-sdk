@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */
@@ -22,17 +22,13 @@ var _ MappedNullable = &DtoCreatePlanPriceRequest{}
 // DtoCreatePlanPriceRequest struct for DtoCreatePlanPriceRequest
 type DtoCreatePlanPriceRequest struct {
 	Amount *string `json:"amount,omitempty"`
-	BillingCadence TypesBillingCadence `json:"billing_cadence"`
 	BillingModel TypesBillingModel `json:"billing_model"`
-	BillingPeriod TypesBillingPeriod `json:"billing_period"`
-	BillingPeriodCount int32 `json:"billing_period_count"`
-	Currency string `json:"currency"`
 	Description *string `json:"description,omitempty"`
 	FilterValues *map[string][]string `json:"filter_values,omitempty"`
-	InvoiceCadence TypesInvoiceCadence `json:"invoice_cadence"`
 	LookupKey *string `json:"lookup_key,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	MeterId *string `json:"meter_id,omitempty"`
+	PaymentCadence TypesPaymentCadence `json:"payment_cadence"`
 	PlanId *string `json:"plan_id,omitempty"`
 	TierMode *TypesBillingTier `json:"tier_mode,omitempty"`
 	Tiers []DtoCreatePriceTier `json:"tiers,omitempty"`
@@ -47,14 +43,10 @@ type _DtoCreatePlanPriceRequest DtoCreatePlanPriceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreatePlanPriceRequest(billingCadence TypesBillingCadence, billingModel TypesBillingModel, billingPeriod TypesBillingPeriod, billingPeriodCount int32, currency string, invoiceCadence TypesInvoiceCadence, type_ TypesPriceType) *DtoCreatePlanPriceRequest {
+func NewDtoCreatePlanPriceRequest(billingModel TypesBillingModel, paymentCadence TypesPaymentCadence, type_ TypesPriceType) *DtoCreatePlanPriceRequest {
 	this := DtoCreatePlanPriceRequest{}
-	this.BillingCadence = billingCadence
 	this.BillingModel = billingModel
-	this.BillingPeriod = billingPeriod
-	this.BillingPeriodCount = billingPeriodCount
-	this.Currency = currency
-	this.InvoiceCadence = invoiceCadence
+	this.PaymentCadence = paymentCadence
 	this.Type = type_
 	return &this
 }
@@ -99,30 +91,6 @@ func (o *DtoCreatePlanPriceRequest) SetAmount(v string) {
 	o.Amount = &v
 }
 
-// GetBillingCadence returns the BillingCadence field value
-func (o *DtoCreatePlanPriceRequest) GetBillingCadence() TypesBillingCadence {
-	if o == nil {
-		var ret TypesBillingCadence
-		return ret
-	}
-
-	return o.BillingCadence
-}
-
-// GetBillingCadenceOk returns a tuple with the BillingCadence field value
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanPriceRequest) GetBillingCadenceOk() (*TypesBillingCadence, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillingCadence, true
-}
-
-// SetBillingCadence sets field value
-func (o *DtoCreatePlanPriceRequest) SetBillingCadence(v TypesBillingCadence) {
-	o.BillingCadence = v
-}
-
 // GetBillingModel returns the BillingModel field value
 func (o *DtoCreatePlanPriceRequest) GetBillingModel() TypesBillingModel {
 	if o == nil {
@@ -145,78 +113,6 @@ func (o *DtoCreatePlanPriceRequest) GetBillingModelOk() (*TypesBillingModel, boo
 // SetBillingModel sets field value
 func (o *DtoCreatePlanPriceRequest) SetBillingModel(v TypesBillingModel) {
 	o.BillingModel = v
-}
-
-// GetBillingPeriod returns the BillingPeriod field value
-func (o *DtoCreatePlanPriceRequest) GetBillingPeriod() TypesBillingPeriod {
-	if o == nil {
-		var ret TypesBillingPeriod
-		return ret
-	}
-
-	return o.BillingPeriod
-}
-
-// GetBillingPeriodOk returns a tuple with the BillingPeriod field value
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanPriceRequest) GetBillingPeriodOk() (*TypesBillingPeriod, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillingPeriod, true
-}
-
-// SetBillingPeriod sets field value
-func (o *DtoCreatePlanPriceRequest) SetBillingPeriod(v TypesBillingPeriod) {
-	o.BillingPeriod = v
-}
-
-// GetBillingPeriodCount returns the BillingPeriodCount field value
-func (o *DtoCreatePlanPriceRequest) GetBillingPeriodCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.BillingPeriodCount
-}
-
-// GetBillingPeriodCountOk returns a tuple with the BillingPeriodCount field value
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanPriceRequest) GetBillingPeriodCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillingPeriodCount, true
-}
-
-// SetBillingPeriodCount sets field value
-func (o *DtoCreatePlanPriceRequest) SetBillingPeriodCount(v int32) {
-	o.BillingPeriodCount = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *DtoCreatePlanPriceRequest) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanPriceRequest) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *DtoCreatePlanPriceRequest) SetCurrency(v string) {
-	o.Currency = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -281,30 +177,6 @@ func (o *DtoCreatePlanPriceRequest) HasFilterValues() bool {
 // SetFilterValues gets a reference to the given map[string][]string and assigns it to the FilterValues field.
 func (o *DtoCreatePlanPriceRequest) SetFilterValues(v map[string][]string) {
 	o.FilterValues = &v
-}
-
-// GetInvoiceCadence returns the InvoiceCadence field value
-func (o *DtoCreatePlanPriceRequest) GetInvoiceCadence() TypesInvoiceCadence {
-	if o == nil {
-		var ret TypesInvoiceCadence
-		return ret
-	}
-
-	return o.InvoiceCadence
-}
-
-// GetInvoiceCadenceOk returns a tuple with the InvoiceCadence field value
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanPriceRequest) GetInvoiceCadenceOk() (*TypesInvoiceCadence, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InvoiceCadence, true
-}
-
-// SetInvoiceCadence sets field value
-func (o *DtoCreatePlanPriceRequest) SetInvoiceCadence(v TypesInvoiceCadence) {
-	o.InvoiceCadence = v
 }
 
 // GetLookupKey returns the LookupKey field value if set, zero value otherwise.
@@ -401,6 +273,30 @@ func (o *DtoCreatePlanPriceRequest) HasMeterId() bool {
 // SetMeterId gets a reference to the given string and assigns it to the MeterId field.
 func (o *DtoCreatePlanPriceRequest) SetMeterId(v string) {
 	o.MeterId = &v
+}
+
+// GetPaymentCadence returns the PaymentCadence field value
+func (o *DtoCreatePlanPriceRequest) GetPaymentCadence() TypesPaymentCadence {
+	if o == nil {
+		var ret TypesPaymentCadence
+		return ret
+	}
+
+	return o.PaymentCadence
+}
+
+// GetPaymentCadenceOk returns a tuple with the PaymentCadence field value
+// and a boolean to check if the value has been set.
+func (o *DtoCreatePlanPriceRequest) GetPaymentCadenceOk() (*TypesPaymentCadence, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PaymentCadence, true
+}
+
+// SetPaymentCadence sets field value
+func (o *DtoCreatePlanPriceRequest) SetPaymentCadence(v TypesPaymentCadence) {
+	o.PaymentCadence = v
 }
 
 // GetPlanId returns the PlanId field value if set, zero value otherwise.
@@ -600,18 +496,13 @@ func (o DtoCreatePlanPriceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
-	toSerialize["billing_cadence"] = o.BillingCadence
 	toSerialize["billing_model"] = o.BillingModel
-	toSerialize["billing_period"] = o.BillingPeriod
-	toSerialize["billing_period_count"] = o.BillingPeriodCount
-	toSerialize["currency"] = o.Currency
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.FilterValues) {
 		toSerialize["filter_values"] = o.FilterValues
 	}
-	toSerialize["invoice_cadence"] = o.InvoiceCadence
 	if !IsNil(o.LookupKey) {
 		toSerialize["lookup_key"] = o.LookupKey
 	}
@@ -621,6 +512,7 @@ func (o DtoCreatePlanPriceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MeterId) {
 		toSerialize["meter_id"] = o.MeterId
 	}
+	toSerialize["payment_cadence"] = o.PaymentCadence
 	if !IsNil(o.PlanId) {
 		toSerialize["plan_id"] = o.PlanId
 	}
@@ -645,12 +537,8 @@ func (o *DtoCreatePlanPriceRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"billing_cadence",
 		"billing_model",
-		"billing_period",
-		"billing_period_count",
-		"currency",
-		"invoice_cadence",
+		"payment_cadence",
 		"type",
 	}
 

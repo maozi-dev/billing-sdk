@@ -329,7 +329,7 @@ import (
 )
 
 func main() {
-	price := *openapiclient.NewDtoCreatePriceRequest(openapiclient.types.BillingCadence("RECURRING"), openapiclient.types.BillingModel("FLAT_FEE"), openapiclient.types.BillingPeriod("MONTHLY"), int32(123), "Currency_example", openapiclient.types.InvoiceCadence("ARREAR"), openapiclient.types.PriceType("USAGE")) // DtoCreatePriceRequest | Price configuration
+	price := *openapiclient.NewDtoCreatePriceRequest(openapiclient.types.BillingModel("FLAT_FEE"), openapiclient.types.PaymentCadence("ADVANCE"), openapiclient.types.PriceType("USAGE")) // DtoCreatePriceRequest | Price configuration
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */
@@ -27,10 +27,12 @@ type PaymentsAPIPaymentsGetRequest struct {
 	ctx context.Context
 	ApiService *PaymentsAPIService
 	currency *string
+	customerId *string
 	destinationId *string
 	destinationType *string
 	endTime *string
 	expand *string
+	externalCustomerId *string
 	limit *int32
 	offset *int32
 	order *string
@@ -41,10 +43,16 @@ type PaymentsAPIPaymentsGetRequest struct {
 	sort *string
 	startTime *string
 	status *string
+	type_ *string
 }
 
 func (r PaymentsAPIPaymentsGetRequest) Currency(currency string) PaymentsAPIPaymentsGetRequest {
 	r.currency = &currency
+	return r
+}
+
+func (r PaymentsAPIPaymentsGetRequest) CustomerId(customerId string) PaymentsAPIPaymentsGetRequest {
+	r.customerId = &customerId
 	return r
 }
 
@@ -65,6 +73,11 @@ func (r PaymentsAPIPaymentsGetRequest) EndTime(endTime string) PaymentsAPIPaymen
 
 func (r PaymentsAPIPaymentsGetRequest) Expand(expand string) PaymentsAPIPaymentsGetRequest {
 	r.expand = &expand
+	return r
+}
+
+func (r PaymentsAPIPaymentsGetRequest) ExternalCustomerId(externalCustomerId string) PaymentsAPIPaymentsGetRequest {
+	r.externalCustomerId = &externalCustomerId
 	return r
 }
 
@@ -118,6 +131,11 @@ func (r PaymentsAPIPaymentsGetRequest) Status(status string) PaymentsAPIPayments
 	return r
 }
 
+func (r PaymentsAPIPaymentsGetRequest) Type_(type_ string) PaymentsAPIPaymentsGetRequest {
+	r.type_ = &type_
+	return r
+}
+
 func (r PaymentsAPIPaymentsGetRequest) Execute() (*DtoListPaymentsResponse, *http.Response, error) {
 	return r.ApiService.PaymentsGetExecute(r)
 }
@@ -161,6 +179,9 @@ func (a *PaymentsAPIService) PaymentsGetExecute(r PaymentsAPIPaymentsGetRequest)
 	if r.currency != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
 	}
+	if r.customerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
+	}
 	if r.destinationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "destination_id", r.destinationId, "form", "")
 	}
@@ -172,6 +193,9 @@ func (a *PaymentsAPIService) PaymentsGetExecute(r PaymentsAPIPaymentsGetRequest)
 	}
 	if r.expand != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "expand", r.expand, "form", "")
+	}
+	if r.externalCustomerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "external_customer_id", r.externalCustomerId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
@@ -202,6 +226,9 @@ func (a *PaymentsAPIService) PaymentsGetExecute(r PaymentsAPIPaymentsGetRequest)
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

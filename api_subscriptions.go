@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */
@@ -32,6 +32,7 @@ type SubscriptionsAPISubscriptionsGetRequest struct {
 	customerId *string
 	endTime *string
 	expand *string
+	externalCustomerId *string
 	limit *int32
 	offset *int32
 	order *string
@@ -74,6 +75,11 @@ func (r SubscriptionsAPISubscriptionsGetRequest) EndTime(endTime string) Subscri
 
 func (r SubscriptionsAPISubscriptionsGetRequest) Expand(expand string) SubscriptionsAPISubscriptionsGetRequest {
 	r.expand = &expand
+	return r
+}
+
+func (r SubscriptionsAPISubscriptionsGetRequest) ExternalCustomerId(externalCustomerId string) SubscriptionsAPISubscriptionsGetRequest {
+	r.externalCustomerId = &externalCustomerId
 	return r
 }
 
@@ -181,6 +187,9 @@ func (a *SubscriptionsAPIService) SubscriptionsGetExecute(r SubscriptionsAPISubs
 	}
 	if r.expand != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "expand", r.expand, "form", "")
+	}
+	if r.externalCustomerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "external_customer_id", r.externalCustomerId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")

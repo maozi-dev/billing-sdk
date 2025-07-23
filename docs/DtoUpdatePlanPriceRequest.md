@@ -5,18 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
-**BillingCadence** | [**TypesBillingCadence**](TypesBillingCadence.md) |  | 
 **BillingModel** | [**TypesBillingModel**](TypesBillingModel.md) |  | 
-**BillingPeriod** | [**TypesBillingPeriod**](TypesBillingPeriod.md) |  | 
-**BillingPeriodCount** | **int32** |  | 
-**Currency** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **FilterValues** | Pointer to **map[string][]string** |  | [optional] 
 **Id** | Pointer to **string** | The ID of the price to update (present if the price is being updated) | [optional] 
-**InvoiceCadence** | [**TypesInvoiceCadence**](TypesInvoiceCadence.md) |  | 
 **LookupKey** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **MeterId** | Pointer to **string** |  | [optional] 
+**PaymentCadence** | [**TypesPaymentCadence**](TypesPaymentCadence.md) |  | 
 **PlanId** | Pointer to **string** |  | [optional] 
 **TierMode** | Pointer to [**TypesBillingTier**](TypesBillingTier.md) |  | [optional] 
 **Tiers** | Pointer to [**[]DtoCreatePriceTier**](DtoCreatePriceTier.md) |  | [optional] 
@@ -28,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewDtoUpdatePlanPriceRequest
 
-`func NewDtoUpdatePlanPriceRequest(billingCadence TypesBillingCadence, billingModel TypesBillingModel, billingPeriod TypesBillingPeriod, billingPeriodCount int32, currency string, invoiceCadence TypesInvoiceCadence, type_ TypesPriceType, ) *DtoUpdatePlanPriceRequest`
+`func NewDtoUpdatePlanPriceRequest(billingModel TypesBillingModel, paymentCadence TypesPaymentCadence, type_ TypesPriceType, ) *DtoUpdatePlanPriceRequest`
 
 NewDtoUpdatePlanPriceRequest instantiates a new DtoUpdatePlanPriceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -68,26 +64,6 @@ SetAmount sets Amount field to given value.
 
 HasAmount returns a boolean if a field has been set.
 
-### GetBillingCadence
-
-`func (o *DtoUpdatePlanPriceRequest) GetBillingCadence() TypesBillingCadence`
-
-GetBillingCadence returns the BillingCadence field if non-nil, zero value otherwise.
-
-### GetBillingCadenceOk
-
-`func (o *DtoUpdatePlanPriceRequest) GetBillingCadenceOk() (*TypesBillingCadence, bool)`
-
-GetBillingCadenceOk returns a tuple with the BillingCadence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillingCadence
-
-`func (o *DtoUpdatePlanPriceRequest) SetBillingCadence(v TypesBillingCadence)`
-
-SetBillingCadence sets BillingCadence field to given value.
-
-
 ### GetBillingModel
 
 `func (o *DtoUpdatePlanPriceRequest) GetBillingModel() TypesBillingModel`
@@ -106,66 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *DtoUpdatePlanPriceRequest) SetBillingModel(v TypesBillingModel)`
 
 SetBillingModel sets BillingModel field to given value.
-
-
-### GetBillingPeriod
-
-`func (o *DtoUpdatePlanPriceRequest) GetBillingPeriod() TypesBillingPeriod`
-
-GetBillingPeriod returns the BillingPeriod field if non-nil, zero value otherwise.
-
-### GetBillingPeriodOk
-
-`func (o *DtoUpdatePlanPriceRequest) GetBillingPeriodOk() (*TypesBillingPeriod, bool)`
-
-GetBillingPeriodOk returns a tuple with the BillingPeriod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillingPeriod
-
-`func (o *DtoUpdatePlanPriceRequest) SetBillingPeriod(v TypesBillingPeriod)`
-
-SetBillingPeriod sets BillingPeriod field to given value.
-
-
-### GetBillingPeriodCount
-
-`func (o *DtoUpdatePlanPriceRequest) GetBillingPeriodCount() int32`
-
-GetBillingPeriodCount returns the BillingPeriodCount field if non-nil, zero value otherwise.
-
-### GetBillingPeriodCountOk
-
-`func (o *DtoUpdatePlanPriceRequest) GetBillingPeriodCountOk() (*int32, bool)`
-
-GetBillingPeriodCountOk returns a tuple with the BillingPeriodCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillingPeriodCount
-
-`func (o *DtoUpdatePlanPriceRequest) SetBillingPeriodCount(v int32)`
-
-SetBillingPeriodCount sets BillingPeriodCount field to given value.
-
-
-### GetCurrency
-
-`func (o *DtoUpdatePlanPriceRequest) GetCurrency() string`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *DtoUpdatePlanPriceRequest) GetCurrencyOk() (*string, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *DtoUpdatePlanPriceRequest) SetCurrency(v string)`
-
-SetCurrency sets Currency field to given value.
 
 
 ### GetDescription
@@ -243,26 +159,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetInvoiceCadence
-
-`func (o *DtoUpdatePlanPriceRequest) GetInvoiceCadence() TypesInvoiceCadence`
-
-GetInvoiceCadence returns the InvoiceCadence field if non-nil, zero value otherwise.
-
-### GetInvoiceCadenceOk
-
-`func (o *DtoUpdatePlanPriceRequest) GetInvoiceCadenceOk() (*TypesInvoiceCadence, bool)`
-
-GetInvoiceCadenceOk returns a tuple with the InvoiceCadence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvoiceCadence
-
-`func (o *DtoUpdatePlanPriceRequest) SetInvoiceCadence(v TypesInvoiceCadence)`
-
-SetInvoiceCadence sets InvoiceCadence field to given value.
-
-
 ### GetLookupKey
 
 `func (o *DtoUpdatePlanPriceRequest) GetLookupKey() string`
@@ -337,6 +233,26 @@ SetMeterId sets MeterId field to given value.
 `func (o *DtoUpdatePlanPriceRequest) HasMeterId() bool`
 
 HasMeterId returns a boolean if a field has been set.
+
+### GetPaymentCadence
+
+`func (o *DtoUpdatePlanPriceRequest) GetPaymentCadence() TypesPaymentCadence`
+
+GetPaymentCadence returns the PaymentCadence field if non-nil, zero value otherwise.
+
+### GetPaymentCadenceOk
+
+`func (o *DtoUpdatePlanPriceRequest) GetPaymentCadenceOk() (*TypesPaymentCadence, bool)`
+
+GetPaymentCadenceOk returns a tuple with the PaymentCadence field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentCadence
+
+`func (o *DtoUpdatePlanPriceRequest) SetPaymentCadence(v TypesPaymentCadence)`
+
+SetPaymentCadence sets PaymentCadence field to given value.
+
 
 ### GetPlanId
 

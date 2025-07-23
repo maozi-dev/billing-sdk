@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## PaymentsGet
 
-> DtoListPaymentsResponse PaymentsGet(ctx).Currency(currency).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Execute()
+> DtoListPaymentsResponse PaymentsGet(ctx).Currency(currency).CustomerId(customerId).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Type_(type_).Execute()
 
 List payments
 
@@ -35,10 +35,12 @@ import (
 
 func main() {
 	currency := "currency_example" // string |  (optional)
+	customerId := "customerId_example" // string |  (optional)
 	destinationId := "destinationId_example" // string |  (optional)
 	destinationType := "destinationType_example" // string |  (optional)
 	endTime := "endTime_example" // string |  (optional)
 	expand := "expand_example" // string |  (optional)
+	externalCustomerId := "externalCustomerId_example" // string |  (optional)
 	limit := int32(56) // int32 |  (optional)
 	offset := int32(56) // int32 |  (optional)
 	order := "order_example" // string |  (optional)
@@ -49,10 +51,11 @@ func main() {
 	sort := "sort_example" // string |  (optional)
 	startTime := "startTime_example" // string |  (optional)
 	status := "status_example" // string |  (optional)
+	type_ := "type__example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentsAPI.PaymentsGet(context.Background()).Currency(currency).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Execute()
+	resp, r, err := apiClient.PaymentsAPI.PaymentsGet(context.Background()).Currency(currency).CustomerId(customerId).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Type_(type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentsAPI.PaymentsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,10 +77,12 @@ Other parameters are passed through a pointer to a apiPaymentsGetRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string** |  | 
+ **customerId** | **string** |  | 
  **destinationId** | **string** |  | 
  **destinationType** | **string** |  | 
  **endTime** | **string** |  | 
  **expand** | **string** |  | 
+ **externalCustomerId** | **string** |  | 
  **limit** | **int32** |  | 
  **offset** | **int32** |  | 
  **order** | **string** |  | 
@@ -88,6 +93,7 @@ Name | Type | Description  | Notes
  **sort** | **string** |  | 
  **startTime** | **string** |  | 
  **status** | **string** |  | 
+ **type_** | **string** |  | 
 
 ### Return type
 

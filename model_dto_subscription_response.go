@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */
@@ -55,7 +55,7 @@ type DtoSubscriptionResponse struct {
 	LookupKey *string `json:"lookup_key,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	// OverageFactor is a multiplier applied to usage beyond the commitment amount
-	OverageFactor *float32 `json:"overage_factor,omitempty"`
+	OverageFactor *string `json:"overage_factor,omitempty"`
 	Plan *DtoPlanResponse `json:"plan,omitempty"`
 	// PlanID is the identifier for the plan in our system
 	PlanId *string `json:"plan_id,omitempty"`
@@ -764,9 +764,9 @@ func (o *DtoSubscriptionResponse) SetMetadata(v map[string]string) {
 }
 
 // GetOverageFactor returns the OverageFactor field value if set, zero value otherwise.
-func (o *DtoSubscriptionResponse) GetOverageFactor() float32 {
+func (o *DtoSubscriptionResponse) GetOverageFactor() string {
 	if o == nil || IsNil(o.OverageFactor) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.OverageFactor
@@ -774,7 +774,7 @@ func (o *DtoSubscriptionResponse) GetOverageFactor() float32 {
 
 // GetOverageFactorOk returns a tuple with the OverageFactor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoSubscriptionResponse) GetOverageFactorOk() (*float32, bool) {
+func (o *DtoSubscriptionResponse) GetOverageFactorOk() (*string, bool) {
 	if o == nil || IsNil(o.OverageFactor) {
 		return nil, false
 	}
@@ -790,8 +790,8 @@ func (o *DtoSubscriptionResponse) HasOverageFactor() bool {
 	return false
 }
 
-// SetOverageFactor gets a reference to the given float32 and assigns it to the OverageFactor field.
-func (o *DtoSubscriptionResponse) SetOverageFactor(v float32) {
+// SetOverageFactor gets a reference to the given string and assigns it to the OverageFactor field.
+func (o *DtoSubscriptionResponse) SetOverageFactor(v string) {
 	o.OverageFactor = &v
 }
 

@@ -5,17 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
-**BillingCadence** | [**TypesBillingCadence**](TypesBillingCadence.md) |  | 
 **BillingModel** | [**TypesBillingModel**](TypesBillingModel.md) |  | 
-**BillingPeriod** | [**TypesBillingPeriod**](TypesBillingPeriod.md) |  | 
-**BillingPeriodCount** | **int32** |  | 
-**Currency** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **FilterValues** | Pointer to **map[string][]string** |  | [optional] 
-**InvoiceCadence** | [**TypesInvoiceCadence**](TypesInvoiceCadence.md) |  | 
 **LookupKey** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **MeterId** | Pointer to **string** |  | [optional] 
+**PaymentCadence** | [**TypesPaymentCadence**](TypesPaymentCadence.md) |  | 
 **PlanId** | Pointer to **string** |  | [optional] 
 **TierMode** | Pointer to [**TypesBillingTier**](TypesBillingTier.md) |  | [optional] 
 **Tiers** | Pointer to [**[]DtoCreatePriceTier**](DtoCreatePriceTier.md) |  | [optional] 
@@ -27,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewDtoCreatePriceRequest
 
-`func NewDtoCreatePriceRequest(billingCadence TypesBillingCadence, billingModel TypesBillingModel, billingPeriod TypesBillingPeriod, billingPeriodCount int32, currency string, invoiceCadence TypesInvoiceCadence, type_ TypesPriceType, ) *DtoCreatePriceRequest`
+`func NewDtoCreatePriceRequest(billingModel TypesBillingModel, paymentCadence TypesPaymentCadence, type_ TypesPriceType, ) *DtoCreatePriceRequest`
 
 NewDtoCreatePriceRequest instantiates a new DtoCreatePriceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -67,26 +63,6 @@ SetAmount sets Amount field to given value.
 
 HasAmount returns a boolean if a field has been set.
 
-### GetBillingCadence
-
-`func (o *DtoCreatePriceRequest) GetBillingCadence() TypesBillingCadence`
-
-GetBillingCadence returns the BillingCadence field if non-nil, zero value otherwise.
-
-### GetBillingCadenceOk
-
-`func (o *DtoCreatePriceRequest) GetBillingCadenceOk() (*TypesBillingCadence, bool)`
-
-GetBillingCadenceOk returns a tuple with the BillingCadence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillingCadence
-
-`func (o *DtoCreatePriceRequest) SetBillingCadence(v TypesBillingCadence)`
-
-SetBillingCadence sets BillingCadence field to given value.
-
-
 ### GetBillingModel
 
 `func (o *DtoCreatePriceRequest) GetBillingModel() TypesBillingModel`
@@ -105,66 +81,6 @@ and a boolean to check if the value has been set.
 `func (o *DtoCreatePriceRequest) SetBillingModel(v TypesBillingModel)`
 
 SetBillingModel sets BillingModel field to given value.
-
-
-### GetBillingPeriod
-
-`func (o *DtoCreatePriceRequest) GetBillingPeriod() TypesBillingPeriod`
-
-GetBillingPeriod returns the BillingPeriod field if non-nil, zero value otherwise.
-
-### GetBillingPeriodOk
-
-`func (o *DtoCreatePriceRequest) GetBillingPeriodOk() (*TypesBillingPeriod, bool)`
-
-GetBillingPeriodOk returns a tuple with the BillingPeriod field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillingPeriod
-
-`func (o *DtoCreatePriceRequest) SetBillingPeriod(v TypesBillingPeriod)`
-
-SetBillingPeriod sets BillingPeriod field to given value.
-
-
-### GetBillingPeriodCount
-
-`func (o *DtoCreatePriceRequest) GetBillingPeriodCount() int32`
-
-GetBillingPeriodCount returns the BillingPeriodCount field if non-nil, zero value otherwise.
-
-### GetBillingPeriodCountOk
-
-`func (o *DtoCreatePriceRequest) GetBillingPeriodCountOk() (*int32, bool)`
-
-GetBillingPeriodCountOk returns a tuple with the BillingPeriodCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBillingPeriodCount
-
-`func (o *DtoCreatePriceRequest) SetBillingPeriodCount(v int32)`
-
-SetBillingPeriodCount sets BillingPeriodCount field to given value.
-
-
-### GetCurrency
-
-`func (o *DtoCreatePriceRequest) GetCurrency() string`
-
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
-
-### GetCurrencyOk
-
-`func (o *DtoCreatePriceRequest) GetCurrencyOk() (*string, bool)`
-
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrency
-
-`func (o *DtoCreatePriceRequest) SetCurrency(v string)`
-
-SetCurrency sets Currency field to given value.
 
 
 ### GetDescription
@@ -216,26 +132,6 @@ SetFilterValues sets FilterValues field to given value.
 `func (o *DtoCreatePriceRequest) HasFilterValues() bool`
 
 HasFilterValues returns a boolean if a field has been set.
-
-### GetInvoiceCadence
-
-`func (o *DtoCreatePriceRequest) GetInvoiceCadence() TypesInvoiceCadence`
-
-GetInvoiceCadence returns the InvoiceCadence field if non-nil, zero value otherwise.
-
-### GetInvoiceCadenceOk
-
-`func (o *DtoCreatePriceRequest) GetInvoiceCadenceOk() (*TypesInvoiceCadence, bool)`
-
-GetInvoiceCadenceOk returns a tuple with the InvoiceCadence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvoiceCadence
-
-`func (o *DtoCreatePriceRequest) SetInvoiceCadence(v TypesInvoiceCadence)`
-
-SetInvoiceCadence sets InvoiceCadence field to given value.
-
 
 ### GetLookupKey
 
@@ -311,6 +207,26 @@ SetMeterId sets MeterId field to given value.
 `func (o *DtoCreatePriceRequest) HasMeterId() bool`
 
 HasMeterId returns a boolean if a field has been set.
+
+### GetPaymentCadence
+
+`func (o *DtoCreatePriceRequest) GetPaymentCadence() TypesPaymentCadence`
+
+GetPaymentCadence returns the PaymentCadence field if non-nil, zero value otherwise.
+
+### GetPaymentCadenceOk
+
+`func (o *DtoCreatePriceRequest) GetPaymentCadenceOk() (*TypesPaymentCadence, bool)`
+
+GetPaymentCadenceOk returns a tuple with the PaymentCadence field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentCadence
+
+`func (o *DtoCreatePriceRequest) SetPaymentCadence(v TypesPaymentCadence)`
+
+SetPaymentCadence sets PaymentCadence field to given value.
+
 
 ### GetPlanId
 

@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
   contact: {}
-  description: FlexPrice API Service
-  title: FlexPrice API
+  description: Billing API Service
+  title: Billing API
   version: "1.0"
 servers:
 - url: /v1
@@ -3474,6 +3474,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: customer_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: destination_id
         required: false
         schema:
@@ -3496,6 +3503,13 @@ paths:
       - explode: true
         in: query
         name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: external_customer_id
         required: false
         schema:
           type: string
@@ -3590,6 +3604,13 @@ paths:
         - StatusPublished
         - StatusDeleted
         - StatusArchived
+      - explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4774,6 +4795,13 @@ paths:
       - explode: true
         in: query
         name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: external_customer_id
         required: false
         schema:
           type: string
@@ -6038,7 +6066,7 @@ components:
     creditnote.CreditNoteLineItem:
       example:
         tenant_id: tenant_id
-        amount: 9.369310271410669
+        amount: 9.965781217890562
         metadata:
           key: metadata
         environment_id: environment_id
@@ -6224,7 +6252,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -6925,17 +6953,8 @@ components:
       properties:
         amount:
           type: string
-        billing_cadence:
-          $ref: '#/components/schemas/types.BillingCadence'
         billing_model:
           $ref: '#/components/schemas/types.BillingModel'
-        billing_period:
-          $ref: '#/components/schemas/types.BillingPeriod'
-        billing_period_count:
-          minimum: 1
-          type: integer
-        currency:
-          type: string
         description:
           type: string
         filter_values:
@@ -6944,8 +6963,6 @@ components:
               type: string
             type: array
           type: object
-        invoice_cadence:
-          $ref: '#/components/schemas/types.InvoiceCadence'
         lookup_key:
           type: string
         metadata:
@@ -6954,6 +6971,8 @@ components:
           type: object
         meter_id:
           type: string
+        payment_cadence:
+          $ref: '#/components/schemas/types.PaymentCadence'
         plan_id:
           type: string
         tier_mode:
@@ -6969,12 +6988,8 @@ components:
         type:
           $ref: '#/components/schemas/types.PriceType'
       required:
-      - billing_cadence
       - billing_model
-      - billing_period
-      - billing_period_count
-      - currency
-      - invoice_cadence
+      - payment_cadence
       - type
       type: object
     dto.CreatePlanRequest:
@@ -7017,17 +7032,8 @@ components:
       properties:
         amount:
           type: string
-        billing_cadence:
-          $ref: '#/components/schemas/types.BillingCadence'
         billing_model:
           $ref: '#/components/schemas/types.BillingModel'
-        billing_period:
-          $ref: '#/components/schemas/types.BillingPeriod'
-        billing_period_count:
-          minimum: 1
-          type: integer
-        currency:
-          type: string
         description:
           type: string
         filter_values:
@@ -7036,8 +7042,6 @@ components:
               type: string
             type: array
           type: object
-        invoice_cadence:
-          $ref: '#/components/schemas/types.InvoiceCadence'
         lookup_key:
           type: string
         metadata:
@@ -7046,6 +7050,8 @@ components:
           type: object
         meter_id:
           type: string
+        payment_cadence:
+          $ref: '#/components/schemas/types.PaymentCadence'
         plan_id:
           type: string
         tier_mode:
@@ -7061,12 +7067,8 @@ components:
         type:
           $ref: '#/components/schemas/types.PriceType'
       required:
-      - billing_cadence
       - billing_model
-      - billing_period
-      - billing_period_count
-      - currency
-      - invoice_cadence
+      - payment_cadence
       - type
       type: object
     dto.CreatePriceTier:
@@ -7302,7 +7304,7 @@ components:
         memo: memo
         line_items:
         - tenant_id: tenant_id
-          amount: 9.369310271410669
+          amount: 9.965781217890562
           metadata:
             key: metadata
           environment_id: environment_id
@@ -7317,7 +7319,7 @@ components:
           id: id
           status: null
         - tenant_id: tenant_id
-          amount: 9.369310271410669
+          amount: 9.965781217890562
           metadata:
             key: metadata
           environment_id: environment_id
@@ -7343,7 +7345,7 @@ components:
           billing_period_count: 7
           created_at: created_at
           updated_at: updated_at
-          overage_factor: 3.616076749251911
+          overage_factor: overage_factor
           subscription_status: active
           lookup_key: lookup_key
           currency: currency
@@ -7355,7 +7357,7 @@ components:
             entitlements:
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -7376,7 +7378,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -7412,7 +7414,7 @@ components:
               status: null
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -7433,7 +7435,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -7469,7 +7471,7 @@ components:
               status: null
             tenant_id: tenant_id
             environment_id: environment_id
-            billing_period_count: 2
+            billing_period_count: 3
             created_at: created_at
             description: description
             created_by: created_by
@@ -7529,16 +7531,16 @@ components:
             id: id
             prices:
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -7549,7 +7551,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -7571,7 +7573,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -7580,16 +7582,16 @@ components:
               plan_id: plan_id
               status: null
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -7600,7 +7602,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -7622,7 +7624,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -7636,7 +7638,7 @@ components:
           trial_end: trial_end
           current_period_end: current_period_end
           created_by: created_by
-          version: 1
+          version: 7
           billing_cadence: RECURRING
           trial_start: trial_start
           updated_by: updated_by
@@ -7677,7 +7679,7 @@ components:
         credit_note_number: credit_note_number
         refund_status: null
         created_by: created_by
-        total_amount: 6.683562403749608
+        total_amount: 9.369310271410669
         updated_by: updated_by
         invoice:
           billing_period: billing_period
@@ -7750,7 +7752,7 @@ components:
             billing_period_count: 7
             created_at: created_at
             updated_at: updated_at
-            overage_factor: 3.616076749251911
+            overage_factor: overage_factor
             subscription_status: active
             lookup_key: lookup_key
             currency: currency
@@ -7762,7 +7764,7 @@ components:
               entitlements:
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -7783,7 +7785,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -7819,7 +7821,7 @@ components:
                 status: null
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -7840,7 +7842,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -7876,7 +7878,7 @@ components:
                 status: null
               tenant_id: tenant_id
               environment_id: environment_id
-              billing_period_count: 2
+              billing_period_count: 3
               created_at: created_at
               description: description
               created_by: created_by
@@ -7936,16 +7938,16 @@ components:
               id: id
               prices:
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -7956,7 +7958,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -7978,7 +7980,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -7987,16 +7989,16 @@ components:
                 plan_id: plan_id
                 status: null
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -8007,7 +8009,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -8029,7 +8031,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -8043,7 +8045,7 @@ components:
             trial_end: trial_end
             current_period_end: current_period_end
             created_by: created_by
-            version: 1
+            version: 7
             billing_cadence: RECURRING
             trial_start: trial_start
             updated_by: updated_by
@@ -8073,7 +8075,7 @@ components:
               status: null
             status: null
           subscription_id: subscription_id
-          total: 5.025004791520295
+          total: 4.965218492984954
           updated_at: updated_at
           period_start: period_start
           idempotency_key: idempotency_key
@@ -8086,13 +8088,13 @@ components:
           payment_status: PENDING
           due_date: due_date
           created_by: created_by
-          version: 9
+          version: 5
           billing_reason: billing_reason
           paid_at: paid_at
           period_end: period_end
           invoice_pdf_url: invoice_pdf_url
           billing_sequence: 5
-          subtotal: 4.965218492984954
+          subtotal: 1.1730742509559433
           updated_by: updated_by
           customer_id: customer_id
           customer:
@@ -8236,7 +8238,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -8301,7 +8303,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -8543,7 +8545,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -8605,7 +8607,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -8678,7 +8680,7 @@ components:
       example:
         feature_id: feature_id
         tenant_id: tenant_id
-        usage_limit: 7
+        usage_limit: 4
         environment_id: environment_id
         is_soft_limit: true
         created_at: created_at
@@ -8699,7 +8701,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -8862,7 +8864,7 @@ components:
           event_name: api_request
           aggregation:
             field: field
-            multiplier: 4.145608029883936
+            multiplier: 2.027123023002322
             type: COUNT
           reset_usage: BILLING_PERIOD
           filters:
@@ -8943,7 +8945,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -9274,12 +9276,12 @@ components:
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             created_at: created_at
@@ -9290,7 +9292,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -9316,12 +9318,12 @@ components:
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             created_at: created_at
@@ -9332,7 +9334,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -9673,7 +9675,7 @@ components:
           billing_period_count: 7
           created_at: created_at
           updated_at: updated_at
-          overage_factor: 3.616076749251911
+          overage_factor: overage_factor
           subscription_status: active
           lookup_key: lookup_key
           currency: currency
@@ -9685,7 +9687,7 @@ components:
             entitlements:
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -9706,7 +9708,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -9742,7 +9744,7 @@ components:
               status: null
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -9763,7 +9765,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -9799,7 +9801,7 @@ components:
               status: null
             tenant_id: tenant_id
             environment_id: environment_id
-            billing_period_count: 2
+            billing_period_count: 3
             created_at: created_at
             description: description
             created_by: created_by
@@ -9859,16 +9861,16 @@ components:
             id: id
             prices:
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -9879,7 +9881,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -9901,7 +9903,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -9910,16 +9912,16 @@ components:
               plan_id: plan_id
               status: null
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -9930,7 +9932,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -9952,7 +9954,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -9966,7 +9968,7 @@ components:
           trial_end: trial_end
           current_period_end: current_period_end
           created_by: created_by
-          version: 1
+          version: 7
           billing_cadence: RECURRING
           trial_start: trial_start
           updated_by: updated_by
@@ -9996,7 +9998,7 @@ components:
             status: null
           status: null
         subscription_id: subscription_id
-        total: 5.025004791520295
+        total: 4.965218492984954
         updated_at: updated_at
         period_start: period_start
         idempotency_key: idempotency_key
@@ -10009,13 +10011,13 @@ components:
         payment_status: PENDING
         due_date: due_date
         created_by: created_by
-        version: 9
+        version: 5
         billing_reason: billing_reason
         paid_at: paid_at
         period_end: period_end
         invoice_pdf_url: invoice_pdf_url
         billing_sequence: 5
-        subtotal: 4.965218492984954
+        subtotal: 1.1730742509559433
         updated_by: updated_by
         customer_id: customer_id
         customer:
@@ -10275,7 +10277,7 @@ components:
           memo: memo
           line_items:
           - tenant_id: tenant_id
-            amount: 9.369310271410669
+            amount: 9.965781217890562
             metadata:
               key: metadata
             environment_id: environment_id
@@ -10290,7 +10292,7 @@ components:
             id: id
             status: null
           - tenant_id: tenant_id
-            amount: 9.369310271410669
+            amount: 9.965781217890562
             metadata:
               key: metadata
             environment_id: environment_id
@@ -10316,7 +10318,7 @@ components:
             billing_period_count: 7
             created_at: created_at
             updated_at: updated_at
-            overage_factor: 3.616076749251911
+            overage_factor: overage_factor
             subscription_status: active
             lookup_key: lookup_key
             currency: currency
@@ -10328,7 +10330,7 @@ components:
               entitlements:
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -10349,7 +10351,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -10385,7 +10387,7 @@ components:
                 status: null
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -10406,7 +10408,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -10442,7 +10444,7 @@ components:
                 status: null
               tenant_id: tenant_id
               environment_id: environment_id
-              billing_period_count: 2
+              billing_period_count: 3
               created_at: created_at
               description: description
               created_by: created_by
@@ -10502,16 +10504,16 @@ components:
               id: id
               prices:
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -10522,7 +10524,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -10544,7 +10546,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -10553,16 +10555,16 @@ components:
                 plan_id: plan_id
                 status: null
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -10573,7 +10575,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -10595,7 +10597,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -10609,7 +10611,7 @@ components:
             trial_end: trial_end
             current_period_end: current_period_end
             created_by: created_by
-            version: 1
+            version: 7
             billing_cadence: RECURRING
             trial_start: trial_start
             updated_by: updated_by
@@ -10650,7 +10652,7 @@ components:
           credit_note_number: credit_note_number
           refund_status: null
           created_by: created_by
-          total_amount: 6.683562403749608
+          total_amount: 9.369310271410669
           updated_by: updated_by
           invoice:
             billing_period: billing_period
@@ -10723,7 +10725,7 @@ components:
               billing_period_count: 7
               created_at: created_at
               updated_at: updated_at
-              overage_factor: 3.616076749251911
+              overage_factor: overage_factor
               subscription_status: active
               lookup_key: lookup_key
               currency: currency
@@ -10735,7 +10737,7 @@ components:
                 entitlements:
                 - feature_id: feature_id
                   tenant_id: tenant_id
-                  usage_limit: 7
+                  usage_limit: 4
                   environment_id: environment_id
                   is_soft_limit: true
                   created_at: created_at
@@ -10756,7 +10758,7 @@ components:
                       event_name: api_request
                       aggregation:
                         field: field
-                        multiplier: 4.145608029883936
+                        multiplier: 2.027123023002322
                         type: COUNT
                       reset_usage: BILLING_PERIOD
                       filters:
@@ -10792,7 +10794,7 @@ components:
                   status: null
                 - feature_id: feature_id
                   tenant_id: tenant_id
-                  usage_limit: 7
+                  usage_limit: 4
                   environment_id: environment_id
                   is_soft_limit: true
                   created_at: created_at
@@ -10813,7 +10815,7 @@ components:
                       event_name: api_request
                       aggregation:
                         field: field
-                        multiplier: 4.145608029883936
+                        multiplier: 2.027123023002322
                         type: COUNT
                       reset_usage: BILLING_PERIOD
                       filters:
@@ -10849,7 +10851,7 @@ components:
                   status: null
                 tenant_id: tenant_id
                 environment_id: environment_id
-                billing_period_count: 2
+                billing_period_count: 3
                 created_at: created_at
                 description: description
                 created_by: created_by
@@ -10909,16 +10911,16 @@ components:
                 id: id
                 prices:
                 - tenant_id: tenant_id
-                  amount: 1.2315135367772556
+                  amount: 7.386281948385884
                   metadata:
                     key: metadata
                   tiers:
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
                   billing_model: FLAT_FEE
                   environment_id: environment_id
                   meter:
@@ -10929,7 +10931,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -10951,7 +10953,7 @@ components:
                   created_by: created_by
                   transform_quantity:
                     round: round
-                    divide_by: 7
+                    divide_by: 6
                   updated_at: updated_at
                   updated_by: updated_by
                   lookup_key: lookup_key
@@ -10960,16 +10962,16 @@ components:
                   plan_id: plan_id
                   status: null
                 - tenant_id: tenant_id
-                  amount: 1.2315135367772556
+                  amount: 7.386281948385884
                   metadata:
                     key: metadata
                   tiers:
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
                   billing_model: FLAT_FEE
                   environment_id: environment_id
                   meter:
@@ -10980,7 +10982,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -11002,7 +11004,7 @@ components:
                   created_by: created_by
                   transform_quantity:
                     round: round
-                    divide_by: 7
+                    divide_by: 6
                   updated_at: updated_at
                   updated_by: updated_by
                   lookup_key: lookup_key
@@ -11016,7 +11018,7 @@ components:
               trial_end: trial_end
               current_period_end: current_period_end
               created_by: created_by
-              version: 1
+              version: 7
               billing_cadence: RECURRING
               trial_start: trial_start
               updated_by: updated_by
@@ -11046,7 +11048,7 @@ components:
                 status: null
               status: null
             subscription_id: subscription_id
-            total: 5.025004791520295
+            total: 4.965218492984954
             updated_at: updated_at
             period_start: period_start
             idempotency_key: idempotency_key
@@ -11059,13 +11061,13 @@ components:
             payment_status: PENDING
             due_date: due_date
             created_by: created_by
-            version: 9
+            version: 5
             billing_reason: billing_reason
             paid_at: paid_at
             period_end: period_end
             invoice_pdf_url: invoice_pdf_url
             billing_sequence: 5
-            subtotal: 4.965218492984954
+            subtotal: 1.1730742509559433
             updated_by: updated_by
             customer_id: customer_id
             customer:
@@ -11122,7 +11124,7 @@ components:
           memo: memo
           line_items:
           - tenant_id: tenant_id
-            amount: 9.369310271410669
+            amount: 9.965781217890562
             metadata:
               key: metadata
             environment_id: environment_id
@@ -11137,7 +11139,7 @@ components:
             id: id
             status: null
           - tenant_id: tenant_id
-            amount: 9.369310271410669
+            amount: 9.965781217890562
             metadata:
               key: metadata
             environment_id: environment_id
@@ -11163,7 +11165,7 @@ components:
             billing_period_count: 7
             created_at: created_at
             updated_at: updated_at
-            overage_factor: 3.616076749251911
+            overage_factor: overage_factor
             subscription_status: active
             lookup_key: lookup_key
             currency: currency
@@ -11175,7 +11177,7 @@ components:
               entitlements:
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -11196,7 +11198,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -11232,7 +11234,7 @@ components:
                 status: null
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -11253,7 +11255,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -11289,7 +11291,7 @@ components:
                 status: null
               tenant_id: tenant_id
               environment_id: environment_id
-              billing_period_count: 2
+              billing_period_count: 3
               created_at: created_at
               description: description
               created_by: created_by
@@ -11349,16 +11351,16 @@ components:
               id: id
               prices:
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -11369,7 +11371,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -11391,7 +11393,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -11400,16 +11402,16 @@ components:
                 plan_id: plan_id
                 status: null
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -11420,7 +11422,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -11442,7 +11444,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -11456,7 +11458,7 @@ components:
             trial_end: trial_end
             current_period_end: current_period_end
             created_by: created_by
-            version: 1
+            version: 7
             billing_cadence: RECURRING
             trial_start: trial_start
             updated_by: updated_by
@@ -11497,7 +11499,7 @@ components:
           credit_note_number: credit_note_number
           refund_status: null
           created_by: created_by
-          total_amount: 6.683562403749608
+          total_amount: 9.369310271410669
           updated_by: updated_by
           invoice:
             billing_period: billing_period
@@ -11570,7 +11572,7 @@ components:
               billing_period_count: 7
               created_at: created_at
               updated_at: updated_at
-              overage_factor: 3.616076749251911
+              overage_factor: overage_factor
               subscription_status: active
               lookup_key: lookup_key
               currency: currency
@@ -11582,7 +11584,7 @@ components:
                 entitlements:
                 - feature_id: feature_id
                   tenant_id: tenant_id
-                  usage_limit: 7
+                  usage_limit: 4
                   environment_id: environment_id
                   is_soft_limit: true
                   created_at: created_at
@@ -11603,7 +11605,7 @@ components:
                       event_name: api_request
                       aggregation:
                         field: field
-                        multiplier: 4.145608029883936
+                        multiplier: 2.027123023002322
                         type: COUNT
                       reset_usage: BILLING_PERIOD
                       filters:
@@ -11639,7 +11641,7 @@ components:
                   status: null
                 - feature_id: feature_id
                   tenant_id: tenant_id
-                  usage_limit: 7
+                  usage_limit: 4
                   environment_id: environment_id
                   is_soft_limit: true
                   created_at: created_at
@@ -11660,7 +11662,7 @@ components:
                       event_name: api_request
                       aggregation:
                         field: field
-                        multiplier: 4.145608029883936
+                        multiplier: 2.027123023002322
                         type: COUNT
                       reset_usage: BILLING_PERIOD
                       filters:
@@ -11696,7 +11698,7 @@ components:
                   status: null
                 tenant_id: tenant_id
                 environment_id: environment_id
-                billing_period_count: 2
+                billing_period_count: 3
                 created_at: created_at
                 description: description
                 created_by: created_by
@@ -11756,16 +11758,16 @@ components:
                 id: id
                 prices:
                 - tenant_id: tenant_id
-                  amount: 1.2315135367772556
+                  amount: 7.386281948385884
                   metadata:
                     key: metadata
                   tiers:
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
                   billing_model: FLAT_FEE
                   environment_id: environment_id
                   meter:
@@ -11776,7 +11778,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -11798,7 +11800,7 @@ components:
                   created_by: created_by
                   transform_quantity:
                     round: round
-                    divide_by: 7
+                    divide_by: 6
                   updated_at: updated_at
                   updated_by: updated_by
                   lookup_key: lookup_key
@@ -11807,16 +11809,16 @@ components:
                   plan_id: plan_id
                   status: null
                 - tenant_id: tenant_id
-                  amount: 1.2315135367772556
+                  amount: 7.386281948385884
                   metadata:
                     key: metadata
                   tiers:
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
-                  - flat_amount: 1.0246457001441578
-                    up_to: 6
-                    unit_amount: 1.4894159098541704
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
+                  - flat_amount: 1.2315135367772556
+                    up_to: 1
+                    unit_amount: 1.0246457001441578
                   billing_model: FLAT_FEE
                   environment_id: environment_id
                   meter:
@@ -11827,7 +11829,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -11849,7 +11851,7 @@ components:
                   created_by: created_by
                   transform_quantity:
                     round: round
-                    divide_by: 7
+                    divide_by: 6
                   updated_at: updated_at
                   updated_by: updated_by
                   lookup_key: lookup_key
@@ -11863,7 +11865,7 @@ components:
               trial_end: trial_end
               current_period_end: current_period_end
               created_by: created_by
-              version: 1
+              version: 7
               billing_cadence: RECURRING
               trial_start: trial_start
               updated_by: updated_by
@@ -11893,7 +11895,7 @@ components:
                 status: null
               status: null
             subscription_id: subscription_id
-            total: 5.025004791520295
+            total: 4.965218492984954
             updated_at: updated_at
             period_start: period_start
             idempotency_key: idempotency_key
@@ -11906,13 +11908,13 @@ components:
             payment_status: PENDING
             due_date: due_date
             created_by: created_by
-            version: 9
+            version: 5
             billing_reason: billing_reason
             paid_at: paid_at
             period_end: period_end
             invoice_pdf_url: invoice_pdf_url
             billing_sequence: 5
-            subtotal: 4.965218492984954
+            subtotal: 1.1730742509559433
             updated_by: updated_by
             customer_id: customer_id
             customer:
@@ -12029,7 +12031,7 @@ components:
         items:
         - feature_id: feature_id
           tenant_id: tenant_id
-          usage_limit: 7
+          usage_limit: 4
           environment_id: environment_id
           is_soft_limit: true
           created_at: created_at
@@ -12050,7 +12052,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -12086,7 +12088,7 @@ components:
           status: null
         - feature_id: feature_id
           tenant_id: tenant_id
-          usage_limit: 7
+          usage_limit: 4
           environment_id: environment_id
           is_soft_limit: true
           created_at: created_at
@@ -12107,7 +12109,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -12196,7 +12198,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -12235,7 +12237,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -12347,7 +12349,7 @@ components:
             billing_period_count: 7
             created_at: created_at
             updated_at: updated_at
-            overage_factor: 3.616076749251911
+            overage_factor: overage_factor
             subscription_status: active
             lookup_key: lookup_key
             currency: currency
@@ -12359,7 +12361,7 @@ components:
               entitlements:
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -12380,7 +12382,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -12416,7 +12418,7 @@ components:
                 status: null
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -12437,7 +12439,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -12473,7 +12475,7 @@ components:
                 status: null
               tenant_id: tenant_id
               environment_id: environment_id
-              billing_period_count: 2
+              billing_period_count: 3
               created_at: created_at
               description: description
               created_by: created_by
@@ -12533,16 +12535,16 @@ components:
               id: id
               prices:
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -12553,7 +12555,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -12575,7 +12577,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -12584,16 +12586,16 @@ components:
                 plan_id: plan_id
                 status: null
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -12604,7 +12606,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -12626,7 +12628,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -12640,7 +12642,7 @@ components:
             trial_end: trial_end
             current_period_end: current_period_end
             created_by: created_by
-            version: 1
+            version: 7
             billing_cadence: RECURRING
             trial_start: trial_start
             updated_by: updated_by
@@ -12670,7 +12672,7 @@ components:
               status: null
             status: null
           subscription_id: subscription_id
-          total: 5.025004791520295
+          total: 4.965218492984954
           updated_at: updated_at
           period_start: period_start
           idempotency_key: idempotency_key
@@ -12683,13 +12685,13 @@ components:
           payment_status: PENDING
           due_date: due_date
           created_by: created_by
-          version: 9
+          version: 5
           billing_reason: billing_reason
           paid_at: paid_at
           period_end: period_end
           invoice_pdf_url: invoice_pdf_url
           billing_sequence: 5
-          subtotal: 4.965218492984954
+          subtotal: 1.1730742509559433
           updated_by: updated_by
           customer_id: customer_id
           customer:
@@ -12784,7 +12786,7 @@ components:
             billing_period_count: 7
             created_at: created_at
             updated_at: updated_at
-            overage_factor: 3.616076749251911
+            overage_factor: overage_factor
             subscription_status: active
             lookup_key: lookup_key
             currency: currency
@@ -12796,7 +12798,7 @@ components:
               entitlements:
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -12817,7 +12819,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -12853,7 +12855,7 @@ components:
                 status: null
               - feature_id: feature_id
                 tenant_id: tenant_id
-                usage_limit: 7
+                usage_limit: 4
                 environment_id: environment_id
                 is_soft_limit: true
                 created_at: created_at
@@ -12874,7 +12876,7 @@ components:
                     event_name: api_request
                     aggregation:
                       field: field
-                      multiplier: 4.145608029883936
+                      multiplier: 2.027123023002322
                       type: COUNT
                     reset_usage: BILLING_PERIOD
                     filters:
@@ -12910,7 +12912,7 @@ components:
                 status: null
               tenant_id: tenant_id
               environment_id: environment_id
-              billing_period_count: 2
+              billing_period_count: 3
               created_at: created_at
               description: description
               created_by: created_by
@@ -12970,16 +12972,16 @@ components:
               id: id
               prices:
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -12990,7 +12992,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -13012,7 +13014,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -13021,16 +13023,16 @@ components:
                 plan_id: plan_id
                 status: null
               - tenant_id: tenant_id
-                amount: 1.2315135367772556
+                amount: 7.386281948385884
                 metadata:
                   key: metadata
                 tiers:
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
-                - flat_amount: 1.0246457001441578
-                  up_to: 6
-                  unit_amount: 1.4894159098541704
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
+                - flat_amount: 1.2315135367772556
+                  up_to: 1
+                  unit_amount: 1.0246457001441578
                 billing_model: FLAT_FEE
                 environment_id: environment_id
                 meter:
@@ -13041,7 +13043,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -13063,7 +13065,7 @@ components:
                 created_by: created_by
                 transform_quantity:
                   round: round
-                  divide_by: 7
+                  divide_by: 6
                 updated_at: updated_at
                 updated_by: updated_by
                 lookup_key: lookup_key
@@ -13077,7 +13079,7 @@ components:
             trial_end: trial_end
             current_period_end: current_period_end
             created_by: created_by
-            version: 1
+            version: 7
             billing_cadence: RECURRING
             trial_start: trial_start
             updated_by: updated_by
@@ -13107,7 +13109,7 @@ components:
               status: null
             status: null
           subscription_id: subscription_id
-          total: 5.025004791520295
+          total: 4.965218492984954
           updated_at: updated_at
           period_start: period_start
           idempotency_key: idempotency_key
@@ -13120,13 +13122,13 @@ components:
           payment_status: PENDING
           due_date: due_date
           created_by: created_by
-          version: 9
+          version: 5
           billing_reason: billing_reason
           paid_at: paid_at
           period_end: period_end
           invoice_pdf_url: invoice_pdf_url
           billing_sequence: 5
-          subtotal: 4.965218492984954
+          subtotal: 1.1730742509559433
           updated_by: updated_by
           customer_id: customer_id
           customer:
@@ -13166,26 +13168,19 @@ components:
           offset: 2
           limit: 5
         items:
-        - error_message: error_message
-          payment_method_type: CARD
+        - payment_method_type: CARD
           tenant_id: tenant_id
-          amount: 0.8008281904610115
           metadata:
             key: metadata
           destination_id: destination_id
-          payment_status: PENDING
           created_at: created_at
-          created_by: created_by
-          succeeded_at: succeeded_at
-          track_attempts: true
+          description: description
+          type: type
           destination_type: INVOICE
-          payment_method_id: payment_method_id
           refunded_at: refunded_at
           updated_at: updated_at
-          updated_by: updated_by
           idempotency_key: idempotency_key
           currency: currency
-          failed_at: failed_at
           id: id
           invoice_number: invoice_number
           attempts:
@@ -13211,26 +13206,31 @@ components:
             created_at: created_at
             id: id
             created_by: created_by
-        - error_message: error_message
-          payment_method_type: CARD
-          tenant_id: tenant_id
+          error_message: error_message
           amount: 0.8008281904610115
-          metadata:
-            key: metadata
-          destination_id: destination_id
           payment_status: PENDING
-          created_at: created_at
           created_by: created_by
           succeeded_at: succeeded_at
           track_attempts: true
-          destination_type: INVOICE
+          recorded_at: recorded_at
           payment_method_id: payment_method_id
+          name: name
+          updated_by: updated_by
+          failed_at: failed_at
+          customer_id: customer_id
+        - payment_method_type: CARD
+          tenant_id: tenant_id
+          metadata:
+            key: metadata
+          destination_id: destination_id
+          created_at: created_at
+          description: description
+          type: type
+          destination_type: INVOICE
           refunded_at: refunded_at
           updated_at: updated_at
-          updated_by: updated_by
           idempotency_key: idempotency_key
           currency: currency
-          failed_at: failed_at
           id: id
           invoice_number: invoice_number
           attempts:
@@ -13256,6 +13256,18 @@ components:
             created_at: created_at
             id: id
             created_by: created_by
+          error_message: error_message
+          amount: 0.8008281904610115
+          payment_status: PENDING
+          created_by: created_by
+          succeeded_at: succeeded_at
+          track_attempts: true
+          recorded_at: recorded_at
+          payment_method_id: payment_method_id
+          name: name
+          updated_by: updated_by
+          failed_at: failed_at
+          customer_id: customer_id
       properties:
         items:
           items:
@@ -13275,7 +13287,7 @@ components:
           entitlements:
           - feature_id: feature_id
             tenant_id: tenant_id
-            usage_limit: 7
+            usage_limit: 4
             environment_id: environment_id
             is_soft_limit: true
             created_at: created_at
@@ -13296,7 +13308,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -13332,7 +13344,7 @@ components:
             status: null
           - feature_id: feature_id
             tenant_id: tenant_id
-            usage_limit: 7
+            usage_limit: 4
             environment_id: environment_id
             is_soft_limit: true
             created_at: created_at
@@ -13353,7 +13365,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -13389,7 +13401,7 @@ components:
             status: null
           tenant_id: tenant_id
           environment_id: environment_id
-          billing_period_count: 2
+          billing_period_count: 3
           created_at: created_at
           description: description
           created_by: created_by
@@ -13449,16 +13461,16 @@ components:
           id: id
           prices:
           - tenant_id: tenant_id
-            amount: 1.2315135367772556
+            amount: 7.386281948385884
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             meter:
@@ -13469,7 +13481,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -13491,7 +13503,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -13500,16 +13512,16 @@ components:
             plan_id: plan_id
             status: null
           - tenant_id: tenant_id
-            amount: 1.2315135367772556
+            amount: 7.386281948385884
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             meter:
@@ -13520,7 +13532,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -13542,7 +13554,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -13555,7 +13567,7 @@ components:
           entitlements:
           - feature_id: feature_id
             tenant_id: tenant_id
-            usage_limit: 7
+            usage_limit: 4
             environment_id: environment_id
             is_soft_limit: true
             created_at: created_at
@@ -13576,7 +13588,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -13612,7 +13624,7 @@ components:
             status: null
           - feature_id: feature_id
             tenant_id: tenant_id
-            usage_limit: 7
+            usage_limit: 4
             environment_id: environment_id
             is_soft_limit: true
             created_at: created_at
@@ -13633,7 +13645,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -13669,7 +13681,7 @@ components:
             status: null
           tenant_id: tenant_id
           environment_id: environment_id
-          billing_period_count: 2
+          billing_period_count: 3
           created_at: created_at
           description: description
           created_by: created_by
@@ -13729,16 +13741,16 @@ components:
           id: id
           prices:
           - tenant_id: tenant_id
-            amount: 1.2315135367772556
+            amount: 7.386281948385884
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             meter:
@@ -13749,7 +13761,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -13771,7 +13783,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -13780,16 +13792,16 @@ components:
             plan_id: plan_id
             status: null
           - tenant_id: tenant_id
-            amount: 1.2315135367772556
+            amount: 7.386281948385884
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             meter:
@@ -13800,7 +13812,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -13822,7 +13834,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -13847,16 +13859,16 @@ components:
           limit: 5
         items:
         - tenant_id: tenant_id
-          amount: 1.2315135367772556
+          amount: 7.386281948385884
           metadata:
             key: metadata
           tiers:
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
           billing_model: FLAT_FEE
           environment_id: environment_id
           meter:
@@ -13867,7 +13879,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -13889,7 +13901,7 @@ components:
           created_by: created_by
           transform_quantity:
             round: round
-            divide_by: 7
+            divide_by: 6
           updated_at: updated_at
           updated_by: updated_by
           lookup_key: lookup_key
@@ -13898,16 +13910,16 @@ components:
           plan_id: plan_id
           status: null
         - tenant_id: tenant_id
-          amount: 1.2315135367772556
+          amount: 7.386281948385884
           metadata:
             key: metadata
           tiers:
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
           billing_model: FLAT_FEE
           environment_id: environment_id
           meter:
@@ -13918,7 +13930,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -13940,7 +13952,7 @@ components:
           created_by: created_by
           transform_quantity:
             round: round
-            divide_by: 7
+            divide_by: 6
           updated_at: updated_at
           updated_by: updated_by
           lookup_key: lookup_key
@@ -14015,7 +14027,7 @@ components:
           billing_period_count: 7
           created_at: created_at
           updated_at: updated_at
-          overage_factor: 3.616076749251911
+          overage_factor: overage_factor
           subscription_status: active
           lookup_key: lookup_key
           currency: currency
@@ -14027,7 +14039,7 @@ components:
             entitlements:
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -14048,7 +14060,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -14084,7 +14096,7 @@ components:
               status: null
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -14105,7 +14117,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -14141,7 +14153,7 @@ components:
               status: null
             tenant_id: tenant_id
             environment_id: environment_id
-            billing_period_count: 2
+            billing_period_count: 3
             created_at: created_at
             description: description
             created_by: created_by
@@ -14201,16 +14213,16 @@ components:
             id: id
             prices:
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -14221,7 +14233,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -14243,7 +14255,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -14252,16 +14264,16 @@ components:
               plan_id: plan_id
               status: null
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -14272,7 +14284,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -14294,7 +14306,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -14308,7 +14320,7 @@ components:
           trial_end: trial_end
           current_period_end: current_period_end
           created_by: created_by
-          version: 1
+          version: 7
           billing_cadence: RECURRING
           trial_start: trial_start
           updated_by: updated_by
@@ -14348,7 +14360,7 @@ components:
           billing_period_count: 7
           created_at: created_at
           updated_at: updated_at
-          overage_factor: 3.616076749251911
+          overage_factor: overage_factor
           subscription_status: active
           lookup_key: lookup_key
           currency: currency
@@ -14360,7 +14372,7 @@ components:
             entitlements:
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -14381,7 +14393,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -14417,7 +14429,7 @@ components:
               status: null
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -14438,7 +14450,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -14474,7 +14486,7 @@ components:
               status: null
             tenant_id: tenant_id
             environment_id: environment_id
-            billing_period_count: 2
+            billing_period_count: 3
             created_at: created_at
             description: description
             created_by: created_by
@@ -14534,16 +14546,16 @@ components:
             id: id
             prices:
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -14554,7 +14566,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -14576,7 +14588,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -14585,16 +14597,16 @@ components:
               plan_id: plan_id
               status: null
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -14605,7 +14617,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -14627,7 +14639,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -14641,7 +14653,7 @@ components:
           trial_end: trial_end
           current_period_end: current_period_end
           created_by: created_by
-          version: 1
+          version: 7
           billing_cadence: RECURRING
           trial_start: trial_start
           updated_by: updated_by
@@ -14814,7 +14826,7 @@ components:
         event_name: api_request
         aggregation:
           field: field
-          multiplier: 4.145608029883936
+          multiplier: 2.027123023002322
           type: COUNT
         reset_usage: BILLING_PERIOD
         filters:
@@ -14898,26 +14910,19 @@ components:
       type: object
     dto.PaymentResponse:
       example:
-        error_message: error_message
         payment_method_type: CARD
         tenant_id: tenant_id
-        amount: 0.8008281904610115
         metadata:
           key: metadata
         destination_id: destination_id
-        payment_status: PENDING
         created_at: created_at
-        created_by: created_by
-        succeeded_at: succeeded_at
-        track_attempts: true
+        description: description
+        type: type
         destination_type: INVOICE
-        payment_method_id: payment_method_id
         refunded_at: refunded_at
         updated_at: updated_at
-        updated_by: updated_by
         idempotency_key: idempotency_key
         currency: currency
-        failed_at: failed_at
         id: id
         invoice_number: invoice_number
         attempts:
@@ -14943,6 +14948,18 @@ components:
           created_at: created_at
           id: id
           created_by: created_by
+        error_message: error_message
+        amount: 0.8008281904610115
+        payment_status: PENDING
+        created_by: created_by
+        succeeded_at: succeeded_at
+        track_attempts: true
+        recorded_at: recorded_at
+        payment_method_id: payment_method_id
+        name: name
+        updated_by: updated_by
+        failed_at: failed_at
+        customer_id: customer_id
       properties:
         amount:
           type: number
@@ -14955,6 +14972,10 @@ components:
         created_by:
           type: string
         currency:
+          type: string
+        customer_id:
+          type: string
+        description:
           type: string
         destination_id:
           type: string
@@ -14974,12 +14995,18 @@ components:
           additionalProperties:
             type: string
           type: object
+        name:
+          type: string
         payment_method_id:
           type: string
         payment_method_type:
           $ref: '#/components/schemas/types.PaymentMethodType'
         payment_status:
           $ref: '#/components/schemas/types.PaymentStatus'
+        recorded_at:
+          description: The recorded_at timestamp indicates when this payment was manually
+            recorded (optional)
+          type: string
         refunded_at:
           type: string
         succeeded_at:
@@ -14988,6 +15015,8 @@ components:
           type: string
         track_attempts:
           type: boolean
+        type:
+          type: string
         updated_at:
           type: string
         updated_by:
@@ -14999,7 +15028,7 @@ components:
         entitlements:
         - feature_id: feature_id
           tenant_id: tenant_id
-          usage_limit: 7
+          usage_limit: 4
           environment_id: environment_id
           is_soft_limit: true
           created_at: created_at
@@ -15020,7 +15049,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -15056,7 +15085,7 @@ components:
           status: null
         - feature_id: feature_id
           tenant_id: tenant_id
-          usage_limit: 7
+          usage_limit: 4
           environment_id: environment_id
           is_soft_limit: true
           created_at: created_at
@@ -15077,7 +15106,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -15113,7 +15142,7 @@ components:
           status: null
         tenant_id: tenant_id
         environment_id: environment_id
-        billing_period_count: 2
+        billing_period_count: 3
         created_at: created_at
         description: description
         created_by: created_by
@@ -15173,16 +15202,16 @@ components:
         id: id
         prices:
         - tenant_id: tenant_id
-          amount: 1.2315135367772556
+          amount: 7.386281948385884
           metadata:
             key: metadata
           tiers:
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
           billing_model: FLAT_FEE
           environment_id: environment_id
           meter:
@@ -15193,7 +15222,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -15215,7 +15244,7 @@ components:
           created_by: created_by
           transform_quantity:
             round: round
-            divide_by: 7
+            divide_by: 6
           updated_at: updated_at
           updated_by: updated_by
           lookup_key: lookup_key
@@ -15224,16 +15253,16 @@ components:
           plan_id: plan_id
           status: null
         - tenant_id: tenant_id
-          amount: 1.2315135367772556
+          amount: 7.386281948385884
           metadata:
             key: metadata
           tiers:
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
           billing_model: FLAT_FEE
           environment_id: environment_id
           meter:
@@ -15244,7 +15273,7 @@ components:
             event_name: api_request
             aggregation:
               field: field
-              multiplier: 4.145608029883936
+              multiplier: 2.027123023002322
               type: COUNT
             reset_usage: BILLING_PERIOD
             filters:
@@ -15266,7 +15295,7 @@ components:
           created_by: created_by
           transform_quantity:
             round: round
-            divide_by: 7
+            divide_by: 6
           updated_at: updated_at
           updated_by: updated_by
           lookup_key: lookup_key
@@ -15326,16 +15355,16 @@ components:
     dto.PriceResponse:
       example:
         tenant_id: tenant_id
-        amount: 1.2315135367772556
+        amount: 7.386281948385884
         metadata:
           key: metadata
         tiers:
-        - flat_amount: 1.0246457001441578
-          up_to: 6
-          unit_amount: 1.4894159098541704
-        - flat_amount: 1.0246457001441578
-          up_to: 6
-          unit_amount: 1.4894159098541704
+        - flat_amount: 1.2315135367772556
+          up_to: 1
+          unit_amount: 1.0246457001441578
+        - flat_amount: 1.2315135367772556
+          up_to: 1
+          unit_amount: 1.0246457001441578
         billing_model: FLAT_FEE
         environment_id: environment_id
         meter:
@@ -15346,7 +15375,7 @@ components:
           event_name: api_request
           aggregation:
             field: field
-            multiplier: 4.145608029883936
+            multiplier: 2.027123023002322
             type: COUNT
           reset_usage: BILLING_PERIOD
           filters:
@@ -15368,7 +15397,7 @@ components:
         created_by: created_by
         transform_quantity:
           round: round
-          divide_by: 7
+          divide_by: 6
         updated_at: updated_at
         updated_by: updated_by
         lookup_key: lookup_key
@@ -15544,7 +15573,7 @@ components:
         billing_period_count: 7
         created_at: created_at
         updated_at: updated_at
-        overage_factor: 3.616076749251911
+        overage_factor: overage_factor
         subscription_status: active
         lookup_key: lookup_key
         currency: currency
@@ -15556,7 +15585,7 @@ components:
           entitlements:
           - feature_id: feature_id
             tenant_id: tenant_id
-            usage_limit: 7
+            usage_limit: 4
             environment_id: environment_id
             is_soft_limit: true
             created_at: created_at
@@ -15577,7 +15606,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -15613,7 +15642,7 @@ components:
             status: null
           - feature_id: feature_id
             tenant_id: tenant_id
-            usage_limit: 7
+            usage_limit: 4
             environment_id: environment_id
             is_soft_limit: true
             created_at: created_at
@@ -15634,7 +15663,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -15670,7 +15699,7 @@ components:
             status: null
           tenant_id: tenant_id
           environment_id: environment_id
-          billing_period_count: 2
+          billing_period_count: 3
           created_at: created_at
           description: description
           created_by: created_by
@@ -15730,16 +15759,16 @@ components:
           id: id
           prices:
           - tenant_id: tenant_id
-            amount: 1.2315135367772556
+            amount: 7.386281948385884
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             meter:
@@ -15750,7 +15779,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -15772,7 +15801,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -15781,16 +15810,16 @@ components:
             plan_id: plan_id
             status: null
           - tenant_id: tenant_id
-            amount: 1.2315135367772556
+            amount: 7.386281948385884
             metadata:
               key: metadata
             tiers:
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
-            - flat_amount: 1.0246457001441578
-              up_to: 6
-              unit_amount: 1.4894159098541704
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
+            - flat_amount: 1.2315135367772556
+              up_to: 1
+              unit_amount: 1.0246457001441578
             billing_model: FLAT_FEE
             environment_id: environment_id
             meter:
@@ -15801,7 +15830,7 @@ components:
               event_name: api_request
               aggregation:
                 field: field
-                multiplier: 4.145608029883936
+                multiplier: 2.027123023002322
                 type: COUNT
               reset_usage: BILLING_PERIOD
               filters:
@@ -15823,7 +15852,7 @@ components:
             created_by: created_by
             transform_quantity:
               round: round
-              divide_by: 7
+              divide_by: 6
             updated_at: updated_at
             updated_by: updated_by
             lookup_key: lookup_key
@@ -15837,7 +15866,7 @@ components:
         trial_end: trial_end
         current_period_end: current_period_end
         created_by: created_by
-        version: 1
+        version: 7
         billing_cadence: RECURRING
         trial_start: trial_start
         updated_by: updated_by
@@ -15940,7 +15969,7 @@ components:
         overage_factor:
           description: OverageFactor is a multiplier applied to usage beyond the commitment
             amount
-          type: number
+          type: string
         plan:
           $ref: '#/components/schemas/dto.PlanResponse'
         plan_id:
@@ -15983,12 +16012,12 @@ components:
           metadata:
             key: metadata
           tiers:
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
-          - flat_amount: 1.0246457001441578
-            up_to: 6
-            unit_amount: 1.4894159098541704
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
+          - flat_amount: 1.2315135367772556
+            up_to: 1
+            unit_amount: 1.0246457001441578
           billing_model: FLAT_FEE
           environment_id: environment_id
           created_at: created_at
@@ -15999,7 +16028,7 @@ components:
           created_by: created_by
           transform_quantity:
             round: round
-            divide_by: 7
+            divide_by: 6
           updated_at: updated_at
           updated_by: updated_by
           lookup_key: lookup_key
@@ -16149,7 +16178,7 @@ components:
           billing_period_count: 7
           created_at: created_at
           updated_at: updated_at
-          overage_factor: 3.616076749251911
+          overage_factor: overage_factor
           subscription_status: active
           lookup_key: lookup_key
           currency: currency
@@ -16161,7 +16190,7 @@ components:
             entitlements:
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -16182,7 +16211,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -16218,7 +16247,7 @@ components:
               status: null
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -16239,7 +16268,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -16275,7 +16304,7 @@ components:
               status: null
             tenant_id: tenant_id
             environment_id: environment_id
-            billing_period_count: 2
+            billing_period_count: 3
             created_at: created_at
             description: description
             created_by: created_by
@@ -16335,16 +16364,16 @@ components:
             id: id
             prices:
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -16355,7 +16384,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -16377,7 +16406,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -16386,16 +16415,16 @@ components:
               plan_id: plan_id
               status: null
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -16406,7 +16435,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -16428,7 +16457,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -16442,7 +16471,7 @@ components:
           trial_end: trial_end
           current_period_end: current_period_end
           created_by: created_by
-          version: 1
+          version: 7
           billing_cadence: RECURRING
           trial_start: trial_start
           updated_by: updated_by
@@ -16482,7 +16511,7 @@ components:
           billing_period_count: 7
           created_at: created_at
           updated_at: updated_at
-          overage_factor: 3.616076749251911
+          overage_factor: overage_factor
           subscription_status: active
           lookup_key: lookup_key
           currency: currency
@@ -16494,7 +16523,7 @@ components:
             entitlements:
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -16515,7 +16544,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -16551,7 +16580,7 @@ components:
               status: null
             - feature_id: feature_id
               tenant_id: tenant_id
-              usage_limit: 7
+              usage_limit: 4
               environment_id: environment_id
               is_soft_limit: true
               created_at: created_at
@@ -16572,7 +16601,7 @@ components:
                   event_name: api_request
                   aggregation:
                     field: field
-                    multiplier: 4.145608029883936
+                    multiplier: 2.027123023002322
                     type: COUNT
                   reset_usage: BILLING_PERIOD
                   filters:
@@ -16608,7 +16637,7 @@ components:
               status: null
             tenant_id: tenant_id
             environment_id: environment_id
-            billing_period_count: 2
+            billing_period_count: 3
             created_at: created_at
             description: description
             created_by: created_by
@@ -16668,16 +16697,16 @@ components:
             id: id
             prices:
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -16688,7 +16717,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -16710,7 +16739,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -16719,16 +16748,16 @@ components:
               plan_id: plan_id
               status: null
             - tenant_id: tenant_id
-              amount: 1.2315135367772556
+              amount: 7.386281948385884
               metadata:
                 key: metadata
               tiers:
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
-              - flat_amount: 1.0246457001441578
-                up_to: 6
-                unit_amount: 1.4894159098541704
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
+              - flat_amount: 1.2315135367772556
+                up_to: 1
+                unit_amount: 1.0246457001441578
               billing_model: FLAT_FEE
               environment_id: environment_id
               meter:
@@ -16739,7 +16768,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -16761,7 +16790,7 @@ components:
               created_by: created_by
               transform_quantity:
                 round: round
-                divide_by: 7
+                divide_by: 6
               updated_at: updated_at
               updated_by: updated_by
               lookup_key: lookup_key
@@ -16775,7 +16804,7 @@ components:
           trial_end: trial_end
           current_period_end: current_period_end
           created_by: created_by
-          version: 1
+          version: 7
           billing_cadence: RECURRING
           trial_start: trial_start
           updated_by: updated_by
@@ -16820,7 +16849,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -16882,7 +16911,7 @@ components:
                 event_name: api_request
                 aggregation:
                   field: field
-                  multiplier: 4.145608029883936
+                  multiplier: 2.027123023002322
                   type: COUNT
                 reset_usage: BILLING_PERIOD
                 filters:
@@ -17201,17 +17230,8 @@ components:
       properties:
         amount:
           type: string
-        billing_cadence:
-          $ref: '#/components/schemas/types.BillingCadence'
         billing_model:
           $ref: '#/components/schemas/types.BillingModel'
-        billing_period:
-          $ref: '#/components/schemas/types.BillingPeriod'
-        billing_period_count:
-          minimum: 1
-          type: integer
-        currency:
-          type: string
         description:
           type: string
         filter_values:
@@ -17224,8 +17244,6 @@ components:
           description: The ID of the price to update (present if the price is being
             updated)
           type: string
-        invoice_cadence:
-          $ref: '#/components/schemas/types.InvoiceCadence'
         lookup_key:
           type: string
         metadata:
@@ -17234,6 +17252,8 @@ components:
           type: object
         meter_id:
           type: string
+        payment_cadence:
+          $ref: '#/components/schemas/types.PaymentCadence'
         plan_id:
           type: string
         tier_mode:
@@ -17249,12 +17269,8 @@ components:
         type:
           $ref: '#/components/schemas/types.PriceType'
       required:
-      - billing_cadence
       - billing_model
-      - billing_period
-      - billing_period_count
-      - currency
-      - invoice_cadence
+      - payment_cadence
       - type
       type: object
     dto.UpdatePlanRequest:
@@ -17435,29 +17451,27 @@ components:
         metadata:
           key: metadata
         environment_id: environment_id
-        real_time_balance: 7.061401241503109
+        real_time_balance: real_time_balance
         balance_updated_at: balance_updated_at
         created_at: created_at
         description: description
-        total_recharge: 3.616076749251911
         wallet_status: active
         auto_topup_trigger: disabled
-        balance: 1.4658129805029452
+        balance: balance
         updated_at: updated_at
-        credit_balance: 5.637376656633329
+        credit_balance: credit_balance
         currency: currency
         id: id
-        conversion_rate: 5.962133916683182
-        total_spent: 2.027123023002322
-        auto_topup_amount: 0.8008281904610115
+        conversion_rate: conversion_rate
+        auto_topup_amount: auto_topup_amount
         created_by: created_by
-        auto_topup_min_balance: 6.027456183070403
+        auto_topup_min_balance: auto_topup_min_balance
         name: name
-        real_time_credit_balance: 9.301444243932576
+        real_time_credit_balance: real_time_credit_balance
         updated_by: updated_by
-        current_period_usage: 2.3021358869347655
+        current_period_usage: current_period_usage
         wallet_type: PROMOTIONAL
-        unpaid_invoice_amount: 4.145608029883936
+        unpaid_invoice_amount: unpaid_invoice_amount
         customer_id: customer_id
         config:
           allowed_price_types:
@@ -17466,29 +17480,29 @@ components:
         status: published
       properties:
         auto_topup_amount:
-          type: number
+          type: string
         auto_topup_min_balance:
-          type: number
+          type: string
         auto_topup_trigger:
           $ref: '#/components/schemas/types.AutoTopupTrigger'
         balance:
-          type: number
+          type: string
         balance_updated_at:
           type: string
         config:
           $ref: '#/components/schemas/types.WalletConfig'
         conversion_rate:
-          type: number
+          type: string
         created_at:
           type: string
         created_by:
           type: string
         credit_balance:
-          type: number
+          type: string
         currency:
           type: string
         current_period_usage:
-          type: number
+          type: string
         customer_id:
           type: string
         description:
@@ -17504,21 +17518,15 @@ components:
         name:
           type: string
         real_time_balance:
-          type: number
+          type: string
         real_time_credit_balance:
-          type: number
+          type: string
         status:
           $ref: '#/components/schemas/types.Status'
         tenant_id:
           type: string
-        total_recharge:
-          description: 累计充值
-          type: number
-        total_spent:
-          description: 累计消费
-          type: number
         unpaid_invoice_amount:
-          type: number
+          type: string
         updated_at:
           type: string
         updated_by:
@@ -17534,13 +17542,13 @@ components:
           key: metadata
         created_at: created_at
         description: description
-        auto_topup_amount: 0.8008281904610115
+        auto_topup_amount: auto_topup_amount
         wallet_status: active
-        auto_topup_min_balance: 6.027456183070403
+        auto_topup_min_balance: auto_topup_min_balance
         auto_topup_trigger: disabled
-        balance: 1.4658129805029452
+        balance: balance
         updated_at: updated_at
-        credit_balance: 5.637376656633329
+        credit_balance: credit_balance
         name: name
         wallet_type: PROMOTIONAL
         currency: currency
@@ -17550,16 +17558,16 @@ components:
           allowed_price_types:
           - ALL
           - ALL
-        conversion_rate: 5.962133916683182
+        conversion_rate: 0.8008281904610115
       properties:
         auto_topup_amount:
-          type: number
+          type: string
         auto_topup_min_balance:
-          type: number
+          type: string
         auto_topup_trigger:
           $ref: '#/components/schemas/types.AutoTopupTrigger'
         balance:
-          type: number
+          type: string
         config:
           $ref: '#/components/schemas/types.WalletConfig'
         conversion_rate:
@@ -17567,7 +17575,7 @@ components:
         created_at:
           type: string
         credit_balance:
-          type: number
+          type: string
         currency:
           type: string
         customer_id:
@@ -17702,7 +17710,7 @@ components:
     meter.Aggregation:
       example:
         field: field
-        multiplier: 4.145608029883936
+        multiplier: 2.027123023002322
         type: COUNT
       properties:
         field:
@@ -17752,7 +17760,7 @@ components:
     price.JSONBTransformQuantity:
       example:
         round: round
-        divide_by: 7
+        divide_by: 6
       properties:
         divide_by:
           description: Divide quantity by this number
@@ -17768,12 +17776,12 @@ components:
         metadata:
           key: metadata
         tiers:
-        - flat_amount: 1.0246457001441578
-          up_to: 6
-          unit_amount: 1.4894159098541704
-        - flat_amount: 1.0246457001441578
-          up_to: 6
-          unit_amount: 1.4894159098541704
+        - flat_amount: 1.2315135367772556
+          up_to: 1
+          unit_amount: 1.0246457001441578
+        - flat_amount: 1.2315135367772556
+          up_to: 1
+          unit_amount: 1.0246457001441578
         billing_model: FLAT_FEE
         environment_id: environment_id
         created_at: created_at
@@ -17784,7 +17792,7 @@ components:
         created_by: created_by
         transform_quantity:
           round: round
-          divide_by: 7
+          divide_by: 6
         updated_at: updated_at
         updated_by: updated_by
         lookup_key: lookup_key
@@ -17849,9 +17857,9 @@ components:
       type: object
     price.PriceTier:
       example:
-        flat_amount: 1.0246457001441578
-        up_to: 6
-        unit_amount: 1.4894159098541704
+        flat_amount: 1.2315135367772556
+        up_to: 1
+        unit_amount: 1.0246457001441578
       properties:
         flat_amount:
           description: |-
@@ -18238,14 +18246,6 @@ components:
       - InvoiceBillingReasonSubscriptionCycle
       - InvoiceBillingReasonSubscriptionUpdate
       - InvoiceBillingReasonManual
-    types.InvoiceCadence:
-      enum:
-      - ARREAR
-      - ADVANCE
-      type: string
-      x-enum-varnames:
-      - InvoiceCadenceArrear
-      - InvoiceCadenceAdvance
     types.InvoiceStatus:
       enum:
       - DRAFT

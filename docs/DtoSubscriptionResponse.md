@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | ID is the unique identifier for the subscription | [optional] 
 **LookupKey** | Pointer to **string** | LookupKey is the key used to lookup the subscription in our system | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
-**OverageFactor** | Pointer to **float32** | OverageFactor is a multiplier applied to usage beyond the commitment amount | [optional] 
+**OverageFactor** | Pointer to **string** | OverageFactor is a multiplier applied to usage beyond the commitment amount | [optional] 
 **Plan** | Pointer to [**DtoPlanResponse**](DtoPlanResponse.md) |  | [optional] 
 **PlanId** | Pointer to **string** | PlanID is the identifier for the plan in our system | [optional] 
 **StartDate** | Pointer to **string** | StartDate is the start date of the subscription | [optional] 
@@ -584,20 +584,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetOverageFactor
 
-`func (o *DtoSubscriptionResponse) GetOverageFactor() float32`
+`func (o *DtoSubscriptionResponse) GetOverageFactor() string`
 
 GetOverageFactor returns the OverageFactor field if non-nil, zero value otherwise.
 
 ### GetOverageFactorOk
 
-`func (o *DtoSubscriptionResponse) GetOverageFactorOk() (*float32, bool)`
+`func (o *DtoSubscriptionResponse) GetOverageFactorOk() (*string, bool)`
 
 GetOverageFactorOk returns a tuple with the OverageFactor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOverageFactor
 
-`func (o *DtoSubscriptionResponse) SetOverageFactor(v float32)`
+`func (o *DtoSubscriptionResponse) SetOverageFactor(v string)`
 
 SetOverageFactor sets OverageFactor field to given value.
 

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CreatedBy** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
+**CustomerId** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **DestinationId** | Pointer to **string** |  | [optional] 
 **DestinationType** | Pointer to [**TypesPaymentDestinationType**](TypesPaymentDestinationType.md) |  | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
@@ -17,13 +19,16 @@ Name | Type | Description | Notes
 **IdempotencyKey** | Pointer to **string** |  | [optional] 
 **InvoiceNumber** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **PaymentMethodId** | Pointer to **string** |  | [optional] 
 **PaymentMethodType** | Pointer to [**TypesPaymentMethodType**](TypesPaymentMethodType.md) |  | [optional] 
 **PaymentStatus** | Pointer to [**TypesPaymentStatus**](TypesPaymentStatus.md) |  | [optional] 
+**RecordedAt** | Pointer to **string** | The recorded_at timestamp indicates when this payment was manually recorded (optional) | [optional] 
 **RefundedAt** | Pointer to **string** |  | [optional] 
 **SucceededAt** | Pointer to **string** |  | [optional] 
 **TenantId** | Pointer to **string** |  | [optional] 
 **TrackAttempts** | Pointer to **bool** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
 **UpdatedBy** | Pointer to **string** |  | [optional] 
 
@@ -170,6 +175,56 @@ SetCurrency sets Currency field to given value.
 `func (o *DtoPaymentResponse) HasCurrency() bool`
 
 HasCurrency returns a boolean if a field has been set.
+
+### GetCustomerId
+
+`func (o *DtoPaymentResponse) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *DtoPaymentResponse) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *DtoPaymentResponse) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+### HasCustomerId
+
+`func (o *DtoPaymentResponse) HasCustomerId() bool`
+
+HasCustomerId returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *DtoPaymentResponse) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *DtoPaymentResponse) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *DtoPaymentResponse) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *DtoPaymentResponse) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetDestinationId
 
@@ -371,6 +426,31 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
+### GetName
+
+`func (o *DtoPaymentResponse) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *DtoPaymentResponse) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *DtoPaymentResponse) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *DtoPaymentResponse) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
 ### GetPaymentMethodId
 
 `func (o *DtoPaymentResponse) GetPaymentMethodId() string`
@@ -445,6 +525,31 @@ SetPaymentStatus sets PaymentStatus field to given value.
 `func (o *DtoPaymentResponse) HasPaymentStatus() bool`
 
 HasPaymentStatus returns a boolean if a field has been set.
+
+### GetRecordedAt
+
+`func (o *DtoPaymentResponse) GetRecordedAt() string`
+
+GetRecordedAt returns the RecordedAt field if non-nil, zero value otherwise.
+
+### GetRecordedAtOk
+
+`func (o *DtoPaymentResponse) GetRecordedAtOk() (*string, bool)`
+
+GetRecordedAtOk returns a tuple with the RecordedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecordedAt
+
+`func (o *DtoPaymentResponse) SetRecordedAt(v string)`
+
+SetRecordedAt sets RecordedAt field to given value.
+
+### HasRecordedAt
+
+`func (o *DtoPaymentResponse) HasRecordedAt() bool`
+
+HasRecordedAt returns a boolean if a field has been set.
 
 ### GetRefundedAt
 
@@ -545,6 +650,31 @@ SetTrackAttempts sets TrackAttempts field to given value.
 `func (o *DtoPaymentResponse) HasTrackAttempts() bool`
 
 HasTrackAttempts returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *DtoPaymentResponse) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *DtoPaymentResponse) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *DtoPaymentResponse) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *DtoPaymentResponse) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

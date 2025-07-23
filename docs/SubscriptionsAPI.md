@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## SubscriptionsGet
 
-> DtoListSubscriptionsResponse SubscriptionsGet(ctx).ActiveAt(activeAt).BillingCadence(billingCadence).BillingPeriod(billingPeriod).CustomerId(customerId).EndTime(endTime).Expand(expand).Limit(limit).Offset(offset).Order(order).PlanId(planId).Sort(sort).StartTime(startTime).Status(status).SubscriptionIds(subscriptionIds).SubscriptionStatus(subscriptionStatus).Execute()
+> DtoListSubscriptionsResponse SubscriptionsGet(ctx).ActiveAt(activeAt).BillingCadence(billingCadence).BillingPeriod(billingPeriod).CustomerId(customerId).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PlanId(planId).Sort(sort).StartTime(startTime).Status(status).SubscriptionIds(subscriptionIds).SubscriptionStatus(subscriptionStatus).Execute()
 
 List subscriptions
 
@@ -39,6 +39,7 @@ func main() {
 	customerId := "customerId_example" // string | CustomerID filters by customer ID (optional)
 	endTime := "endTime_example" // string |  (optional)
 	expand := "expand_example" // string |  (optional)
+	externalCustomerId := "externalCustomerId_example" // string |  (optional)
 	limit := int32(56) // int32 |  (optional)
 	offset := int32(56) // int32 |  (optional)
 	order := "order_example" // string |  (optional)
@@ -51,7 +52,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsGet(context.Background()).ActiveAt(activeAt).BillingCadence(billingCadence).BillingPeriod(billingPeriod).CustomerId(customerId).EndTime(endTime).Expand(expand).Limit(limit).Offset(offset).Order(order).PlanId(planId).Sort(sort).StartTime(startTime).Status(status).SubscriptionIds(subscriptionIds).SubscriptionStatus(subscriptionStatus).Execute()
+	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsGet(context.Background()).ActiveAt(activeAt).BillingCadence(billingCadence).BillingPeriod(billingPeriod).CustomerId(customerId).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PlanId(planId).Sort(sort).StartTime(startTime).Status(status).SubscriptionIds(subscriptionIds).SubscriptionStatus(subscriptionStatus).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubscriptionsAPI.SubscriptionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
  **customerId** | **string** | CustomerID filters by customer ID | 
  **endTime** | **string** |  | 
  **expand** | **string** |  | 
+ **externalCustomerId** | **string** |  | 
  **limit** | **int32** |  | 
  **offset** | **int32** |  | 
  **order** | **string** |  | 

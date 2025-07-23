@@ -1,7 +1,7 @@
 /*
-FlexPrice API
+Billing API
 
-FlexPrice API Service
+Billing API Service
 
 API version: 1.0
 */
@@ -24,6 +24,8 @@ type DtoPaymentResponse struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
 	Currency *string `json:"currency,omitempty"`
+	CustomerId *string `json:"customer_id,omitempty"`
+	Description *string `json:"description,omitempty"`
 	DestinationId *string `json:"destination_id,omitempty"`
 	DestinationType *TypesPaymentDestinationType `json:"destination_type,omitempty"`
 	ErrorMessage *string `json:"error_message,omitempty"`
@@ -32,13 +34,17 @@ type DtoPaymentResponse struct {
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	InvoiceNumber *string `json:"invoice_number,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
+	Name *string `json:"name,omitempty"`
 	PaymentMethodId *string `json:"payment_method_id,omitempty"`
 	PaymentMethodType *TypesPaymentMethodType `json:"payment_method_type,omitempty"`
 	PaymentStatus *TypesPaymentStatus `json:"payment_status,omitempty"`
+	// The recorded_at timestamp indicates when this payment was manually recorded (optional)
+	RecordedAt *string `json:"recorded_at,omitempty"`
 	RefundedAt *string `json:"refunded_at,omitempty"`
 	SucceededAt *string `json:"succeeded_at,omitempty"`
 	TenantId *string `json:"tenant_id,omitempty"`
 	TrackAttempts *bool `json:"track_attempts,omitempty"`
+	Type *string `json:"type,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	UpdatedBy *string `json:"updated_by,omitempty"`
 }
@@ -218,6 +224,70 @@ func (o *DtoPaymentResponse) HasCurrency() bool {
 // SetCurrency gets a reference to the given string and assigns it to the Currency field.
 func (o *DtoPaymentResponse) SetCurrency(v string) {
 	o.Currency = &v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *DtoPaymentResponse) GetCustomerId() string {
+	if o == nil || IsNil(o.CustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoPaymentResponse) GetCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *DtoPaymentResponse) HasCustomerId() bool {
+	if o != nil && !IsNil(o.CustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *DtoPaymentResponse) SetCustomerId(v string) {
+	o.CustomerId = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *DtoPaymentResponse) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoPaymentResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *DtoPaymentResponse) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *DtoPaymentResponse) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetDestinationId returns the DestinationId field value if set, zero value otherwise.
@@ -476,6 +546,38 @@ func (o *DtoPaymentResponse) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *DtoPaymentResponse) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoPaymentResponse) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *DtoPaymentResponse) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *DtoPaymentResponse) SetName(v string) {
+	o.Name = &v
+}
+
 // GetPaymentMethodId returns the PaymentMethodId field value if set, zero value otherwise.
 func (o *DtoPaymentResponse) GetPaymentMethodId() string {
 	if o == nil || IsNil(o.PaymentMethodId) {
@@ -570,6 +672,38 @@ func (o *DtoPaymentResponse) HasPaymentStatus() bool {
 // SetPaymentStatus gets a reference to the given TypesPaymentStatus and assigns it to the PaymentStatus field.
 func (o *DtoPaymentResponse) SetPaymentStatus(v TypesPaymentStatus) {
 	o.PaymentStatus = &v
+}
+
+// GetRecordedAt returns the RecordedAt field value if set, zero value otherwise.
+func (o *DtoPaymentResponse) GetRecordedAt() string {
+	if o == nil || IsNil(o.RecordedAt) {
+		var ret string
+		return ret
+	}
+	return *o.RecordedAt
+}
+
+// GetRecordedAtOk returns a tuple with the RecordedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoPaymentResponse) GetRecordedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.RecordedAt) {
+		return nil, false
+	}
+	return o.RecordedAt, true
+}
+
+// HasRecordedAt returns a boolean if a field has been set.
+func (o *DtoPaymentResponse) HasRecordedAt() bool {
+	if o != nil && !IsNil(o.RecordedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecordedAt gets a reference to the given string and assigns it to the RecordedAt field.
+func (o *DtoPaymentResponse) SetRecordedAt(v string) {
+	o.RecordedAt = &v
 }
 
 // GetRefundedAt returns the RefundedAt field value if set, zero value otherwise.
@@ -700,6 +834,38 @@ func (o *DtoPaymentResponse) SetTrackAttempts(v bool) {
 	o.TrackAttempts = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *DtoPaymentResponse) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoPaymentResponse) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *DtoPaymentResponse) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *DtoPaymentResponse) SetType(v string) {
+	o.Type = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DtoPaymentResponse) GetUpdatedAt() string {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -789,6 +955,12 @@ func (o DtoPaymentResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customer_id"] = o.CustomerId
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.DestinationId) {
 		toSerialize["destination_id"] = o.DestinationId
 	}
@@ -813,6 +985,9 @@ func (o DtoPaymentResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.PaymentMethodId) {
 		toSerialize["payment_method_id"] = o.PaymentMethodId
 	}
@@ -821,6 +996,9 @@ func (o DtoPaymentResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PaymentStatus) {
 		toSerialize["payment_status"] = o.PaymentStatus
+	}
+	if !IsNil(o.RecordedAt) {
+		toSerialize["recorded_at"] = o.RecordedAt
 	}
 	if !IsNil(o.RefundedAt) {
 		toSerialize["refunded_at"] = o.RefundedAt
@@ -833,6 +1011,9 @@ func (o DtoPaymentResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TrackAttempts) {
 		toSerialize["track_attempts"] = o.TrackAttempts
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
