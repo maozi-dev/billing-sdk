@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **float32** |  | [optional] 
+**Amount** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
-**CreditAmount** | Pointer to **float32** |  | [optional] 
-**CreditBalanceAfter** | Pointer to **float32** |  | [optional] 
-**CreditBalanceBefore** | Pointer to **float32** |  | [optional] 
-**CreditsAvailable** | Pointer to **float32** |  | [optional] 
+**CreditAmount** | Pointer to **string** |  | [optional] 
+**CreditBalanceAfter** | Pointer to **string** |  | [optional] 
+**CreditBalanceBefore** | Pointer to **string** |  | [optional] 
+**CreditsAvailable** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **ExpiryDate** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
@@ -44,20 +44,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoWalletTransactionResponse) GetAmount() float32`
+`func (o *DtoWalletTransactionResponse) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoWalletTransactionResponse) GetAmountOk() (*float32, bool)`
+`func (o *DtoWalletTransactionResponse) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoWalletTransactionResponse) SetAmount(v float32)`
+`func (o *DtoWalletTransactionResponse) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
@@ -94,20 +94,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetCreditAmount
 
-`func (o *DtoWalletTransactionResponse) GetCreditAmount() float32`
+`func (o *DtoWalletTransactionResponse) GetCreditAmount() string`
 
 GetCreditAmount returns the CreditAmount field if non-nil, zero value otherwise.
 
 ### GetCreditAmountOk
 
-`func (o *DtoWalletTransactionResponse) GetCreditAmountOk() (*float32, bool)`
+`func (o *DtoWalletTransactionResponse) GetCreditAmountOk() (*string, bool)`
 
 GetCreditAmountOk returns a tuple with the CreditAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreditAmount
 
-`func (o *DtoWalletTransactionResponse) SetCreditAmount(v float32)`
+`func (o *DtoWalletTransactionResponse) SetCreditAmount(v string)`
 
 SetCreditAmount sets CreditAmount field to given value.
 
@@ -119,20 +119,20 @@ HasCreditAmount returns a boolean if a field has been set.
 
 ### GetCreditBalanceAfter
 
-`func (o *DtoWalletTransactionResponse) GetCreditBalanceAfter() float32`
+`func (o *DtoWalletTransactionResponse) GetCreditBalanceAfter() string`
 
 GetCreditBalanceAfter returns the CreditBalanceAfter field if non-nil, zero value otherwise.
 
 ### GetCreditBalanceAfterOk
 
-`func (o *DtoWalletTransactionResponse) GetCreditBalanceAfterOk() (*float32, bool)`
+`func (o *DtoWalletTransactionResponse) GetCreditBalanceAfterOk() (*string, bool)`
 
 GetCreditBalanceAfterOk returns a tuple with the CreditBalanceAfter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreditBalanceAfter
 
-`func (o *DtoWalletTransactionResponse) SetCreditBalanceAfter(v float32)`
+`func (o *DtoWalletTransactionResponse) SetCreditBalanceAfter(v string)`
 
 SetCreditBalanceAfter sets CreditBalanceAfter field to given value.
 
@@ -144,20 +144,20 @@ HasCreditBalanceAfter returns a boolean if a field has been set.
 
 ### GetCreditBalanceBefore
 
-`func (o *DtoWalletTransactionResponse) GetCreditBalanceBefore() float32`
+`func (o *DtoWalletTransactionResponse) GetCreditBalanceBefore() string`
 
 GetCreditBalanceBefore returns the CreditBalanceBefore field if non-nil, zero value otherwise.
 
 ### GetCreditBalanceBeforeOk
 
-`func (o *DtoWalletTransactionResponse) GetCreditBalanceBeforeOk() (*float32, bool)`
+`func (o *DtoWalletTransactionResponse) GetCreditBalanceBeforeOk() (*string, bool)`
 
 GetCreditBalanceBeforeOk returns a tuple with the CreditBalanceBefore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreditBalanceBefore
 
-`func (o *DtoWalletTransactionResponse) SetCreditBalanceBefore(v float32)`
+`func (o *DtoWalletTransactionResponse) SetCreditBalanceBefore(v string)`
 
 SetCreditBalanceBefore sets CreditBalanceBefore field to given value.
 
@@ -169,20 +169,20 @@ HasCreditBalanceBefore returns a boolean if a field has been set.
 
 ### GetCreditsAvailable
 
-`func (o *DtoWalletTransactionResponse) GetCreditsAvailable() float32`
+`func (o *DtoWalletTransactionResponse) GetCreditsAvailable() string`
 
 GetCreditsAvailable returns the CreditsAvailable field if non-nil, zero value otherwise.
 
 ### GetCreditsAvailableOk
 
-`func (o *DtoWalletTransactionResponse) GetCreditsAvailableOk() (*float32, bool)`
+`func (o *DtoWalletTransactionResponse) GetCreditsAvailableOk() (*string, bool)`
 
 GetCreditsAvailableOk returns a tuple with the CreditsAvailable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreditsAvailable
 
-`func (o *DtoWalletTransactionResponse) SetCreditsAvailable(v float32)`
+`func (o *DtoWalletTransactionResponse) SetCreditsAvailable(v string)`
 
 SetCreditsAvailable sets CreditsAvailable field to given value.
 

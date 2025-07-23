@@ -19,12 +19,12 @@ var _ MappedNullable = &DtoWalletTransactionResponse{}
 
 // DtoWalletTransactionResponse struct for DtoWalletTransactionResponse
 type DtoWalletTransactionResponse struct {
-	Amount *float32 `json:"amount,omitempty"`
+	Amount *string `json:"amount,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
-	CreditAmount *float32 `json:"credit_amount,omitempty"`
-	CreditBalanceAfter *float32 `json:"credit_balance_after,omitempty"`
-	CreditBalanceBefore *float32 `json:"credit_balance_before,omitempty"`
-	CreditsAvailable *float32 `json:"credits_available,omitempty"`
+	CreditAmount *string `json:"credit_amount,omitempty"`
+	CreditBalanceAfter *string `json:"credit_balance_after,omitempty"`
+	CreditBalanceBefore *string `json:"credit_balance_before,omitempty"`
+	CreditsAvailable *string `json:"credits_available,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ExpiryDate *string `json:"expiry_date,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -57,9 +57,9 @@ func NewDtoWalletTransactionResponseWithDefaults() *DtoWalletTransactionResponse
 }
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
-func (o *DtoWalletTransactionResponse) GetAmount() float32 {
+func (o *DtoWalletTransactionResponse) GetAmount() string {
 	if o == nil || IsNil(o.Amount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Amount
@@ -67,7 +67,7 @@ func (o *DtoWalletTransactionResponse) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoWalletTransactionResponse) GetAmountOk() (*float32, bool) {
+func (o *DtoWalletTransactionResponse) GetAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
@@ -83,8 +83,8 @@ func (o *DtoWalletTransactionResponse) HasAmount() bool {
 	return false
 }
 
-// SetAmount gets a reference to the given float32 and assigns it to the Amount field.
-func (o *DtoWalletTransactionResponse) SetAmount(v float32) {
+// SetAmount gets a reference to the given string and assigns it to the Amount field.
+func (o *DtoWalletTransactionResponse) SetAmount(v string) {
 	o.Amount = &v
 }
 
@@ -121,9 +121,9 @@ func (o *DtoWalletTransactionResponse) SetCreatedAt(v string) {
 }
 
 // GetCreditAmount returns the CreditAmount field value if set, zero value otherwise.
-func (o *DtoWalletTransactionResponse) GetCreditAmount() float32 {
+func (o *DtoWalletTransactionResponse) GetCreditAmount() string {
 	if o == nil || IsNil(o.CreditAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.CreditAmount
@@ -131,7 +131,7 @@ func (o *DtoWalletTransactionResponse) GetCreditAmount() float32 {
 
 // GetCreditAmountOk returns a tuple with the CreditAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoWalletTransactionResponse) GetCreditAmountOk() (*float32, bool) {
+func (o *DtoWalletTransactionResponse) GetCreditAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.CreditAmount) {
 		return nil, false
 	}
@@ -147,15 +147,15 @@ func (o *DtoWalletTransactionResponse) HasCreditAmount() bool {
 	return false
 }
 
-// SetCreditAmount gets a reference to the given float32 and assigns it to the CreditAmount field.
-func (o *DtoWalletTransactionResponse) SetCreditAmount(v float32) {
+// SetCreditAmount gets a reference to the given string and assigns it to the CreditAmount field.
+func (o *DtoWalletTransactionResponse) SetCreditAmount(v string) {
 	o.CreditAmount = &v
 }
 
 // GetCreditBalanceAfter returns the CreditBalanceAfter field value if set, zero value otherwise.
-func (o *DtoWalletTransactionResponse) GetCreditBalanceAfter() float32 {
+func (o *DtoWalletTransactionResponse) GetCreditBalanceAfter() string {
 	if o == nil || IsNil(o.CreditBalanceAfter) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.CreditBalanceAfter
@@ -163,7 +163,7 @@ func (o *DtoWalletTransactionResponse) GetCreditBalanceAfter() float32 {
 
 // GetCreditBalanceAfterOk returns a tuple with the CreditBalanceAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoWalletTransactionResponse) GetCreditBalanceAfterOk() (*float32, bool) {
+func (o *DtoWalletTransactionResponse) GetCreditBalanceAfterOk() (*string, bool) {
 	if o == nil || IsNil(o.CreditBalanceAfter) {
 		return nil, false
 	}
@@ -179,15 +179,15 @@ func (o *DtoWalletTransactionResponse) HasCreditBalanceAfter() bool {
 	return false
 }
 
-// SetCreditBalanceAfter gets a reference to the given float32 and assigns it to the CreditBalanceAfter field.
-func (o *DtoWalletTransactionResponse) SetCreditBalanceAfter(v float32) {
+// SetCreditBalanceAfter gets a reference to the given string and assigns it to the CreditBalanceAfter field.
+func (o *DtoWalletTransactionResponse) SetCreditBalanceAfter(v string) {
 	o.CreditBalanceAfter = &v
 }
 
 // GetCreditBalanceBefore returns the CreditBalanceBefore field value if set, zero value otherwise.
-func (o *DtoWalletTransactionResponse) GetCreditBalanceBefore() float32 {
+func (o *DtoWalletTransactionResponse) GetCreditBalanceBefore() string {
 	if o == nil || IsNil(o.CreditBalanceBefore) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.CreditBalanceBefore
@@ -195,7 +195,7 @@ func (o *DtoWalletTransactionResponse) GetCreditBalanceBefore() float32 {
 
 // GetCreditBalanceBeforeOk returns a tuple with the CreditBalanceBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoWalletTransactionResponse) GetCreditBalanceBeforeOk() (*float32, bool) {
+func (o *DtoWalletTransactionResponse) GetCreditBalanceBeforeOk() (*string, bool) {
 	if o == nil || IsNil(o.CreditBalanceBefore) {
 		return nil, false
 	}
@@ -211,15 +211,15 @@ func (o *DtoWalletTransactionResponse) HasCreditBalanceBefore() bool {
 	return false
 }
 
-// SetCreditBalanceBefore gets a reference to the given float32 and assigns it to the CreditBalanceBefore field.
-func (o *DtoWalletTransactionResponse) SetCreditBalanceBefore(v float32) {
+// SetCreditBalanceBefore gets a reference to the given string and assigns it to the CreditBalanceBefore field.
+func (o *DtoWalletTransactionResponse) SetCreditBalanceBefore(v string) {
 	o.CreditBalanceBefore = &v
 }
 
 // GetCreditsAvailable returns the CreditsAvailable field value if set, zero value otherwise.
-func (o *DtoWalletTransactionResponse) GetCreditsAvailable() float32 {
+func (o *DtoWalletTransactionResponse) GetCreditsAvailable() string {
 	if o == nil || IsNil(o.CreditsAvailable) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.CreditsAvailable
@@ -227,7 +227,7 @@ func (o *DtoWalletTransactionResponse) GetCreditsAvailable() float32 {
 
 // GetCreditsAvailableOk returns a tuple with the CreditsAvailable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoWalletTransactionResponse) GetCreditsAvailableOk() (*float32, bool) {
+func (o *DtoWalletTransactionResponse) GetCreditsAvailableOk() (*string, bool) {
 	if o == nil || IsNil(o.CreditsAvailable) {
 		return nil, false
 	}
@@ -243,8 +243,8 @@ func (o *DtoWalletTransactionResponse) HasCreditsAvailable() bool {
 	return false
 }
 
-// SetCreditsAvailable gets a reference to the given float32 and assigns it to the CreditsAvailable field.
-func (o *DtoWalletTransactionResponse) SetCreditsAvailable(v float32) {
+// SetCreditsAvailable gets a reference to the given string and assigns it to the CreditsAvailable field.
+func (o *DtoWalletTransactionResponse) SetCreditsAvailable(v string) {
 	o.CreditsAvailable = &v
 }
 

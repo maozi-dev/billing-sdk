@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AutoTopupTrigger** | Pointer to [**TypesAutoTopupTrigger**](TypesAutoTopupTrigger.md) |  | [optional] 
 **Balance** | Pointer to **string** |  | [optional] 
 **Config** | Pointer to [**TypesWalletConfig**](TypesWalletConfig.md) |  | [optional] 
-**ConversionRate** | Pointer to **float32** |  | [optional] 
+**ConversionRate** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CreditBalance** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
@@ -168,20 +168,20 @@ HasConfig returns a boolean if a field has been set.
 
 ### GetConversionRate
 
-`func (o *DtoWalletResponse) GetConversionRate() float32`
+`func (o *DtoWalletResponse) GetConversionRate() string`
 
 GetConversionRate returns the ConversionRate field if non-nil, zero value otherwise.
 
 ### GetConversionRateOk
 
-`func (o *DtoWalletResponse) GetConversionRateOk() (*float32, bool)`
+`func (o *DtoWalletResponse) GetConversionRateOk() (*string, bool)`
 
 GetConversionRateOk returns a tuple with the ConversionRate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConversionRate
 
-`func (o *DtoWalletResponse) SetConversionRate(v float32)`
+`func (o *DtoWalletResponse) SetConversionRate(v string)`
 
 SetConversionRate sets ConversionRate field to given value.
 

@@ -24,7 +24,7 @@ type DtoWalletResponse struct {
 	AutoTopupTrigger *TypesAutoTopupTrigger `json:"auto_topup_trigger,omitempty"`
 	Balance *string `json:"balance,omitempty"`
 	Config *TypesWalletConfig `json:"config,omitempty"`
-	ConversionRate *float32 `json:"conversion_rate,omitempty"`
+	ConversionRate *string `json:"conversion_rate,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreditBalance *string `json:"credit_balance,omitempty"`
 	Currency *string `json:"currency,omitempty"`
@@ -216,9 +216,9 @@ func (o *DtoWalletResponse) SetConfig(v TypesWalletConfig) {
 }
 
 // GetConversionRate returns the ConversionRate field value if set, zero value otherwise.
-func (o *DtoWalletResponse) GetConversionRate() float32 {
+func (o *DtoWalletResponse) GetConversionRate() string {
 	if o == nil || IsNil(o.ConversionRate) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.ConversionRate
@@ -226,7 +226,7 @@ func (o *DtoWalletResponse) GetConversionRate() float32 {
 
 // GetConversionRateOk returns a tuple with the ConversionRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoWalletResponse) GetConversionRateOk() (*float32, bool) {
+func (o *DtoWalletResponse) GetConversionRateOk() (*string, bool) {
 	if o == nil || IsNil(o.ConversionRate) {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *DtoWalletResponse) HasConversionRate() bool {
 	return false
 }
 
-// SetConversionRate gets a reference to the given float32 and assigns it to the ConversionRate field.
-func (o *DtoWalletResponse) SetConversionRate(v float32) {
+// SetConversionRate gets a reference to the given string and assigns it to the ConversionRate field.
+func (o *DtoWalletResponse) SetConversionRate(v string) {
 	o.ConversionRate = &v
 }
 

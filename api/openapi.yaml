@@ -14758,43 +14758,43 @@ components:
           offset: 2
           limit: 5
         items:
-        - amount: 0.8008281904610115
-          credit_balance_before: 5.962133916683182
+        - amount: amount
+          credit_balance_before: credit_balance_before
           metadata:
             key: metadata
           transaction_status: pending
           reference_id: reference_id
           expiry_date: expiry_date
-          credit_amount: 6.027456183070403
+          credit_amount: credit_amount
           created_at: created_at
           description: description
-          priority: 2
+          priority: 0
           transaction_reason: EVENT_PAYMENT
           type: type
           reference_type: PAYMENT
-          credits_available: 5.637376656633329
+          credits_available: credits_available
           wallet_id: wallet_id
           updated_at: updated_at
-          credit_balance_after: 1.4658129805029452
+          credit_balance_after: credit_balance_after
           id: id
-        - amount: 0.8008281904610115
-          credit_balance_before: 5.962133916683182
+        - amount: amount
+          credit_balance_before: credit_balance_before
           metadata:
             key: metadata
           transaction_status: pending
           reference_id: reference_id
           expiry_date: expiry_date
-          credit_amount: 6.027456183070403
+          credit_amount: credit_amount
           created_at: created_at
           description: description
-          priority: 2
+          priority: 0
           transaction_reason: EVENT_PAYMENT
           type: type
           reference_type: PAYMENT
-          credits_available: 5.637376656633329
+          credits_available: credits_available
           wallet_id: wallet_id
           updated_at: updated_at
-          credit_balance_after: 1.4658129805029452
+          credit_balance_after: credit_balance_after
           id: id
       properties:
         items:
@@ -17558,7 +17558,7 @@ components:
           allowed_price_types:
           - ALL
           - ALL
-        conversion_rate: 0.8008281904610115
+        conversion_rate: conversion_rate
       properties:
         auto_topup_amount:
           type: string
@@ -17571,7 +17571,7 @@ components:
         config:
           $ref: '#/components/schemas/types.WalletConfig'
         conversion_rate:
-          type: number
+          type: string
         created_at:
           type: string
         credit_balance:
@@ -17599,38 +17599,38 @@ components:
       type: object
     dto.WalletTransactionResponse:
       example:
-        amount: 0.8008281904610115
-        credit_balance_before: 5.962133916683182
+        amount: amount
+        credit_balance_before: credit_balance_before
         metadata:
           key: metadata
         transaction_status: pending
         reference_id: reference_id
         expiry_date: expiry_date
-        credit_amount: 6.027456183070403
+        credit_amount: credit_amount
         created_at: created_at
         description: description
-        priority: 2
+        priority: 0
         transaction_reason: EVENT_PAYMENT
         type: type
         reference_type: PAYMENT
-        credits_available: 5.637376656633329
+        credits_available: credits_available
         wallet_id: wallet_id
         updated_at: updated_at
-        credit_balance_after: 1.4658129805029452
+        credit_balance_after: credit_balance_after
         id: id
       properties:
         amount:
-          type: number
+          type: string
         created_at:
           type: string
         credit_amount:
-          type: number
+          type: string
         credit_balance_after:
-          type: number
+          type: string
         credit_balance_before:
-          type: number
+          type: string
         credits_available:
-          type: number
+          type: string
         description:
           type: string
         expiry_date:
