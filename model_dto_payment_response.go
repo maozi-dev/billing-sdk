@@ -19,7 +19,7 @@ var _ MappedNullable = &DtoPaymentResponse{}
 
 // DtoPaymentResponse struct for DtoPaymentResponse
 type DtoPaymentResponse struct {
-	Amount *float32 `json:"amount,omitempty"`
+	Amount *string `json:"amount,omitempty"`
 	Attempts []DtoPaymentAttemptResponse `json:"attempts,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
@@ -67,9 +67,9 @@ func NewDtoPaymentResponseWithDefaults() *DtoPaymentResponse {
 }
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
-func (o *DtoPaymentResponse) GetAmount() float32 {
+func (o *DtoPaymentResponse) GetAmount() string {
 	if o == nil || IsNil(o.Amount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Amount
@@ -77,7 +77,7 @@ func (o *DtoPaymentResponse) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoPaymentResponse) GetAmountOk() (*float32, bool) {
+func (o *DtoPaymentResponse) GetAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *DtoPaymentResponse) HasAmount() bool {
 	return false
 }
 
-// SetAmount gets a reference to the given float32 and assigns it to the Amount field.
-func (o *DtoPaymentResponse) SetAmount(v float32) {
+// SetAmount gets a reference to the given string and assigns it to the Amount field.
+func (o *DtoPaymentResponse) SetAmount(v string) {
 	o.Amount = &v
 }
 

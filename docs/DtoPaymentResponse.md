@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **float32** |  | [optional] 
+**Amount** | Pointer to **string** |  | [optional] 
 **Attempts** | Pointer to [**[]DtoPaymentAttemptResponse**](DtoPaymentAttemptResponse.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CreatedBy** | Pointer to **string** |  | [optional] 
@@ -53,20 +53,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoPaymentResponse) GetAmount() float32`
+`func (o *DtoPaymentResponse) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoPaymentResponse) GetAmountOk() (*float32, bool)`
+`func (o *DtoPaymentResponse) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoPaymentResponse) SetAmount(v float32)`
+`func (o *DtoPaymentResponse) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 

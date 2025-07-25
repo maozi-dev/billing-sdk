@@ -13188,7 +13188,7 @@ components:
             tenant_id: tenant_id
             metadata:
               key: metadata
-            attempt_number: 6
+            attempt_number: 0
             updated_at: updated_at
             payment_id: payment_id
             updated_by: updated_by
@@ -13199,7 +13199,7 @@ components:
             tenant_id: tenant_id
             metadata:
               key: metadata
-            attempt_number: 6
+            attempt_number: 0
             updated_at: updated_at
             payment_id: payment_id
             updated_by: updated_by
@@ -13207,7 +13207,7 @@ components:
             id: id
             created_by: created_by
           error_message: error_message
-          amount: 0.8008281904610115
+          amount: amount
           payment_status: PENDING
           created_by: created_by
           succeeded_at: succeeded_at
@@ -13238,7 +13238,7 @@ components:
             tenant_id: tenant_id
             metadata:
               key: metadata
-            attempt_number: 6
+            attempt_number: 0
             updated_at: updated_at
             payment_id: payment_id
             updated_by: updated_by
@@ -13249,7 +13249,7 @@ components:
             tenant_id: tenant_id
             metadata:
               key: metadata
-            attempt_number: 6
+            attempt_number: 0
             updated_at: updated_at
             payment_id: payment_id
             updated_by: updated_by
@@ -13257,7 +13257,7 @@ components:
             id: id
             created_by: created_by
           error_message: error_message
-          amount: 0.8008281904610115
+          amount: amount
           payment_status: PENDING
           created_by: created_by
           succeeded_at: succeeded_at
@@ -14877,7 +14877,7 @@ components:
         tenant_id: tenant_id
         metadata:
           key: metadata
-        attempt_number: 6
+        attempt_number: 0
         updated_at: updated_at
         payment_id: payment_id
         updated_by: updated_by
@@ -14930,7 +14930,7 @@ components:
           tenant_id: tenant_id
           metadata:
             key: metadata
-          attempt_number: 6
+          attempt_number: 0
           updated_at: updated_at
           payment_id: payment_id
           updated_by: updated_by
@@ -14941,7 +14941,7 @@ components:
           tenant_id: tenant_id
           metadata:
             key: metadata
-          attempt_number: 6
+          attempt_number: 0
           updated_at: updated_at
           payment_id: payment_id
           updated_by: updated_by
@@ -14949,7 +14949,7 @@ components:
           id: id
           created_by: created_by
         error_message: error_message
-        amount: 0.8008281904610115
+        amount: amount
         payment_status: PENDING
         created_by: created_by
         succeeded_at: succeeded_at
@@ -14962,7 +14962,7 @@ components:
         customer_id: customer_id
       properties:
         amount:
-          type: number
+          type: string
         attempts:
           items:
             $ref: '#/components/schemas/dto.PaymentAttemptResponse'
