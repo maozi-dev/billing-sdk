@@ -5,6 +5,7 @@ All URIs are relative to */v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PaymentsGet**](PaymentsAPI.md#PaymentsGet) | **Get** /payments | List payments
+[**PaymentsHupayWebhookPost**](PaymentsAPI.md#PaymentsHupayWebhookPost) | **Post** /payments/hupay/webhook | 
 [**PaymentsIdDelete**](PaymentsAPI.md#PaymentsIdDelete) | **Delete** /payments/{id} | Delete a payment
 [**PaymentsIdGet**](PaymentsAPI.md#PaymentsIdGet) | **Get** /payments/{id} | Get a payment by ID
 [**PaymentsIdProcessPost**](PaymentsAPI.md#PaymentsIdProcessPost) | **Post** /payments/{id}/process | Process a payment
@@ -15,7 +16,7 @@ Method | HTTP request | Description
 
 ## PaymentsGet
 
-> DtoListPaymentsResponse PaymentsGet(ctx).Currency(currency).CustomerId(customerId).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Type_(type_).Execute()
+> DtoListPaymentsResponse PaymentsGet(ctx).Currency(currency).CustomerId(customerId).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodId(paymentMethodId).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Type_(type_).Execute()
 
 List payments
 
@@ -46,6 +47,7 @@ func main() {
 	order := "order_example" // string |  (optional)
 	paymentGateway := "paymentGateway_example" // string |  (optional)
 	paymentIds := []string{"Inner_example"} // []string |  (optional)
+	paymentMethodId := "paymentMethodId_example" // string |  (optional)
 	paymentMethodType := "paymentMethodType_example" // string |  (optional)
 	paymentStatus := "paymentStatus_example" // string |  (optional)
 	sort := "sort_example" // string |  (optional)
@@ -55,7 +57,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentsAPI.PaymentsGet(context.Background()).Currency(currency).CustomerId(customerId).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Type_(type_).Execute()
+	resp, r, err := apiClient.PaymentsAPI.PaymentsGet(context.Background()).Currency(currency).CustomerId(customerId).DestinationId(destinationId).DestinationType(destinationType).EndTime(endTime).Expand(expand).ExternalCustomerId(externalCustomerId).Limit(limit).Offset(offset).Order(order).PaymentGateway(paymentGateway).PaymentIds(paymentIds).PaymentMethodId(paymentMethodId).PaymentMethodType(paymentMethodType).PaymentStatus(paymentStatus).Sort(sort).StartTime(startTime).Status(status).Type_(type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentsAPI.PaymentsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -88,6 +90,7 @@ Name | Type | Description  | Notes
  **order** | **string** |  | 
  **paymentGateway** | **string** |  | 
  **paymentIds** | **[]string** |  | 
+ **paymentMethodId** | **string** |  | 
  **paymentMethodType** | **string** |  | 
  **paymentStatus** | **string** |  | 
  **sort** | **string** |  | 
@@ -98,6 +101,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DtoListPaymentsResponse**](DtoListPaymentsResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PaymentsHupayWebhookPost
+
+> string PaymentsHupayWebhookPost(ctx, id).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
+)
+
+func main() {
+	id := "id_example" // string | Payment ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PaymentsAPI.PaymentsHupayWebhookPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PaymentsAPI.PaymentsHupayWebhookPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PaymentsHupayWebhookPost`: string
+	fmt.Fprintf(os.Stdout, "Response from `PaymentsAPI.PaymentsHupayWebhookPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Payment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPaymentsHupayWebhookPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**string**
 
 ### Authorization
 

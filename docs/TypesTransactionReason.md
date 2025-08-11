@@ -23,6 +23,8 @@
 
 * `TransactionReasonBilling` (value: `"BILLING"`)
 
+* `TransactionReasonRecharge` (value: `"RECHARGE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

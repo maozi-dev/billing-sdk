@@ -22,12 +22,14 @@ type TypesPaymentDestinationType string
 const (
 	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeInvoice TypesPaymentDestinationType = "INVOICE"
 	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeEvent TypesPaymentDestinationType = "EVENT"
+	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeCredits TypesPaymentDestinationType = "CREDITS"
 )
 
 // All allowed values of TypesPaymentDestinationType enum
 var AllowedTypesPaymentDestinationTypeEnumValues = []TypesPaymentDestinationType{
 	"INVOICE",
 	"EVENT",
+	"CREDITS",
 }
 
 func (v *TypesPaymentDestinationType) UnmarshalJSON(src []byte) error {

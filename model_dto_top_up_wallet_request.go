@@ -27,13 +27,9 @@ type DtoTopUpWalletRequest struct {
 	CreditsToAdd *float32 `json:"credits_to_add,omitempty"`
 	// description to add any specific details about the transaction
 	Description *string `json:"description,omitempty"`
-	// expiry_date_utc is the expiry date in UTC timezone ex 2025-01-01 00:00:00 UTC
-	ExpiryDateUtc *string `json:"expiry_date_utc,omitempty"`
-	// idempotency_key is a unique key for the transaction
+	// expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC ExpiryDate *int `json:\"-\"` expiry_date_utc is the expiry date in UTC timezone ex 2025-01-01 00:00:00 UTC ExpiryDateUTC *time.Time `json:\"expiry_date_utc,omitempty\"` priority is the priority of the transaction lower number means higher priority default is nil which means no priority at all Priority *int `json:\"priority,omitempty\"` idempotency_key is a unique key for the transaction
 	IdempotencyKey string `json:"idempotency_key"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
-	// priority is the priority of the transaction lower number means higher priority default is nil which means no priority at all
-	Priority *int32 `json:"priority,omitempty"`
 	TransactionReason TypesTransactionReason `json:"transaction_reason"`
 }
 
@@ -154,38 +150,6 @@ func (o *DtoTopUpWalletRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExpiryDateUtc returns the ExpiryDateUtc field value if set, zero value otherwise.
-func (o *DtoTopUpWalletRequest) GetExpiryDateUtc() string {
-	if o == nil || IsNil(o.ExpiryDateUtc) {
-		var ret string
-		return ret
-	}
-	return *o.ExpiryDateUtc
-}
-
-// GetExpiryDateUtcOk returns a tuple with the ExpiryDateUtc field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoTopUpWalletRequest) GetExpiryDateUtcOk() (*string, bool) {
-	if o == nil || IsNil(o.ExpiryDateUtc) {
-		return nil, false
-	}
-	return o.ExpiryDateUtc, true
-}
-
-// HasExpiryDateUtc returns a boolean if a field has been set.
-func (o *DtoTopUpWalletRequest) HasExpiryDateUtc() bool {
-	if o != nil && !IsNil(o.ExpiryDateUtc) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpiryDateUtc gets a reference to the given string and assigns it to the ExpiryDateUtc field.
-func (o *DtoTopUpWalletRequest) SetExpiryDateUtc(v string) {
-	o.ExpiryDateUtc = &v
-}
-
 // GetIdempotencyKey returns the IdempotencyKey field value
 func (o *DtoTopUpWalletRequest) GetIdempotencyKey() string {
 	if o == nil {
@@ -242,38 +206,6 @@ func (o *DtoTopUpWalletRequest) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
-// GetPriority returns the Priority field value if set, zero value otherwise.
-func (o *DtoTopUpWalletRequest) GetPriority() int32 {
-	if o == nil || IsNil(o.Priority) {
-		var ret int32
-		return ret
-	}
-	return *o.Priority
-}
-
-// GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoTopUpWalletRequest) GetPriorityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Priority) {
-		return nil, false
-	}
-	return o.Priority, true
-}
-
-// HasPriority returns a boolean if a field has been set.
-func (o *DtoTopUpWalletRequest) HasPriority() bool {
-	if o != nil && !IsNil(o.Priority) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
-func (o *DtoTopUpWalletRequest) SetPriority(v int32) {
-	o.Priority = &v
-}
-
 // GetTransactionReason returns the TransactionReason field value
 func (o *DtoTopUpWalletRequest) GetTransactionReason() TypesTransactionReason {
 	if o == nil {
@@ -317,15 +249,9 @@ func (o DtoTopUpWalletRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.ExpiryDateUtc) {
-		toSerialize["expiry_date_utc"] = o.ExpiryDateUtc
-	}
 	toSerialize["idempotency_key"] = o.IdempotencyKey
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
-	}
-	if !IsNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
 	}
 	toSerialize["transaction_reason"] = o.TransactionReason
 	return toSerialize, nil
