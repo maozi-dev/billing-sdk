@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**SubscriptionsGet**](SubscriptionsAPI.md#SubscriptionsGet) | **Get** /subscriptions | List subscriptions
 [**SubscriptionsIdCancelPost**](SubscriptionsAPI.md#SubscriptionsIdCancelPost) | **Post** /subscriptions/{id}/cancel | Cancel subscription
 [**SubscriptionsIdGet**](SubscriptionsAPI.md#SubscriptionsIdGet) | **Get** /subscriptions/{id} | Get subscription
+[**SubscriptionsPeriodUsagePost**](SubscriptionsAPI.md#SubscriptionsPeriodUsagePost) | **Post** /subscriptions/period/usage | Get usage by period
 [**SubscriptionsPost**](SubscriptionsAPI.md#SubscriptionsPost) | **Post** /subscriptions | Create subscription
 [**SubscriptionsUsagePost**](SubscriptionsAPI.md#SubscriptionsUsagePost) | **Post** /subscriptions/usage | Get usage by subscription
 
@@ -243,6 +244,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SubscriptionsPeriodUsagePost
+
+> []DtoPeriodUsageResponse SubscriptionsPeriodUsagePost(ctx).Request(request).Execute()
+
+Get usage by period
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
+)
+
+func main() {
+	request := *openapiclient.NewDtoGetUsageByPeriodRequest("123") // DtoGetUsageByPeriodRequest | Usage request
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SubscriptionsAPI.SubscriptionsPeriodUsagePost(context.Background()).Request(request).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SubscriptionsAPI.SubscriptionsPeriodUsagePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SubscriptionsPeriodUsagePost`: []DtoPeriodUsageResponse
+	fmt.Fprintf(os.Stdout, "Response from `SubscriptionsAPI.SubscriptionsPeriodUsagePost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSubscriptionsPeriodUsagePostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request** | [**DtoGetUsageByPeriodRequest**](DtoGetUsageByPeriodRequest.md) | Usage request | 
+
+### Return type
+
+[**[]DtoPeriodUsageResponse**](DtoPeriodUsageResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

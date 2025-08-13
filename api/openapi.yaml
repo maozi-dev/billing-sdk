@@ -5002,6 +5002,43 @@ paths:
       tags:
       - Subscriptions
       x-codegen-request-body-name: subscription
+  /subscriptions/period/usage:
+    post:
+      description: Get period usage for a subscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dto.GetUsageByPeriodRequest'
+        description: Usage request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/dto.PeriodUsageResponse'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: Get usage by period
+      tags:
+      - Subscriptions
+      x-codegen-request-body-name: request
   /subscriptions/usage:
     post:
       description: Get usage for a subscription
@@ -9287,6 +9324,17 @@ components:
       required:
       - meter_id
       type: object
+    dto.GetUsageByPeriodRequest:
+      properties:
+        subscription_id:
+          example: "123"
+          type: string
+        timestamp:
+          example: 2024-03-13T00:00:00Z
+          type: string
+      required:
+      - subscription_id
+      type: object
     dto.GetUsageBySubscriptionRequest:
       properties:
         end_time:
@@ -9492,6 +9540,10 @@ components:
     dto.IngestEventRequest:
       properties:
         amount:
+          description: "Metadata           map[string]string      `json:\"metadata\"\
+            \ swaggertype:\"object,string,number\" example:\"{\\\"request_size\\\"\
+            :100,\\\"response_status\\\":200}\" csv:\"-\"` // Handled separately for\
+            \ dynamic columns"
           type: string
         customer_id:
           example: customer456
@@ -9505,14 +9557,6 @@ components:
         external_customer_id:
           example: customer456
           type: string
-        metadata:
-          additionalProperties:
-            type: string
-          description: Handled separately for dynamic columns
-          example:
-            '"response_status"': "200}"
-            '{"request_size"': "100"
-          type: object
         properties:
           additionalProperties:
             type: string
@@ -15065,6 +15109,28 @@ components:
         updated_at:
           type: string
         updated_by:
+          type: string
+      type: object
+    dto.PeriodUsageResponse:
+      example:
+        aggregation_type: aggregation_type
+        amount: amount
+        total: total
+        count: 0
+        event_name: event_name
+        meter_id: meter_id
+      properties:
+        aggregation_type:
+          type: string
+        amount:
+          type: string
+        count:
+          type: integer
+        event_name:
+          type: string
+        meter_id:
+          type: string
+        total:
           type: string
       type: object
     dto.PlanResponse:

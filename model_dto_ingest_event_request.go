@@ -21,13 +21,12 @@ var _ MappedNullable = &DtoIngestEventRequest{}
 
 // DtoIngestEventRequest struct for DtoIngestEventRequest
 type DtoIngestEventRequest struct {
+	// Metadata           map[string]string      `json:\"metadata\" swaggertype:\"object,string,number\" example:\"{\\\"request_size\\\":100,\\\"response_status\\\":200}\" csv:\"-\"` // Handled separately for dynamic columns
 	Amount *string `json:"amount,omitempty"`
 	CustomerId *string `json:"customer_id,omitempty"`
 	EventId *string `json:"event_id,omitempty"`
 	EventName string `json:"event_name"`
 	ExternalCustomerId string `json:"external_customer_id"`
-	// Handled separately for dynamic columns
-	Metadata *map[string]string `json:"metadata,omitempty"`
 	Properties *map[string]string `json:"properties,omitempty"`
 	Source *string `json:"source,omitempty"`
 	// Handled separately due to parsing
@@ -200,38 +199,6 @@ func (o *DtoIngestEventRequest) SetExternalCustomerId(v string) {
 	o.ExternalCustomerId = v
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *DtoIngestEventRequest) GetMetadata() map[string]string {
-	if o == nil || IsNil(o.Metadata) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoIngestEventRequest) GetMetadataOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *DtoIngestEventRequest) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
-func (o *DtoIngestEventRequest) SetMetadata(v map[string]string) {
-	o.Metadata = &v
-}
-
 // GetProperties returns the Properties field value if set, zero value otherwise.
 func (o *DtoIngestEventRequest) GetProperties() map[string]string {
 	if o == nil || IsNil(o.Properties) {
@@ -381,9 +348,6 @@ func (o DtoIngestEventRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["event_name"] = o.EventName
 	toSerialize["external_customer_id"] = o.ExternalCustomerId
-	if !IsNil(o.Metadata) {
-		toSerialize["metadata"] = o.Metadata
-	}
 	if !IsNil(o.Properties) {
 		toSerialize["properties"] = o.Properties
 	}

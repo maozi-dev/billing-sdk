@@ -4,12 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **string** |  | [optional] 
+**Amount** | Pointer to **string** | Metadata           map[string]string      &#x60;json:\&quot;metadata\&quot; swaggertype:\&quot;object,string,number\&quot; example:\&quot;{\\\&quot;request_size\\\&quot;:100,\\\&quot;response_status\\\&quot;:200}\&quot; csv:\&quot;-\&quot;&#x60; // Handled separately for dynamic columns | [optional] 
 **CustomerId** | Pointer to **string** |  | [optional] 
 **EventId** | Pointer to **string** |  | [optional] 
 **EventName** | **string** |  | 
 **ExternalCustomerId** | **string** |  | 
-**Metadata** | Pointer to **map[string]string** | Handled separately for dynamic columns | [optional] 
 **Properties** | Pointer to **map[string]string** |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
 **Timestamp** | Pointer to **string** | Handled separately due to parsing | [optional] 
@@ -148,31 +147,6 @@ and a boolean to check if the value has been set.
 
 SetExternalCustomerId sets ExternalCustomerId field to given value.
 
-
-### GetMetadata
-
-`func (o *DtoIngestEventRequest) GetMetadata() map[string]string`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *DtoIngestEventRequest) GetMetadataOk() (*map[string]string, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *DtoIngestEventRequest) SetMetadata(v map[string]string)`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *DtoIngestEventRequest) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
 
 ### GetProperties
 
