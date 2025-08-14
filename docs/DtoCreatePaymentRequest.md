@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **float32** |  | 
+**BonusAmount** | Pointer to **float32** |  | [optional] 
 **Currency** | **string** |  | 
 **CustomerId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **DestinationId** | **string** |  | 
 **DestinationType** | [**TypesPaymentDestinationType**](TypesPaymentDestinationType.md) |  | 
+**ExternalCustomerId** | Pointer to **string** |  | [optional] 
 **IdempotencyKey** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -57,6 +59,31 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
+
+### GetBonusAmount
+
+`func (o *DtoCreatePaymentRequest) GetBonusAmount() float32`
+
+GetBonusAmount returns the BonusAmount field if non-nil, zero value otherwise.
+
+### GetBonusAmountOk
+
+`func (o *DtoCreatePaymentRequest) GetBonusAmountOk() (*float32, bool)`
+
+GetBonusAmountOk returns a tuple with the BonusAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBonusAmount
+
+`func (o *DtoCreatePaymentRequest) SetBonusAmount(v float32)`
+
+SetBonusAmount sets BonusAmount field to given value.
+
+### HasBonusAmount
+
+`func (o *DtoCreatePaymentRequest) HasBonusAmount() bool`
+
+HasBonusAmount returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -167,6 +194,31 @@ and a boolean to check if the value has been set.
 
 SetDestinationType sets DestinationType field to given value.
 
+
+### GetExternalCustomerId
+
+`func (o *DtoCreatePaymentRequest) GetExternalCustomerId() string`
+
+GetExternalCustomerId returns the ExternalCustomerId field if non-nil, zero value otherwise.
+
+### GetExternalCustomerIdOk
+
+`func (o *DtoCreatePaymentRequest) GetExternalCustomerIdOk() (*string, bool)`
+
+GetExternalCustomerIdOk returns a tuple with the ExternalCustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalCustomerId
+
+`func (o *DtoCreatePaymentRequest) SetExternalCustomerId(v string)`
+
+SetExternalCustomerId sets ExternalCustomerId field to given value.
+
+### HasExternalCustomerId
+
+`func (o *DtoCreatePaymentRequest) HasExternalCustomerId() bool`
+
+HasExternalCustomerId returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

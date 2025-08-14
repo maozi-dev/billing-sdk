@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**PaymentsIdGet**](PaymentsAPI.md#PaymentsIdGet) | **Get** /payments/{id} | Get a payment by ID
 [**PaymentsIdProcessPost**](PaymentsAPI.md#PaymentsIdProcessPost) | **Post** /payments/{id}/process | Process a payment
 [**PaymentsIdPut**](PaymentsAPI.md#PaymentsIdPut) | **Put** /payments/{id} | Update a payment
-[**PaymentsIdWebhookPost**](PaymentsAPI.md#PaymentsIdWebhookPost) | **Post** /payments/{id}/webhook | 
 [**PaymentsPost**](PaymentsAPI.md#PaymentsPost) | **Post** /payments | Create a new payment
 
 
@@ -391,76 +390,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PaymentsIdWebhookPost
-
-> string PaymentsIdWebhookPost(ctx, id).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/maozi-dev/billing-sdk/billing"
-)
-
-func main() {
-	id := "id_example" // string | Payment ID
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PaymentsAPI.PaymentsIdWebhookPost(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PaymentsAPI.PaymentsIdWebhookPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PaymentsIdWebhookPost`: string
-	fmt.Fprintf(os.Stdout, "Response from `PaymentsAPI.PaymentsIdWebhookPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payment ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPaymentsIdWebhookPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

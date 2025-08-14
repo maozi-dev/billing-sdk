@@ -32,12 +32,8 @@ type DtoCreateWalletRequest struct {
 	Description *string `json:"description,omitempty"`
 	// external_customer_id is the customer id in the external system
 	ExternalCustomerId *string `json:"external_customer_id,omitempty"`
-	// initial_credits_expiry_date_utc is the expiry date in UTC timezone (optional to set nil means no expiry) ex 2025-01-01 00:00:00 UTC
-	InitialCreditsExpiryDateUtc *string `json:"initial_credits_expiry_date_utc,omitempty"`
-	// initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits
-	InitialCreditsToLoad *float32 `json:"initial_credits_to_load,omitempty"`
-	// initial_credits_to_load_expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC
-	InitialCreditsToLoadExpiryDate *int32 `json:"initial_credits_to_load_expiry_date,omitempty"`
+	// initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits InitialCreditsToLoad decimal.Decimal `json:\"initial_credits_to_load,omitempty\" default:\"0\"`
+	InitialBonusAmount *float32 `json:"initial_bonus_amount,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
 	WalletType *TypesWalletType `json:"wallet_type,omitempty"`
@@ -343,100 +339,36 @@ func (o *DtoCreateWalletRequest) SetExternalCustomerId(v string) {
 	o.ExternalCustomerId = &v
 }
 
-// GetInitialCreditsExpiryDateUtc returns the InitialCreditsExpiryDateUtc field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetInitialCreditsExpiryDateUtc() string {
-	if o == nil || IsNil(o.InitialCreditsExpiryDateUtc) {
-		var ret string
-		return ret
-	}
-	return *o.InitialCreditsExpiryDateUtc
-}
-
-// GetInitialCreditsExpiryDateUtcOk returns a tuple with the InitialCreditsExpiryDateUtc field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetInitialCreditsExpiryDateUtcOk() (*string, bool) {
-	if o == nil || IsNil(o.InitialCreditsExpiryDateUtc) {
-		return nil, false
-	}
-	return o.InitialCreditsExpiryDateUtc, true
-}
-
-// HasInitialCreditsExpiryDateUtc returns a boolean if a field has been set.
-func (o *DtoCreateWalletRequest) HasInitialCreditsExpiryDateUtc() bool {
-	if o != nil && !IsNil(o.InitialCreditsExpiryDateUtc) {
-		return true
-	}
-
-	return false
-}
-
-// SetInitialCreditsExpiryDateUtc gets a reference to the given string and assigns it to the InitialCreditsExpiryDateUtc field.
-func (o *DtoCreateWalletRequest) SetInitialCreditsExpiryDateUtc(v string) {
-	o.InitialCreditsExpiryDateUtc = &v
-}
-
-// GetInitialCreditsToLoad returns the InitialCreditsToLoad field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetInitialCreditsToLoad() float32 {
-	if o == nil || IsNil(o.InitialCreditsToLoad) {
+// GetInitialBonusAmount returns the InitialBonusAmount field value if set, zero value otherwise.
+func (o *DtoCreateWalletRequest) GetInitialBonusAmount() float32 {
+	if o == nil || IsNil(o.InitialBonusAmount) {
 		var ret float32
 		return ret
 	}
-	return *o.InitialCreditsToLoad
+	return *o.InitialBonusAmount
 }
 
-// GetInitialCreditsToLoadOk returns a tuple with the InitialCreditsToLoad field value if set, nil otherwise
+// GetInitialBonusAmountOk returns a tuple with the InitialBonusAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetInitialCreditsToLoadOk() (*float32, bool) {
-	if o == nil || IsNil(o.InitialCreditsToLoad) {
+func (o *DtoCreateWalletRequest) GetInitialBonusAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.InitialBonusAmount) {
 		return nil, false
 	}
-	return o.InitialCreditsToLoad, true
+	return o.InitialBonusAmount, true
 }
 
-// HasInitialCreditsToLoad returns a boolean if a field has been set.
-func (o *DtoCreateWalletRequest) HasInitialCreditsToLoad() bool {
-	if o != nil && !IsNil(o.InitialCreditsToLoad) {
+// HasInitialBonusAmount returns a boolean if a field has been set.
+func (o *DtoCreateWalletRequest) HasInitialBonusAmount() bool {
+	if o != nil && !IsNil(o.InitialBonusAmount) {
 		return true
 	}
 
 	return false
 }
 
-// SetInitialCreditsToLoad gets a reference to the given float32 and assigns it to the InitialCreditsToLoad field.
-func (o *DtoCreateWalletRequest) SetInitialCreditsToLoad(v float32) {
-	o.InitialCreditsToLoad = &v
-}
-
-// GetInitialCreditsToLoadExpiryDate returns the InitialCreditsToLoadExpiryDate field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetInitialCreditsToLoadExpiryDate() int32 {
-	if o == nil || IsNil(o.InitialCreditsToLoadExpiryDate) {
-		var ret int32
-		return ret
-	}
-	return *o.InitialCreditsToLoadExpiryDate
-}
-
-// GetInitialCreditsToLoadExpiryDateOk returns a tuple with the InitialCreditsToLoadExpiryDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetInitialCreditsToLoadExpiryDateOk() (*int32, bool) {
-	if o == nil || IsNil(o.InitialCreditsToLoadExpiryDate) {
-		return nil, false
-	}
-	return o.InitialCreditsToLoadExpiryDate, true
-}
-
-// HasInitialCreditsToLoadExpiryDate returns a boolean if a field has been set.
-func (o *DtoCreateWalletRequest) HasInitialCreditsToLoadExpiryDate() bool {
-	if o != nil && !IsNil(o.InitialCreditsToLoadExpiryDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetInitialCreditsToLoadExpiryDate gets a reference to the given int32 and assigns it to the InitialCreditsToLoadExpiryDate field.
-func (o *DtoCreateWalletRequest) SetInitialCreditsToLoadExpiryDate(v int32) {
-	o.InitialCreditsToLoadExpiryDate = &v
+// SetInitialBonusAmount gets a reference to the given float32 and assigns it to the InitialBonusAmount field.
+func (o *DtoCreateWalletRequest) SetInitialBonusAmount(v float32) {
+	o.InitialBonusAmount = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -570,14 +502,8 @@ func (o DtoCreateWalletRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalCustomerId) {
 		toSerialize["external_customer_id"] = o.ExternalCustomerId
 	}
-	if !IsNil(o.InitialCreditsExpiryDateUtc) {
-		toSerialize["initial_credits_expiry_date_utc"] = o.InitialCreditsExpiryDateUtc
-	}
-	if !IsNil(o.InitialCreditsToLoad) {
-		toSerialize["initial_credits_to_load"] = o.InitialCreditsToLoad
-	}
-	if !IsNil(o.InitialCreditsToLoadExpiryDate) {
-		toSerialize["initial_credits_to_load_expiry_date"] = o.InitialCreditsToLoadExpiryDate
+	if !IsNil(o.InitialBonusAmount) {
+		toSerialize["initial_bonus_amount"] = o.InitialBonusAmount
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata

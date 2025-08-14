@@ -23,8 +23,8 @@ var _ MappedNullable = &DtoTopUpWalletRequest{}
 type DtoTopUpWalletRequest struct {
 	// amount is the amount in the currency of the wallet to be added NOTE: this is not the number of credits to add, but the amount in the currency amount = credits_to_add * conversion_rate if both amount and credits_to_add are provided, amount will be ignored ex if the wallet has a conversion_rate of 2 then adding an amount of 10 USD in the wallet wil add 5 credits in the wallet
 	Amount *float32 `json:"amount,omitempty"`
-	// credits_to_add is the number of credits to add to the wallet
-	CreditsToAdd *float32 `json:"credits_to_add,omitempty"`
+	// credits_to_add is the number of credits to add to the wallet CreditsToAdd decimal.Decimal `json:\"credits_to_add\"`
+	BonusAmount *float32 `json:"bonus_amount,omitempty"`
 	// description to add any specific details about the transaction
 	Description *string `json:"description,omitempty"`
 	// expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC ExpiryDate *int `json:\"-\"` expiry_date_utc is the expiry date in UTC timezone ex 2025-01-01 00:00:00 UTC ExpiryDateUTC *time.Time `json:\"expiry_date_utc,omitempty\"` priority is the priority of the transaction lower number means higher priority default is nil which means no priority at all Priority *int `json:\"priority,omitempty\"` idempotency_key is a unique key for the transaction
@@ -86,36 +86,36 @@ func (o *DtoTopUpWalletRequest) SetAmount(v float32) {
 	o.Amount = &v
 }
 
-// GetCreditsToAdd returns the CreditsToAdd field value if set, zero value otherwise.
-func (o *DtoTopUpWalletRequest) GetCreditsToAdd() float32 {
-	if o == nil || IsNil(o.CreditsToAdd) {
+// GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
+func (o *DtoTopUpWalletRequest) GetBonusAmount() float32 {
+	if o == nil || IsNil(o.BonusAmount) {
 		var ret float32
 		return ret
 	}
-	return *o.CreditsToAdd
+	return *o.BonusAmount
 }
 
-// GetCreditsToAddOk returns a tuple with the CreditsToAdd field value if set, nil otherwise
+// GetBonusAmountOk returns a tuple with the BonusAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoTopUpWalletRequest) GetCreditsToAddOk() (*float32, bool) {
-	if o == nil || IsNil(o.CreditsToAdd) {
+func (o *DtoTopUpWalletRequest) GetBonusAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.BonusAmount) {
 		return nil, false
 	}
-	return o.CreditsToAdd, true
+	return o.BonusAmount, true
 }
 
-// HasCreditsToAdd returns a boolean if a field has been set.
-func (o *DtoTopUpWalletRequest) HasCreditsToAdd() bool {
-	if o != nil && !IsNil(o.CreditsToAdd) {
+// HasBonusAmount returns a boolean if a field has been set.
+func (o *DtoTopUpWalletRequest) HasBonusAmount() bool {
+	if o != nil && !IsNil(o.BonusAmount) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreditsToAdd gets a reference to the given float32 and assigns it to the CreditsToAdd field.
-func (o *DtoTopUpWalletRequest) SetCreditsToAdd(v float32) {
-	o.CreditsToAdd = &v
+// SetBonusAmount gets a reference to the given float32 and assigns it to the BonusAmount field.
+func (o *DtoTopUpWalletRequest) SetBonusAmount(v float32) {
+	o.BonusAmount = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -243,8 +243,8 @@ func (o DtoTopUpWalletRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
-	if !IsNil(o.CreditsToAdd) {
-		toSerialize["credits_to_add"] = o.CreditsToAdd
+	if !IsNil(o.BonusAmount) {
+		toSerialize["bonus_amount"] = o.BonusAmount
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

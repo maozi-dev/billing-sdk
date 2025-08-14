@@ -11,7 +11,7 @@
 
 * `PaymentMethodTypeCredits` (value: `"CREDITS"`)
 
-* `PaymentMethodTypeHuPay` (value: `"HU_PAY"`)
+* `PaymentMethodTypeRecharge` (value: `"RECHARGE"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

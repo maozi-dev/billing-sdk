@@ -4,101 +4,12 @@ All URIs are relative to */v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BillingsGet**](TasksAPI.md#BillingsGet) | **Get** /billings | List tasks
 [**TasksGet**](TasksAPI.md#TasksGet) | **Get** /tasks | List tasks
 [**TasksIdGet**](TasksAPI.md#TasksIdGet) | **Get** /tasks/{id} | Get a task by ID
 [**TasksIdProcessPost**](TasksAPI.md#TasksIdProcessPost) | **Post** /tasks/{id}/process | Process a task
 [**TasksIdStatusPut**](TasksAPI.md#TasksIdStatusPut) | **Put** /tasks/{id}/status | Update task status
 [**TasksPost**](TasksAPI.md#TasksPost) | **Post** /tasks | Create a new task
 
-
-
-## BillingsGet
-
-> DtoListTasksResponse BillingsGet(ctx).CreatedBy(createdBy).EndTime(endTime).EntityType(entityType).Expand(expand).Limit(limit).Offset(offset).Order(order).Sort(sort).StartTime(startTime).Status(status).TaskStatus(taskStatus).TaskType(taskType).Execute()
-
-List tasks
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/maozi-dev/billing-sdk/billing"
-)
-
-func main() {
-	createdBy := "createdBy_example" // string |  (optional)
-	endTime := "endTime_example" // string |  (optional)
-	entityType := "entityType_example" // string |  (optional)
-	expand := "expand_example" // string |  (optional)
-	limit := int32(56) // int32 |  (optional)
-	offset := int32(56) // int32 |  (optional)
-	order := "order_example" // string |  (optional)
-	sort := "sort_example" // string |  (optional)
-	startTime := "startTime_example" // string |  (optional)
-	status := "status_example" // string |  (optional)
-	taskStatus := "taskStatus_example" // string |  (optional)
-	taskType := "taskType_example" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TasksAPI.BillingsGet(context.Background()).CreatedBy(createdBy).EndTime(endTime).EntityType(entityType).Expand(expand).Limit(limit).Offset(offset).Order(order).Sort(sort).StartTime(startTime).Status(status).TaskStatus(taskStatus).TaskType(taskType).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.BillingsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `BillingsGet`: DtoListTasksResponse
-	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.BillingsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiBillingsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createdBy** | **string** |  | 
- **endTime** | **string** |  | 
- **entityType** | **string** |  | 
- **expand** | **string** |  | 
- **limit** | **int32** |  | 
- **offset** | **int32** |  | 
- **order** | **string** |  | 
- **sort** | **string** |  | 
- **startTime** | **string** |  | 
- **status** | **string** |  | 
- **taskStatus** | **string** |  | 
- **taskType** | **string** |  | 
-
-### Return type
-
-[**DtoListTasksResponse**](DtoListTasksResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## TasksGet

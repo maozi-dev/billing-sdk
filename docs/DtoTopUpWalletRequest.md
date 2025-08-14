@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **float32** | amount is the amount in the currency of the wallet to be added NOTE: this is not the number of credits to add, but the amount in the currency amount &#x3D; credits_to_add * conversion_rate if both amount and credits_to_add are provided, amount will be ignored ex if the wallet has a conversion_rate of 2 then adding an amount of 10 USD in the wallet wil add 5 credits in the wallet | [optional] 
-**CreditsToAdd** | Pointer to **float32** | credits_to_add is the number of credits to add to the wallet | [optional] 
+**BonusAmount** | Pointer to **float32** | credits_to_add is the number of credits to add to the wallet CreditsToAdd decimal.Decimal &#x60;json:\&quot;credits_to_add\&quot;&#x60; | [optional] 
 **Description** | Pointer to **string** | description to add any specific details about the transaction | [optional] 
 **IdempotencyKey** | **string** | expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC ExpiryDate *int &#x60;json:\&quot;-\&quot;&#x60; expiry_date_utc is the expiry date in UTC timezone ex 2025-01-01 00:00:00 UTC ExpiryDateUTC *time.Time &#x60;json:\&quot;expiry_date_utc,omitempty\&quot;&#x60; priority is the priority of the transaction lower number means higher priority default is nil which means no priority at all Priority *int &#x60;json:\&quot;priority,omitempty\&quot;&#x60; idempotency_key is a unique key for the transaction | 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
@@ -55,30 +55,30 @@ SetAmount sets Amount field to given value.
 
 HasAmount returns a boolean if a field has been set.
 
-### GetCreditsToAdd
+### GetBonusAmount
 
-`func (o *DtoTopUpWalletRequest) GetCreditsToAdd() float32`
+`func (o *DtoTopUpWalletRequest) GetBonusAmount() float32`
 
-GetCreditsToAdd returns the CreditsToAdd field if non-nil, zero value otherwise.
+GetBonusAmount returns the BonusAmount field if non-nil, zero value otherwise.
 
-### GetCreditsToAddOk
+### GetBonusAmountOk
 
-`func (o *DtoTopUpWalletRequest) GetCreditsToAddOk() (*float32, bool)`
+`func (o *DtoTopUpWalletRequest) GetBonusAmountOk() (*float32, bool)`
 
-GetCreditsToAddOk returns a tuple with the CreditsToAdd field if it's non-nil, zero value otherwise
+GetBonusAmountOk returns a tuple with the BonusAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreditsToAdd
+### SetBonusAmount
 
-`func (o *DtoTopUpWalletRequest) SetCreditsToAdd(v float32)`
+`func (o *DtoTopUpWalletRequest) SetBonusAmount(v float32)`
 
-SetCreditsToAdd sets CreditsToAdd field to given value.
+SetBonusAmount sets BonusAmount field to given value.
 
-### HasCreditsToAdd
+### HasBonusAmount
 
-`func (o *DtoTopUpWalletRequest) HasCreditsToAdd() bool`
+`func (o *DtoTopUpWalletRequest) HasBonusAmount() bool`
 
-HasCreditsToAdd returns a boolean if a field has been set.
+HasBonusAmount returns a boolean if a field has been set.
 
 ### GetDescription
 

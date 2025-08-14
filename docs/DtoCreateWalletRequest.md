@@ -13,9 +13,7 @@ Name | Type | Description | Notes
 **CustomerId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **ExternalCustomerId** | Pointer to **string** | external_customer_id is the customer id in the external system | [optional] 
-**InitialCreditsExpiryDateUtc** | Pointer to **string** | initial_credits_expiry_date_utc is the expiry date in UTC timezone (optional to set nil means no expiry) ex 2025-01-01 00:00:00 UTC | [optional] 
-**InitialCreditsToLoad** | Pointer to **float32** | initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits | [optional] 
-**InitialCreditsToLoadExpiryDate** | Pointer to **int32** | initial_credits_to_load_expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry) for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC hence they will be available for use until 2024-12-31 23:59:59 UTC | [optional] 
+**InitialBonusAmount** | Pointer to **float32** | initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits InitialCreditsToLoad decimal.Decimal &#x60;json:\&quot;initial_credits_to_load,omitempty\&quot; default:\&quot;0\&quot;&#x60; | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **WalletType** | Pointer to [**TypesWalletType**](TypesWalletType.md) |  | [optional] 
@@ -259,80 +257,30 @@ SetExternalCustomerId sets ExternalCustomerId field to given value.
 
 HasExternalCustomerId returns a boolean if a field has been set.
 
-### GetInitialCreditsExpiryDateUtc
+### GetInitialBonusAmount
 
-`func (o *DtoCreateWalletRequest) GetInitialCreditsExpiryDateUtc() string`
+`func (o *DtoCreateWalletRequest) GetInitialBonusAmount() float32`
 
-GetInitialCreditsExpiryDateUtc returns the InitialCreditsExpiryDateUtc field if non-nil, zero value otherwise.
+GetInitialBonusAmount returns the InitialBonusAmount field if non-nil, zero value otherwise.
 
-### GetInitialCreditsExpiryDateUtcOk
+### GetInitialBonusAmountOk
 
-`func (o *DtoCreateWalletRequest) GetInitialCreditsExpiryDateUtcOk() (*string, bool)`
+`func (o *DtoCreateWalletRequest) GetInitialBonusAmountOk() (*float32, bool)`
 
-GetInitialCreditsExpiryDateUtcOk returns a tuple with the InitialCreditsExpiryDateUtc field if it's non-nil, zero value otherwise
+GetInitialBonusAmountOk returns a tuple with the InitialBonusAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetInitialCreditsExpiryDateUtc
+### SetInitialBonusAmount
 
-`func (o *DtoCreateWalletRequest) SetInitialCreditsExpiryDateUtc(v string)`
+`func (o *DtoCreateWalletRequest) SetInitialBonusAmount(v float32)`
 
-SetInitialCreditsExpiryDateUtc sets InitialCreditsExpiryDateUtc field to given value.
+SetInitialBonusAmount sets InitialBonusAmount field to given value.
 
-### HasInitialCreditsExpiryDateUtc
+### HasInitialBonusAmount
 
-`func (o *DtoCreateWalletRequest) HasInitialCreditsExpiryDateUtc() bool`
+`func (o *DtoCreateWalletRequest) HasInitialBonusAmount() bool`
 
-HasInitialCreditsExpiryDateUtc returns a boolean if a field has been set.
-
-### GetInitialCreditsToLoad
-
-`func (o *DtoCreateWalletRequest) GetInitialCreditsToLoad() float32`
-
-GetInitialCreditsToLoad returns the InitialCreditsToLoad field if non-nil, zero value otherwise.
-
-### GetInitialCreditsToLoadOk
-
-`func (o *DtoCreateWalletRequest) GetInitialCreditsToLoadOk() (*float32, bool)`
-
-GetInitialCreditsToLoadOk returns a tuple with the InitialCreditsToLoad field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInitialCreditsToLoad
-
-`func (o *DtoCreateWalletRequest) SetInitialCreditsToLoad(v float32)`
-
-SetInitialCreditsToLoad sets InitialCreditsToLoad field to given value.
-
-### HasInitialCreditsToLoad
-
-`func (o *DtoCreateWalletRequest) HasInitialCreditsToLoad() bool`
-
-HasInitialCreditsToLoad returns a boolean if a field has been set.
-
-### GetInitialCreditsToLoadExpiryDate
-
-`func (o *DtoCreateWalletRequest) GetInitialCreditsToLoadExpiryDate() int32`
-
-GetInitialCreditsToLoadExpiryDate returns the InitialCreditsToLoadExpiryDate field if non-nil, zero value otherwise.
-
-### GetInitialCreditsToLoadExpiryDateOk
-
-`func (o *DtoCreateWalletRequest) GetInitialCreditsToLoadExpiryDateOk() (*int32, bool)`
-
-GetInitialCreditsToLoadExpiryDateOk returns a tuple with the InitialCreditsToLoadExpiryDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInitialCreditsToLoadExpiryDate
-
-`func (o *DtoCreateWalletRequest) SetInitialCreditsToLoadExpiryDate(v int32)`
-
-SetInitialCreditsToLoadExpiryDate sets InitialCreditsToLoadExpiryDate field to given value.
-
-### HasInitialCreditsToLoadExpiryDate
-
-`func (o *DtoCreateWalletRequest) HasInitialCreditsToLoadExpiryDate() bool`
-
-HasInitialCreditsToLoadExpiryDate returns a boolean if a field has been set.
+HasInitialBonusAmount returns a boolean if a field has been set.
 
 ### GetMetadata
 

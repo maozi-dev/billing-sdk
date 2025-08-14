@@ -61,203 +61,6 @@ paths:
       tags:
       - Auth
       x-codegen-request-body-name: signup
-  /billing:
-    post:
-      description: Create a new  Billing
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/dto.CreateAppBillingRequest'
-        description: Task details
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/dto.AppBillingResponse'
-          description: Created
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errors.ErrorResponse'
-          description: Bad Request
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errors.ErrorResponse'
-          description: Internal Server Error
-      summary: Create a new App Billing
-      tags:
-      - AppBilling
-      x-codegen-request-body-name: billing
-  /billings:
-    get:
-      description: List tasks with optional filtering
-      parameters:
-      - explode: true
-        in: query
-        name: created_by
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: end_time
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: entity_type
-        required: false
-        schema:
-          enum:
-          - EVENTS
-          - PRICES
-          - CUSTOMERS
-          type: string
-          x-enum-varnames:
-          - EntityTypeEvents
-          - EntityTypePrices
-          - EntityTypeCustomers
-        style: form
-        x-enum-varnames:
-        - EntityTypeEvents
-        - EntityTypePrices
-        - EntityTypeCustomers
-      - explode: true
-        in: query
-        name: expand
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          maximum: 1000
-          minimum: 1
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          minimum: 0
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: order
-        required: false
-        schema:
-          enum:
-          - asc
-          - desc
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: sort
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: start_time
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: status
-        required: false
-        schema:
-          enum:
-          - published
-          - deleted
-          - archived
-          type: string
-          x-enum-varnames:
-          - StatusPublished
-          - StatusDeleted
-          - StatusArchived
-        style: form
-        x-enum-varnames:
-        - StatusPublished
-        - StatusDeleted
-        - StatusArchived
-      - explode: true
-        in: query
-        name: task_status
-        required: false
-        schema:
-          enum:
-          - PENDING
-          - PROCESSING
-          - COMPLETED
-          - FAILED
-          type: string
-          x-enum-varnames:
-          - TaskStatusPending
-          - TaskStatusProcessing
-          - TaskStatusCompleted
-          - TaskStatusFailed
-        style: form
-        x-enum-varnames:
-        - TaskStatusPending
-        - TaskStatusProcessing
-        - TaskStatusCompleted
-        - TaskStatusFailed
-      - explode: true
-        in: query
-        name: task_type
-        required: false
-        schema:
-          enum:
-          - IMPORT
-          - EXPORT
-          type: string
-          x-enum-varnames:
-          - TaskTypeImport
-          - TaskTypeExport
-        style: form
-        x-enum-varnames:
-        - TaskTypeImport
-        - TaskTypeExport
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/dto.ListTasksResponse'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errors.ErrorResponse'
-          description: Bad Request
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errors.ErrorResponse'
-          description: Internal Server Error
-      summary: List tasks
-      tags:
-      - Tasks
   /cost:
     get:
       description: List cost sheets with optional filtering
@@ -3826,41 +3629,6 @@ paths:
       summary: Process a payment
       tags:
       - Payments
-  /payments/{id}/webhook:
-    post:
-      description: Process a payment
-      parameters:
-      - description: Payment ID
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: 返回支付处理结果
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errors.ErrorResponse'
-          description: Bad Request
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errors.ErrorResponse'
-          description: Internal Server Error
-      security:
-      - ApiKeyAuth: []
-      tags:
-      - Payments
   /plans:
     get:
       description: Get plans with optional filtering
@@ -6396,13 +6164,6 @@ components:
             $ref: '#/components/schemas/dto.EntitlementSource'
           type: array
       type: object
-    dto.AppBillingResponse:
-      example:
-        id: id
-      properties:
-        id:
-          type: string
-      type: object
     dto.AuthResponse:
       example:
         tenant_id: tenant_id
@@ -6563,39 +6324,6 @@ components:
           type: string
         secret:
           $ref: '#/components/schemas/dto.SecretResponse'
-      type: object
-    dto.CreateAppBillingRequest:
-      properties:
-        amount:
-          type: number
-        customer_id:
-          type: string
-        event_name:
-          description: 需要统计的事件
-          type: string
-        idempotency_key:
-          type: string
-        metadata:
-          additionalProperties:
-            type: string
-          type: object
-        properties:
-          additionalProperties: true
-          type: object
-        reference_id:
-          type: string
-        reference_type:
-          $ref: '#/components/schemas/types.BillingTxReferenceType'
-        timestamp:
-          type: string
-        type:
-          type: string
-      required:
-      - event_name
-      - idempotency_key
-      - properties
-      - timestamp
-      - type
       type: object
     dto.CreateCostSheetRequest:
       properties:
@@ -6973,6 +6701,8 @@ components:
       properties:
         amount:
           type: number
+        bonus_amount:
+          type: number
         currency:
           type: string
         customer_id:
@@ -6983,6 +6713,9 @@ components:
           type: string
         destination_type:
           $ref: '#/components/schemas/types.PaymentDestinationType'
+        external_customer_id:
+          example: customer456
+          type: string
         idempotency_key:
           type: string
         metadata:
@@ -7273,23 +7006,13 @@ components:
         external_customer_id:
           description: external_customer_id is the customer id in the external system
           type: string
-        initial_credits_expiry_date_utc:
-          description: |-
-            initial_credits_expiry_date_utc is the expiry date in UTC timezone (optional to set nil means no expiry)
-            ex 2025-01-01 00:00:00 UTC
-          type: string
-        initial_credits_to_load:
+        initial_bonus_amount:
           description: |-
             initial_credits_to_load is the number of credits to load to the wallet
             if not provided, the wallet will be created with 0 balance
             NOTE: this is not the amount in the currency, but the number of credits
+            InitialCreditsToLoad decimal.Decimal `json:"initial_credits_to_load,omitempty" default:"0"`
           type: number
-        initial_credits_to_load_expiry_date:
-          description: |-
-            initial_credits_to_load_expiry_date YYYYMMDD format in UTC timezone (optional to set nil means no expiry)
-            for ex 20250101 means the credits will expire on 2025-01-01 00:00:00 UTC
-            hence they will be available for use until 2024-12-31 23:59:59 UTC
-          type: integer
         metadata:
           additionalProperties:
             type: string
@@ -17130,8 +16853,10 @@ components:
             ex if the wallet has a conversion_rate of 2 then adding an amount of
             10 USD in the wallet wil add 5 credits in the wallet
           type: number
-        credits_to_add:
-          description: credits_to_add is the number of credits to add to the wallet
+        bonus_amount:
+          description: |-
+            credits_to_add is the number of credits to add to the wallet
+            CreditsToAdd decimal.Decimal `json:"credits_to_add"`
           type: number
         description:
           description: description to add any specific details about the transaction
@@ -18091,12 +17816,6 @@ components:
       x-enum-varnames:
       - BILLING_TIER_VOLUME
       - BILLING_TIER_SLAB
-    types.BillingTxReferenceType:
-      enum:
-      - EVENT
-      type: string
-      x-enum-varnames:
-      - BillingTxTypeEvent
     types.CreditGrantCadence:
       enum:
       - ONETIME
@@ -18419,14 +18138,14 @@ components:
       - ACH
       - OFFLINE
       - CREDITS
-      - HU_PAY
+      - RECHARGE
       type: string
       x-enum-varnames:
       - PaymentMethodTypeCard
       - PaymentMethodTypeACH
       - PaymentMethodTypeOffline
       - PaymentMethodTypeCredits
-      - PaymentMethodTypeHuPay
+      - PaymentMethodTypeRecharge
     types.PaymentStatus:
       enum:
       - PENDING

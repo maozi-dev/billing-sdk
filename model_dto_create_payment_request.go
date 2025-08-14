@@ -22,11 +22,13 @@ var _ MappedNullable = &DtoCreatePaymentRequest{}
 // DtoCreatePaymentRequest struct for DtoCreatePaymentRequest
 type DtoCreatePaymentRequest struct {
 	Amount float32 `json:"amount"`
+	BonusAmount *float32 `json:"bonus_amount,omitempty"`
 	Currency string `json:"currency"`
 	CustomerId *string `json:"customer_id,omitempty"`
 	Description *string `json:"description,omitempty"`
 	DestinationId string `json:"destination_id"`
 	DestinationType TypesPaymentDestinationType `json:"destination_type"`
+	ExternalCustomerId *string `json:"external_customer_id,omitempty"`
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -87,6 +89,38 @@ func (o *DtoCreatePaymentRequest) GetAmountOk() (*float32, bool) {
 // SetAmount sets field value
 func (o *DtoCreatePaymentRequest) SetAmount(v float32) {
 	o.Amount = v
+}
+
+// GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
+func (o *DtoCreatePaymentRequest) GetBonusAmount() float32 {
+	if o == nil || IsNil(o.BonusAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.BonusAmount
+}
+
+// GetBonusAmountOk returns a tuple with the BonusAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoCreatePaymentRequest) GetBonusAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.BonusAmount) {
+		return nil, false
+	}
+	return o.BonusAmount, true
+}
+
+// HasBonusAmount returns a boolean if a field has been set.
+func (o *DtoCreatePaymentRequest) HasBonusAmount() bool {
+	if o != nil && !IsNil(o.BonusAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetBonusAmount gets a reference to the given float32 and assigns it to the BonusAmount field.
+func (o *DtoCreatePaymentRequest) SetBonusAmount(v float32) {
+	o.BonusAmount = &v
 }
 
 // GetCurrency returns the Currency field value
@@ -223,6 +257,38 @@ func (o *DtoCreatePaymentRequest) GetDestinationTypeOk() (*TypesPaymentDestinati
 // SetDestinationType sets field value
 func (o *DtoCreatePaymentRequest) SetDestinationType(v TypesPaymentDestinationType) {
 	o.DestinationType = v
+}
+
+// GetExternalCustomerId returns the ExternalCustomerId field value if set, zero value otherwise.
+func (o *DtoCreatePaymentRequest) GetExternalCustomerId() string {
+	if o == nil || IsNil(o.ExternalCustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalCustomerId
+}
+
+// GetExternalCustomerIdOk returns a tuple with the ExternalCustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoCreatePaymentRequest) GetExternalCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalCustomerId) {
+		return nil, false
+	}
+	return o.ExternalCustomerId, true
+}
+
+// HasExternalCustomerId returns a boolean if a field has been set.
+func (o *DtoCreatePaymentRequest) HasExternalCustomerId() bool {
+	if o != nil && !IsNil(o.ExternalCustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalCustomerId gets a reference to the given string and assigns it to the ExternalCustomerId field.
+func (o *DtoCreatePaymentRequest) SetExternalCustomerId(v string) {
+	o.ExternalCustomerId = &v
 }
 
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
@@ -484,6 +550,9 @@ func (o DtoCreatePaymentRequest) MarshalJSON() ([]byte, error) {
 func (o DtoCreatePaymentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["amount"] = o.Amount
+	if !IsNil(o.BonusAmount) {
+		toSerialize["bonus_amount"] = o.BonusAmount
+	}
 	toSerialize["currency"] = o.Currency
 	if !IsNil(o.CustomerId) {
 		toSerialize["customer_id"] = o.CustomerId
@@ -493,6 +562,9 @@ func (o DtoCreatePaymentRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["destination_id"] = o.DestinationId
 	toSerialize["destination_type"] = o.DestinationType
+	if !IsNil(o.ExternalCustomerId) {
+		toSerialize["external_customer_id"] = o.ExternalCustomerId
+	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey
 	}
