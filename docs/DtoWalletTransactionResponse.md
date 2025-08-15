@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **string** |  | [optional] 
+**BonusAmount** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CreditAmount** | Pointer to **string** |  | [optional] 
 **CreditBalanceAfter** | Pointer to **string** |  | [optional] 
 **CreditBalanceBefore** | Pointer to **string** |  | [optional] 
-**CreditsAvailable** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **ExpiryDate** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
@@ -66,6 +66,31 @@ SetAmount sets Amount field to given value.
 `func (o *DtoWalletTransactionResponse) HasAmount() bool`
 
 HasAmount returns a boolean if a field has been set.
+
+### GetBonusAmount
+
+`func (o *DtoWalletTransactionResponse) GetBonusAmount() string`
+
+GetBonusAmount returns the BonusAmount field if non-nil, zero value otherwise.
+
+### GetBonusAmountOk
+
+`func (o *DtoWalletTransactionResponse) GetBonusAmountOk() (*string, bool)`
+
+GetBonusAmountOk returns a tuple with the BonusAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBonusAmount
+
+`func (o *DtoWalletTransactionResponse) SetBonusAmount(v string)`
+
+SetBonusAmount sets BonusAmount field to given value.
+
+### HasBonusAmount
+
+`func (o *DtoWalletTransactionResponse) HasBonusAmount() bool`
+
+HasBonusAmount returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -166,31 +191,6 @@ SetCreditBalanceBefore sets CreditBalanceBefore field to given value.
 `func (o *DtoWalletTransactionResponse) HasCreditBalanceBefore() bool`
 
 HasCreditBalanceBefore returns a boolean if a field has been set.
-
-### GetCreditsAvailable
-
-`func (o *DtoWalletTransactionResponse) GetCreditsAvailable() string`
-
-GetCreditsAvailable returns the CreditsAvailable field if non-nil, zero value otherwise.
-
-### GetCreditsAvailableOk
-
-`func (o *DtoWalletTransactionResponse) GetCreditsAvailableOk() (*string, bool)`
-
-GetCreditsAvailableOk returns a tuple with the CreditsAvailable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreditsAvailable
-
-`func (o *DtoWalletTransactionResponse) SetCreditsAvailable(v string)`
-
-SetCreditsAvailable sets CreditsAvailable field to given value.
-
-### HasCreditsAvailable
-
-`func (o *DtoWalletTransactionResponse) HasCreditsAvailable() bool`
-
-HasCreditsAvailable returns a boolean if a field has been set.
 
 ### GetDescription
 

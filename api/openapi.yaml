@@ -14578,13 +14578,13 @@ components:
           reference_id: reference_id
           expiry_date: expiry_date
           credit_amount: credit_amount
+          bonus_amount: bonus_amount
           created_at: created_at
           description: description
           priority: 0
           transaction_reason: EVENT_PAYMENT
           type: type
           reference_type: PAYMENT
-          credits_available: credits_available
           wallet_id: wallet_id
           updated_at: updated_at
           credit_balance_after: credit_balance_after
@@ -14597,13 +14597,13 @@ components:
           reference_id: reference_id
           expiry_date: expiry_date
           credit_amount: credit_amount
+          bonus_amount: bonus_amount
           created_at: created_at
           description: description
           priority: 0
           transaction_reason: EVENT_PAYMENT
           type: type
           reference_type: PAYMENT
-          credits_available: credits_available
           wallet_id: wallet_id
           updated_at: updated_at
           credit_balance_after: credit_balance_after
@@ -17444,19 +17444,21 @@ components:
         reference_id: reference_id
         expiry_date: expiry_date
         credit_amount: credit_amount
+        bonus_amount: bonus_amount
         created_at: created_at
         description: description
         priority: 0
         transaction_reason: EVENT_PAYMENT
         type: type
         reference_type: PAYMENT
-        credits_available: credits_available
         wallet_id: wallet_id
         updated_at: updated_at
         credit_balance_after: credit_balance_after
         id: id
       properties:
         amount:
+          type: string
+        bonus_amount:
           type: string
         created_at:
           type: string
@@ -17465,8 +17467,6 @@ components:
         credit_balance_after:
           type: string
         credit_balance_before:
-          type: string
-        credits_available:
           type: string
         description:
           type: string

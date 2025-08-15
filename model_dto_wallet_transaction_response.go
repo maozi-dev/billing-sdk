@@ -20,11 +20,11 @@ var _ MappedNullable = &DtoWalletTransactionResponse{}
 // DtoWalletTransactionResponse struct for DtoWalletTransactionResponse
 type DtoWalletTransactionResponse struct {
 	Amount *string `json:"amount,omitempty"`
+	BonusAmount *string `json:"bonus_amount,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreditAmount *string `json:"credit_amount,omitempty"`
 	CreditBalanceAfter *string `json:"credit_balance_after,omitempty"`
 	CreditBalanceBefore *string `json:"credit_balance_before,omitempty"`
-	CreditsAvailable *string `json:"credits_available,omitempty"`
 	Description *string `json:"description,omitempty"`
 	ExpiryDate *string `json:"expiry_date,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -86,6 +86,38 @@ func (o *DtoWalletTransactionResponse) HasAmount() bool {
 // SetAmount gets a reference to the given string and assigns it to the Amount field.
 func (o *DtoWalletTransactionResponse) SetAmount(v string) {
 	o.Amount = &v
+}
+
+// GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
+func (o *DtoWalletTransactionResponse) GetBonusAmount() string {
+	if o == nil || IsNil(o.BonusAmount) {
+		var ret string
+		return ret
+	}
+	return *o.BonusAmount
+}
+
+// GetBonusAmountOk returns a tuple with the BonusAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtoWalletTransactionResponse) GetBonusAmountOk() (*string, bool) {
+	if o == nil || IsNil(o.BonusAmount) {
+		return nil, false
+	}
+	return o.BonusAmount, true
+}
+
+// HasBonusAmount returns a boolean if a field has been set.
+func (o *DtoWalletTransactionResponse) HasBonusAmount() bool {
+	if o != nil && !IsNil(o.BonusAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetBonusAmount gets a reference to the given string and assigns it to the BonusAmount field.
+func (o *DtoWalletTransactionResponse) SetBonusAmount(v string) {
+	o.BonusAmount = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -214,38 +246,6 @@ func (o *DtoWalletTransactionResponse) HasCreditBalanceBefore() bool {
 // SetCreditBalanceBefore gets a reference to the given string and assigns it to the CreditBalanceBefore field.
 func (o *DtoWalletTransactionResponse) SetCreditBalanceBefore(v string) {
 	o.CreditBalanceBefore = &v
-}
-
-// GetCreditsAvailable returns the CreditsAvailable field value if set, zero value otherwise.
-func (o *DtoWalletTransactionResponse) GetCreditsAvailable() string {
-	if o == nil || IsNil(o.CreditsAvailable) {
-		var ret string
-		return ret
-	}
-	return *o.CreditsAvailable
-}
-
-// GetCreditsAvailableOk returns a tuple with the CreditsAvailable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoWalletTransactionResponse) GetCreditsAvailableOk() (*string, bool) {
-	if o == nil || IsNil(o.CreditsAvailable) {
-		return nil, false
-	}
-	return o.CreditsAvailable, true
-}
-
-// HasCreditsAvailable returns a boolean if a field has been set.
-func (o *DtoWalletTransactionResponse) HasCreditsAvailable() bool {
-	if o != nil && !IsNil(o.CreditsAvailable) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreditsAvailable gets a reference to the given string and assigns it to the CreditsAvailable field.
-func (o *DtoWalletTransactionResponse) SetCreditsAvailable(v string) {
-	o.CreditsAvailable = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -645,6 +645,9 @@ func (o DtoWalletTransactionResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
+	if !IsNil(o.BonusAmount) {
+		toSerialize["bonus_amount"] = o.BonusAmount
+	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
@@ -656,9 +659,6 @@ func (o DtoWalletTransactionResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreditBalanceBefore) {
 		toSerialize["credit_balance_before"] = o.CreditBalanceBefore
-	}
-	if !IsNil(o.CreditsAvailable) {
-		toSerialize["credits_available"] = o.CreditsAvailable
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
