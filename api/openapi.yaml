@@ -5413,6 +5413,130 @@ paths:
       tags:
       - Users
   /wallets:
+    get:
+      description: List Wallets with the specified filter
+      parameters:
+      - explode: true
+        in: query
+        name: end_balance
+        required: false
+        schema:
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: end_time
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          maximum: 1000
+          minimum: 1
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: start_balance
+        required: false
+        schema:
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: start_time
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          enum:
+          - active
+          - frozen
+          - closed
+          type: string
+          x-enum-varnames:
+          - WalletStatusActive
+          - WalletStatusFrozen
+          - WalletStatusClosed
+        style: form
+        x-enum-varnames:
+        - WalletStatusActive
+        - WalletStatusFrozen
+        - WalletStatusClosed
+      - explode: false
+        in: query
+        name: wallet_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.ListWalletsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: List Wallets
+      tags:
+      - Wallets
     post:
       description: Create a new wallet for a customer
       requestBody:
@@ -14616,6 +14740,73 @@ components:
         pagination:
           $ref: '#/components/schemas/types.PaginationResponse'
       type: object
+    dto.ListWalletsResponse:
+      example:
+        pagination:
+          total: 7
+          offset: 2
+          limit: 5
+        items:
+        - tenant_id: tenant_id
+          metadata:
+            key: metadata
+          environment_id: environment_id
+          created_at: created_at
+          description: description
+          auto_topup_amount: auto_topup_amount
+          wallet_status: active
+          created_by: created_by
+          auto_topup_min_balance: auto_topup_min_balance
+          auto_topup_trigger: disabled
+          balance: balance
+          updated_at: updated_at
+          credit_balance: credit_balance
+          name: name
+          updated_by: updated_by
+          wallet_type: PROMOTIONAL
+          currency: currency
+          id: id
+          customer_id: customer_id
+          config:
+            allowed_price_types:
+            - ALL
+            - ALL
+          conversion_rate: conversion_rate
+          status: published
+        - tenant_id: tenant_id
+          metadata:
+            key: metadata
+          environment_id: environment_id
+          created_at: created_at
+          description: description
+          auto_topup_amount: auto_topup_amount
+          wallet_status: active
+          created_by: created_by
+          auto_topup_min_balance: auto_topup_min_balance
+          auto_topup_trigger: disabled
+          balance: balance
+          updated_at: updated_at
+          credit_balance: credit_balance
+          name: name
+          updated_by: updated_by
+          wallet_type: PROMOTIONAL
+          currency: currency
+          id: id
+          customer_id: customer_id
+          config:
+            allowed_price_types:
+            - ALL
+            - ALL
+          conversion_rate: conversion_rate
+          status: published
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/wallet.Wallet'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/types.PaginationResponse'
+      type: object
     dto.LoginRequest:
       properties:
         email:
@@ -18411,6 +18602,82 @@ components:
       - WindowSize12Hour
       - WindowSizeDay
       - WindowSizeWeek
+    wallet.Wallet:
+      example:
+        tenant_id: tenant_id
+        metadata:
+          key: metadata
+        environment_id: environment_id
+        created_at: created_at
+        description: description
+        auto_topup_amount: auto_topup_amount
+        wallet_status: active
+        created_by: created_by
+        auto_topup_min_balance: auto_topup_min_balance
+        auto_topup_trigger: disabled
+        balance: balance
+        updated_at: updated_at
+        credit_balance: credit_balance
+        name: name
+        updated_by: updated_by
+        wallet_type: PROMOTIONAL
+        currency: currency
+        id: id
+        customer_id: customer_id
+        config:
+          allowed_price_types:
+          - ALL
+          - ALL
+        conversion_rate: conversion_rate
+        status: published
+      properties:
+        auto_topup_amount:
+          type: string
+        auto_topup_min_balance:
+          type: string
+        auto_topup_trigger:
+          $ref: '#/components/schemas/types.AutoTopupTrigger'
+        balance:
+          type: string
+        config:
+          $ref: '#/components/schemas/types.WalletConfig'
+        conversion_rate:
+          type: string
+        created_at:
+          type: string
+        created_by:
+          type: string
+        credit_balance:
+          type: string
+        currency:
+          type: string
+        customer_id:
+          type: string
+        description:
+          type: string
+        environment_id:
+          type: string
+        id:
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/types.Status'
+        tenant_id:
+          type: string
+        updated_at:
+          type: string
+        updated_by:
+          type: string
+        wallet_status:
+          $ref: '#/components/schemas/types.WalletStatus'
+        wallet_type:
+          $ref: '#/components/schemas/types.WalletType'
+      type: object
     service_SyncPlanPricesResponse_synchronization_summary:
       example:
         prices_added: 0

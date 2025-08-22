@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CustomersIdWalletsGet**](WalletsAPI.md#CustomersIdWalletsGet) | **Get** /customers/{id}/wallets | Get wallets by customer ID
 [**CustomersWalletsGet**](WalletsAPI.md#CustomersWalletsGet) | **Get** /customers/wallets | Get Customer Wallets
+[**WalletsGet**](WalletsAPI.md#WalletsGet) | **Get** /wallets | List Wallets
 [**WalletsIdBalanceRealTimeGet**](WalletsAPI.md#WalletsIdBalanceRealTimeGet) | **Get** /wallets/{id}/balance/real-time | Get wallet balance
 [**WalletsIdGet**](WalletsAPI.md#WalletsIdGet) | **Get** /wallets/{id} | Get wallet by ID
 [**WalletsIdPut**](WalletsAPI.md#WalletsIdPut) | **Put** /wallets/{id} | Update a wallet
@@ -141,6 +142,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]DtoWalletResponse**](DtoWalletResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## WalletsGet
+
+> DtoListWalletsResponse WalletsGet(ctx).EndBalance(endBalance).EndTime(endTime).Expand(expand).Limit(limit).Offset(offset).Order(order).Sort(sort).StartBalance(startBalance).StartTime(startTime).Status(status).WalletIds(walletIds).Execute()
+
+List Wallets
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
+)
+
+func main() {
+	endBalance := float32(8.14) // float32 |  (optional)
+	endTime := "endTime_example" // string |  (optional)
+	expand := "expand_example" // string |  (optional)
+	limit := int32(56) // int32 |  (optional)
+	offset := int32(56) // int32 |  (optional)
+	order := "order_example" // string |  (optional)
+	sort := "sort_example" // string |  (optional)
+	startBalance := float32(8.14) // float32 |  (optional)
+	startTime := "startTime_example" // string |  (optional)
+	status := "status_example" // string |  (optional)
+	walletIds := []string{"Inner_example"} // []string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WalletsAPI.WalletsGet(context.Background()).EndBalance(endBalance).EndTime(endTime).Expand(expand).Limit(limit).Offset(offset).Order(order).Sort(sort).StartBalance(startBalance).StartTime(startTime).Status(status).WalletIds(walletIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.WalletsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `WalletsGet`: DtoListWalletsResponse
+	fmt.Fprintf(os.Stdout, "Response from `WalletsAPI.WalletsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiWalletsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **endBalance** | **float32** |  | 
+ **endTime** | **string** |  | 
+ **expand** | **string** |  | 
+ **limit** | **int32** |  | 
+ **offset** | **int32** |  | 
+ **order** | **string** |  | 
+ **sort** | **string** |  | 
+ **startBalance** | **float32** |  | 
+ **startTime** | **string** |  | 
+ **status** | **string** |  | 
+ **walletIds** | **[]string** |  | 
+
+### Return type
+
+[**DtoListWalletsResponse**](DtoListWalletsResponse.md)
 
 ### Authorization
 
