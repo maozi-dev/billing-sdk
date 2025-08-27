@@ -5944,6 +5944,7 @@ paths:
           - WALLET_TERMINATION
           - BILLING
           - RECHARGE
+          - EXTERNAL_PAYMENT
           type: string
           x-enum-varnames:
           - TransactionReasonEventPayment
@@ -5957,6 +5958,7 @@ paths:
           - TransactionReasonWalletTermination
           - TransactionReasonBilling
           - TransactionReasonRecharge
+          - TransactionReasonExternalPayment
         style: form
         x-enum-varnames:
         - TransactionReasonEventPayment
@@ -5970,6 +5972,7 @@ paths:
         - TransactionReasonWalletTermination
         - TransactionReasonBilling
         - TransactionReasonRecharge
+        - TransactionReasonExternalPayment
       - explode: true
         in: query
         name: transaction_status
@@ -18318,11 +18321,13 @@ components:
       - INVOICE
       - EVENT
       - CREDITS
+      - EXTERNAL
       type: string
       x-enum-varnames:
       - PaymentDestinationTypeInvoice
       - PaymentDestinationTypeEvent
       - PaymentDestinationTypeCredits
+      - PaymentDestinationTypeExternal
     types.PaymentMethodType:
       enum:
       - CARD
@@ -18495,6 +18500,7 @@ components:
       - WALLET_TERMINATION
       - BILLING
       - RECHARGE
+      - EXTERNAL_PAYMENT
       type: string
       x-enum-varnames:
       - TransactionReasonEventPayment
@@ -18508,6 +18514,7 @@ components:
       - TransactionReasonWalletTermination
       - TransactionReasonBilling
       - TransactionReasonRecharge
+      - TransactionReasonExternalPayment
     types.TransactionStatus:
       enum:
       - pending
@@ -18565,13 +18572,11 @@ components:
       - PAYMENT
       - EXTERNAL
       - REQUEST
-      - APP_BILLING
       type: string
       x-enum-varnames:
       - WalletTxReferenceTypePayment
       - WalletTxReferenceTypeExternal
       - WalletTxReferenceTypeRequest
-      - WalletTxReferenceTypeBilling
     types.WalletType:
       enum:
       - PROMOTIONAL

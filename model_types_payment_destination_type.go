@@ -23,6 +23,7 @@ const (
 	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeInvoice TypesPaymentDestinationType = "INVOICE"
 	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeEvent TypesPaymentDestinationType = "EVENT"
 	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeCredits TypesPaymentDestinationType = "CREDITS"
+	TYPESPAYMENTDESTINATIONTYPE_PaymentDestinationTypeExternal TypesPaymentDestinationType = "EXTERNAL"
 )
 
 // All allowed values of TypesPaymentDestinationType enum
@@ -30,6 +31,7 @@ var AllowedTypesPaymentDestinationTypeEnumValues = []TypesPaymentDestinationType
 	"INVOICE",
 	"EVENT",
 	"CREDITS",
+	"EXTERNAL",
 }
 
 func (v *TypesPaymentDestinationType) UnmarshalJSON(src []byte) error {

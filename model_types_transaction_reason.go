@@ -31,6 +31,7 @@ const (
 	TYPESTRANSACTIONREASON_TransactionReasonWalletTermination TypesTransactionReason = "WALLET_TERMINATION"
 	TYPESTRANSACTIONREASON_TransactionReasonBilling TypesTransactionReason = "BILLING"
 	TYPESTRANSACTIONREASON_TransactionReasonRecharge TypesTransactionReason = "RECHARGE"
+	TYPESTRANSACTIONREASON_TransactionReasonExternalPayment TypesTransactionReason = "EXTERNAL_PAYMENT"
 )
 
 // All allowed values of TypesTransactionReason enum
@@ -46,6 +47,7 @@ var AllowedTypesTransactionReasonEnumValues = []TypesTransactionReason{
 	"WALLET_TERMINATION",
 	"BILLING",
 	"RECHARGE",
+	"EXTERNAL_PAYMENT",
 }
 
 func (v *TypesTransactionReason) UnmarshalJSON(src []byte) error {
