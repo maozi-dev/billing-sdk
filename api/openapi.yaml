@@ -6827,9 +6827,9 @@ components:
     dto.CreatePaymentRequest:
       properties:
         amount:
-          type: number
+          type: string
         bonus_amount:
-          type: number
+          type: string
         currency:
           type: string
         customer_id:

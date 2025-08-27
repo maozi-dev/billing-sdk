@@ -21,8 +21,8 @@ var _ MappedNullable = &DtoCreatePaymentRequest{}
 
 // DtoCreatePaymentRequest struct for DtoCreatePaymentRequest
 type DtoCreatePaymentRequest struct {
-	Amount float32 `json:"amount"`
-	BonusAmount *float32 `json:"bonus_amount,omitempty"`
+	Amount string `json:"amount"`
+	BonusAmount *string `json:"bonus_amount,omitempty"`
 	Currency string `json:"currency"`
 	CustomerId *string `json:"customer_id,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -45,7 +45,7 @@ type _DtoCreatePaymentRequest DtoCreatePaymentRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreatePaymentRequest(amount float32, currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType) *DtoCreatePaymentRequest {
+func NewDtoCreatePaymentRequest(amount string, currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType) *DtoCreatePaymentRequest {
 	this := DtoCreatePaymentRequest{}
 	this.Amount = amount
 	this.Currency = currency
@@ -68,9 +68,9 @@ func NewDtoCreatePaymentRequestWithDefaults() *DtoCreatePaymentRequest {
 }
 
 // GetAmount returns the Amount field value
-func (o *DtoCreatePaymentRequest) GetAmount() float32 {
+func (o *DtoCreatePaymentRequest) GetAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *DtoCreatePaymentRequest) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreatePaymentRequest) GetAmountOk() (*float32, bool) {
+func (o *DtoCreatePaymentRequest) GetAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,14 +87,14 @@ func (o *DtoCreatePaymentRequest) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *DtoCreatePaymentRequest) SetAmount(v float32) {
+func (o *DtoCreatePaymentRequest) SetAmount(v string) {
 	o.Amount = v
 }
 
 // GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
-func (o *DtoCreatePaymentRequest) GetBonusAmount() float32 {
+func (o *DtoCreatePaymentRequest) GetBonusAmount() string {
 	if o == nil || IsNil(o.BonusAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.BonusAmount
@@ -102,7 +102,7 @@ func (o *DtoCreatePaymentRequest) GetBonusAmount() float32 {
 
 // GetBonusAmountOk returns a tuple with the BonusAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreatePaymentRequest) GetBonusAmountOk() (*float32, bool) {
+func (o *DtoCreatePaymentRequest) GetBonusAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.BonusAmount) {
 		return nil, false
 	}
@@ -118,8 +118,8 @@ func (o *DtoCreatePaymentRequest) HasBonusAmount() bool {
 	return false
 }
 
-// SetBonusAmount gets a reference to the given float32 and assigns it to the BonusAmount field.
-func (o *DtoCreatePaymentRequest) SetBonusAmount(v float32) {
+// SetBonusAmount gets a reference to the given string and assigns it to the BonusAmount field.
+func (o *DtoCreatePaymentRequest) SetBonusAmount(v string) {
 	o.BonusAmount = &v
 }
 

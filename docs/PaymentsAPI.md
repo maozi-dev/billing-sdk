@@ -418,7 +418,7 @@ import (
 )
 
 func main() {
-	payment := *openapiclient.NewDtoCreatePaymentRequest(float32(123), "Currency_example", "DestinationId_example", openapiclient.types.PaymentDestinationType("INVOICE"), openapiclient.types.PaymentMethodType("CARD")) // DtoCreatePaymentRequest | Payment configuration
+	payment := *openapiclient.NewDtoCreatePaymentRequest("Amount_example", "Currency_example", "DestinationId_example", openapiclient.types.PaymentDestinationType("INVOICE"), openapiclient.types.PaymentMethodType("CARD")) // DtoCreatePaymentRequest | Payment configuration
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

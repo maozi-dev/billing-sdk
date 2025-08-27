@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **float32** |  | 
-**BonusAmount** | Pointer to **float32** |  | [optional] 
+**Amount** | **string** |  | 
+**BonusAmount** | Pointer to **string** |  | [optional] 
 **Currency** | **string** |  | 
 **CustomerId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewDtoCreatePaymentRequest
 
-`func NewDtoCreatePaymentRequest(amount float32, currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType, ) *DtoCreatePaymentRequest`
+`func NewDtoCreatePaymentRequest(amount string, currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType, ) *DtoCreatePaymentRequest`
 
 NewDtoCreatePaymentRequest instantiates a new DtoCreatePaymentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -42,40 +42,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoCreatePaymentRequest) GetAmount() float32`
+`func (o *DtoCreatePaymentRequest) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoCreatePaymentRequest) GetAmountOk() (*float32, bool)`
+`func (o *DtoCreatePaymentRequest) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoCreatePaymentRequest) SetAmount(v float32)`
+`func (o *DtoCreatePaymentRequest) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
 
 ### GetBonusAmount
 
-`func (o *DtoCreatePaymentRequest) GetBonusAmount() float32`
+`func (o *DtoCreatePaymentRequest) GetBonusAmount() string`
 
 GetBonusAmount returns the BonusAmount field if non-nil, zero value otherwise.
 
 ### GetBonusAmountOk
 
-`func (o *DtoCreatePaymentRequest) GetBonusAmountOk() (*float32, bool)`
+`func (o *DtoCreatePaymentRequest) GetBonusAmountOk() (*string, bool)`
 
 GetBonusAmountOk returns a tuple with the BonusAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBonusAmount
 
-`func (o *DtoCreatePaymentRequest) SetBonusAmount(v float32)`
+`func (o *DtoCreatePaymentRequest) SetBonusAmount(v string)`
 
 SetBonusAmount sets BonusAmount field to given value.
 
