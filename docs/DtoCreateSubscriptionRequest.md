@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BillingCycle** | Pointer to [**TypesBillingCycle**](TypesBillingCycle.md) |  | [optional] 
 **BillingPeriodCount** | **int32** | BillingCadence     types.BillingCadence &#x60;json:\&quot;billing_cadence\&quot; validate:\&quot;required\&quot;&#x60; BillingPeriod      types.BillingPeriod  &#x60;json:\&quot;billing_period\&quot; validate:\&quot;required\&quot;&#x60; | 
-**CommitmentAmount** | Pointer to **float32** | Credit grants to be applied when subscription is created CreditGrants []CreateCreditGrantRequest &#x60;json:\&quot;credit_grants,omitempty\&quot;&#x60; CommitmentAmount is the minimum amount a customer commits to paying for a billing period | [optional] 
+**CommitmentAmount** | Pointer to **float32** | CommitmentAmount is the minimum amount a customer commits to paying for a billing period | [optional] 
 **CustomerId** | Pointer to **string** | customer_id is the flexprice customer id and it is prioritized over external_customer_id in case both are provided. | [optional] 
 **EndDate** | Pointer to **string** |  | [optional] 
 **ExternalCustomerId** | Pointer to **string** | external_customer_id is the customer id in your DB and must be same as what you provided as external_id while creating the customer in flexprice. | [optional] 

@@ -19,9 +19,7 @@ var _ MappedNullable = &DtoUpdatePlanRequest{}
 
 // DtoUpdatePlanRequest struct for DtoUpdatePlanRequest
 type DtoUpdatePlanRequest struct {
-	CreditGrants []DtoUpdatePlanCreditGrantRequest `json:"credit_grants,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Entitlements []DtoUpdatePlanEntitlementRequest `json:"entitlements,omitempty"`
 	LookupKey *string `json:"lookup_key,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Prices []DtoUpdatePlanPriceRequest `json:"prices,omitempty"`
@@ -42,38 +40,6 @@ func NewDtoUpdatePlanRequest() *DtoUpdatePlanRequest {
 func NewDtoUpdatePlanRequestWithDefaults() *DtoUpdatePlanRequest {
 	this := DtoUpdatePlanRequest{}
 	return &this
-}
-
-// GetCreditGrants returns the CreditGrants field value if set, zero value otherwise.
-func (o *DtoUpdatePlanRequest) GetCreditGrants() []DtoUpdatePlanCreditGrantRequest {
-	if o == nil || IsNil(o.CreditGrants) {
-		var ret []DtoUpdatePlanCreditGrantRequest
-		return ret
-	}
-	return o.CreditGrants
-}
-
-// GetCreditGrantsOk returns a tuple with the CreditGrants field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoUpdatePlanRequest) GetCreditGrantsOk() ([]DtoUpdatePlanCreditGrantRequest, bool) {
-	if o == nil || IsNil(o.CreditGrants) {
-		return nil, false
-	}
-	return o.CreditGrants, true
-}
-
-// HasCreditGrants returns a boolean if a field has been set.
-func (o *DtoUpdatePlanRequest) HasCreditGrants() bool {
-	if o != nil && !IsNil(o.CreditGrants) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreditGrants gets a reference to the given []DtoUpdatePlanCreditGrantRequest and assigns it to the CreditGrants field.
-func (o *DtoUpdatePlanRequest) SetCreditGrants(v []DtoUpdatePlanCreditGrantRequest) {
-	o.CreditGrants = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -106,38 +72,6 @@ func (o *DtoUpdatePlanRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DtoUpdatePlanRequest) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *DtoUpdatePlanRequest) GetEntitlements() []DtoUpdatePlanEntitlementRequest {
-	if o == nil || IsNil(o.Entitlements) {
-		var ret []DtoUpdatePlanEntitlementRequest
-		return ret
-	}
-	return o.Entitlements
-}
-
-// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoUpdatePlanRequest) GetEntitlementsOk() ([]DtoUpdatePlanEntitlementRequest, bool) {
-	if o == nil || IsNil(o.Entitlements) {
-		return nil, false
-	}
-	return o.Entitlements, true
-}
-
-// HasEntitlements returns a boolean if a field has been set.
-func (o *DtoUpdatePlanRequest) HasEntitlements() bool {
-	if o != nil && !IsNil(o.Entitlements) {
-		return true
-	}
-
-	return false
-}
-
-// SetEntitlements gets a reference to the given []DtoUpdatePlanEntitlementRequest and assigns it to the Entitlements field.
-func (o *DtoUpdatePlanRequest) SetEntitlements(v []DtoUpdatePlanEntitlementRequest) {
-	o.Entitlements = v
 }
 
 // GetLookupKey returns the LookupKey field value if set, zero value otherwise.
@@ -246,14 +180,8 @@ func (o DtoUpdatePlanRequest) MarshalJSON() ([]byte, error) {
 
 func (o DtoUpdatePlanRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreditGrants) {
-		toSerialize["credit_grants"] = o.CreditGrants
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Entitlements) {
-		toSerialize["entitlements"] = o.Entitlements
 	}
 	if !IsNil(o.LookupKey) {
 		toSerialize["lookup_key"] = o.LookupKey

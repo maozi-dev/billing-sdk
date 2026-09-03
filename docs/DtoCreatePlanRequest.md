@@ -7,10 +7,8 @@ Name | Type | Description | Notes
 **BillingCadence** | Pointer to [**TypesBillingCadence**](TypesBillingCadence.md) |  | [optional] 
 **BillingPeriod** | [**TypesBillingPeriod**](TypesBillingPeriod.md) |  | 
 **BillingPeriodCount** | Pointer to **int32** | BillingPeriodCount is the count of the billing period ex 1, 3, 6, 12 | [optional] 
-**CreditGrants** | Pointer to [**[]DtoCreateCreditGrantRequest**](DtoCreateCreditGrantRequest.md) |  | [optional] 
 **Currency** | Pointer to **string** | Currency 3 digit ISO currency code in lowercase ex usd, eur, gbp | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Entitlements** | Pointer to [**[]DtoCreatePlanEntitlementRequest**](DtoCreatePlanEntitlementRequest.md) |  | [optional] 
 **LookupKey** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **Prices** | Pointer to [**[]DtoCreatePlanPriceRequest**](DtoCreatePlanPriceRequest.md) |  | [optional] 
@@ -104,31 +102,6 @@ SetBillingPeriodCount sets BillingPeriodCount field to given value.
 
 HasBillingPeriodCount returns a boolean if a field has been set.
 
-### GetCreditGrants
-
-`func (o *DtoCreatePlanRequest) GetCreditGrants() []DtoCreateCreditGrantRequest`
-
-GetCreditGrants returns the CreditGrants field if non-nil, zero value otherwise.
-
-### GetCreditGrantsOk
-
-`func (o *DtoCreatePlanRequest) GetCreditGrantsOk() (*[]DtoCreateCreditGrantRequest, bool)`
-
-GetCreditGrantsOk returns a tuple with the CreditGrants field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreditGrants
-
-`func (o *DtoCreatePlanRequest) SetCreditGrants(v []DtoCreateCreditGrantRequest)`
-
-SetCreditGrants sets CreditGrants field to given value.
-
-### HasCreditGrants
-
-`func (o *DtoCreatePlanRequest) HasCreditGrants() bool`
-
-HasCreditGrants returns a boolean if a field has been set.
-
 ### GetCurrency
 
 `func (o *DtoCreatePlanRequest) GetCurrency() string`
@@ -178,31 +151,6 @@ SetDescription sets Description field to given value.
 `func (o *DtoCreatePlanRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetEntitlements
-
-`func (o *DtoCreatePlanRequest) GetEntitlements() []DtoCreatePlanEntitlementRequest`
-
-GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
-
-### GetEntitlementsOk
-
-`func (o *DtoCreatePlanRequest) GetEntitlementsOk() (*[]DtoCreatePlanEntitlementRequest, bool)`
-
-GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntitlements
-
-`func (o *DtoCreatePlanRequest) SetEntitlements(v []DtoCreatePlanEntitlementRequest)`
-
-SetEntitlements sets Entitlements field to given value.
-
-### HasEntitlements
-
-`func (o *DtoCreatePlanRequest) HasEntitlements() bool`
-
-HasEntitlements returns a boolean if a field has been set.
 
 ### GetLookupKey
 

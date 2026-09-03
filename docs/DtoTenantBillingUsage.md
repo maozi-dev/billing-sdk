@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Subscriptions** | Pointer to [**[]DtoSubscriptionResponse**](DtoSubscriptionResponse.md) |  | [optional] 
-**Usage** | Pointer to [**DtoCustomerUsageSummaryResponse**](DtoCustomerUsageSummaryResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -50,31 +49,6 @@ SetSubscriptions sets Subscriptions field to given value.
 `func (o *DtoTenantBillingUsage) HasSubscriptions() bool`
 
 HasSubscriptions returns a boolean if a field has been set.
-
-### GetUsage
-
-`func (o *DtoTenantBillingUsage) GetUsage() DtoCustomerUsageSummaryResponse`
-
-GetUsage returns the Usage field if non-nil, zero value otherwise.
-
-### GetUsageOk
-
-`func (o *DtoTenantBillingUsage) GetUsageOk() (*DtoCustomerUsageSummaryResponse, bool)`
-
-GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsage
-
-`func (o *DtoTenantBillingUsage) SetUsage(v DtoCustomerUsageSummaryResponse)`
-
-SetUsage sets Usage field to given value.
-
-### HasUsage
-
-`func (o *DtoTenantBillingUsage) HasUsage() bool`
-
-HasUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

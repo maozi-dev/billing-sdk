@@ -15,8 +15,6 @@
 
 * `TransactionReasonPurchasedCreditDirect` (value: `"PURCHASED_CREDIT_DIRECT"`)
 
-* `TransactionReasonCreditNote` (value: `"CREDIT_NOTE"`)
-
 * `TransactionReasonCreditExpired` (value: `"CREDIT_EXPIRED"`)
 
 * `TransactionReasonWalletTermination` (value: `"WALLET_TERMINATION"`)

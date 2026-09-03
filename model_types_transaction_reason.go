@@ -26,7 +26,6 @@ const (
 	TYPESTRANSACTIONREASON_TransactionReasonSubscriptionCredit TypesTransactionReason = "SUBSCRIPTION_CREDIT_GRANT"
 	TYPESTRANSACTIONREASON_TransactionReasonPurchasedCreditInvoiced TypesTransactionReason = "PURCHASED_CREDIT_INVOICED"
 	TYPESTRANSACTIONREASON_TransactionReasonPurchasedCreditDirect TypesTransactionReason = "PURCHASED_CREDIT_DIRECT"
-	TYPESTRANSACTIONREASON_TransactionReasonCreditNote TypesTransactionReason = "CREDIT_NOTE"
 	TYPESTRANSACTIONREASON_TransactionReasonCreditExpired TypesTransactionReason = "CREDIT_EXPIRED"
 	TYPESTRANSACTIONREASON_TransactionReasonWalletTermination TypesTransactionReason = "WALLET_TERMINATION"
 	TYPESTRANSACTIONREASON_TransactionReasonBilling TypesTransactionReason = "BILLING"
@@ -42,7 +41,6 @@ var AllowedTypesTransactionReasonEnumValues = []TypesTransactionReason{
 	"SUBSCRIPTION_CREDIT_GRANT",
 	"PURCHASED_CREDIT_INVOICED",
 	"PURCHASED_CREDIT_DIRECT",
-	"CREDIT_NOTE",
 	"CREDIT_EXPIRED",
 	"WALLET_TERMINATION",
 	"BILLING",

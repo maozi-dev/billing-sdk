@@ -24,7 +24,7 @@ type DtoCreateSubscriptionRequest struct {
 	BillingCycle *TypesBillingCycle `json:"billing_cycle,omitempty"`
 	// BillingCadence     types.BillingCadence `json:\"billing_cadence\" validate:\"required\"` BillingPeriod      types.BillingPeriod  `json:\"billing_period\" validate:\"required\"`
 	BillingPeriodCount int32 `json:"billing_period_count"`
-	// Credit grants to be applied when subscription is created CreditGrants []CreateCreditGrantRequest `json:\"credit_grants,omitempty\"` CommitmentAmount is the minimum amount a customer commits to paying for a billing period
+	// CommitmentAmount is the minimum amount a customer commits to paying for a billing period
 	CommitmentAmount *float32 `json:"commitment_amount,omitempty"`
 	// customer_id is the flexprice customer id and it is prioritized over external_customer_id in case both are provided.
 	CustomerId *string `json:"customer_id,omitempty"`

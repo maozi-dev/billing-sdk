@@ -25,11 +25,9 @@ type DtoCreatePlanRequest struct {
 	BillingPeriod TypesBillingPeriod `json:"billing_period"`
 	// BillingPeriodCount is the count of the billing period ex 1, 3, 6, 12
 	BillingPeriodCount *int32 `json:"billing_period_count,omitempty"`
-	CreditGrants []DtoCreateCreditGrantRequest `json:"credit_grants,omitempty"`
 	// Currency 3 digit ISO currency code in lowercase ex usd, eur, gbp
 	Currency *string `json:"currency,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Entitlements []DtoCreatePlanEntitlementRequest `json:"entitlements,omitempty"`
 	LookupKey *string `json:"lookup_key,omitempty"`
 	Name string `json:"name"`
 	Prices []DtoCreatePlanPriceRequest `json:"prices,omitempty"`
@@ -144,38 +142,6 @@ func (o *DtoCreatePlanRequest) SetBillingPeriodCount(v int32) {
 	o.BillingPeriodCount = &v
 }
 
-// GetCreditGrants returns the CreditGrants field value if set, zero value otherwise.
-func (o *DtoCreatePlanRequest) GetCreditGrants() []DtoCreateCreditGrantRequest {
-	if o == nil || IsNil(o.CreditGrants) {
-		var ret []DtoCreateCreditGrantRequest
-		return ret
-	}
-	return o.CreditGrants
-}
-
-// GetCreditGrantsOk returns a tuple with the CreditGrants field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanRequest) GetCreditGrantsOk() ([]DtoCreateCreditGrantRequest, bool) {
-	if o == nil || IsNil(o.CreditGrants) {
-		return nil, false
-	}
-	return o.CreditGrants, true
-}
-
-// HasCreditGrants returns a boolean if a field has been set.
-func (o *DtoCreatePlanRequest) HasCreditGrants() bool {
-	if o != nil && !IsNil(o.CreditGrants) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreditGrants gets a reference to the given []DtoCreateCreditGrantRequest and assigns it to the CreditGrants field.
-func (o *DtoCreatePlanRequest) SetCreditGrants(v []DtoCreateCreditGrantRequest) {
-	o.CreditGrants = v
-}
-
 // GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *DtoCreatePlanRequest) GetCurrency() string {
 	if o == nil || IsNil(o.Currency) {
@@ -238,38 +204,6 @@ func (o *DtoCreatePlanRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DtoCreatePlanRequest) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *DtoCreatePlanRequest) GetEntitlements() []DtoCreatePlanEntitlementRequest {
-	if o == nil || IsNil(o.Entitlements) {
-		var ret []DtoCreatePlanEntitlementRequest
-		return ret
-	}
-	return o.Entitlements
-}
-
-// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoCreatePlanRequest) GetEntitlementsOk() ([]DtoCreatePlanEntitlementRequest, bool) {
-	if o == nil || IsNil(o.Entitlements) {
-		return nil, false
-	}
-	return o.Entitlements, true
-}
-
-// HasEntitlements returns a boolean if a field has been set.
-func (o *DtoCreatePlanRequest) HasEntitlements() bool {
-	if o != nil && !IsNil(o.Entitlements) {
-		return true
-	}
-
-	return false
-}
-
-// SetEntitlements gets a reference to the given []DtoCreatePlanEntitlementRequest and assigns it to the Entitlements field.
-func (o *DtoCreatePlanRequest) SetEntitlements(v []DtoCreatePlanEntitlementRequest) {
-	o.Entitlements = v
 }
 
 // GetLookupKey returns the LookupKey field value if set, zero value otherwise.
@@ -377,17 +311,11 @@ func (o DtoCreatePlanRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingPeriodCount) {
 		toSerialize["billing_period_count"] = o.BillingPeriodCount
 	}
-	if !IsNil(o.CreditGrants) {
-		toSerialize["credit_grants"] = o.CreditGrants
-	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Entitlements) {
-		toSerialize["entitlements"] = o.Entitlements
 	}
 	if !IsNil(o.LookupKey) {
 		toSerialize["lookup_key"] = o.LookupKey

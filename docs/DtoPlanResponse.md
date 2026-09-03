@@ -9,10 +9,8 @@ Name | Type | Description | Notes
 **BillingPeriodCount** | Pointer to **int32** | BillingPeriodCount is the count of the billing period ex 1, 3, 6, 12 | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CreatedBy** | Pointer to **string** |  | [optional] 
-**CreditGrants** | Pointer to [**[]DtoCreditGrantResponse**](DtoCreditGrantResponse.md) |  | [optional] 
 **Currency** | Pointer to **string** | Currency 3 digit ISO currency code in lowercase ex usd, eur, gbp | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Entitlements** | Pointer to [**[]DtoEntitlementResponse**](DtoEntitlementResponse.md) |  | [optional] 
 **EnvironmentId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **LookupKey** | Pointer to **string** |  | [optional] 
@@ -167,31 +165,6 @@ SetCreatedBy sets CreatedBy field to given value.
 
 HasCreatedBy returns a boolean if a field has been set.
 
-### GetCreditGrants
-
-`func (o *DtoPlanResponse) GetCreditGrants() []DtoCreditGrantResponse`
-
-GetCreditGrants returns the CreditGrants field if non-nil, zero value otherwise.
-
-### GetCreditGrantsOk
-
-`func (o *DtoPlanResponse) GetCreditGrantsOk() (*[]DtoCreditGrantResponse, bool)`
-
-GetCreditGrantsOk returns a tuple with the CreditGrants field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreditGrants
-
-`func (o *DtoPlanResponse) SetCreditGrants(v []DtoCreditGrantResponse)`
-
-SetCreditGrants sets CreditGrants field to given value.
-
-### HasCreditGrants
-
-`func (o *DtoPlanResponse) HasCreditGrants() bool`
-
-HasCreditGrants returns a boolean if a field has been set.
-
 ### GetCurrency
 
 `func (o *DtoPlanResponse) GetCurrency() string`
@@ -241,31 +214,6 @@ SetDescription sets Description field to given value.
 `func (o *DtoPlanResponse) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetEntitlements
-
-`func (o *DtoPlanResponse) GetEntitlements() []DtoEntitlementResponse`
-
-GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
-
-### GetEntitlementsOk
-
-`func (o *DtoPlanResponse) GetEntitlementsOk() (*[]DtoEntitlementResponse, bool)`
-
-GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntitlements
-
-`func (o *DtoPlanResponse) SetEntitlements(v []DtoEntitlementResponse)`
-
-SetEntitlements sets Entitlements field to given value.
-
-### HasEntitlements
-
-`func (o *DtoPlanResponse) HasEntitlements() bool`
-
-HasEntitlements returns a boolean if a field has been set.
 
 ### GetEnvironmentId
 

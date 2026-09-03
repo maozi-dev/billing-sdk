@@ -25,11 +25,9 @@ type DtoPlanResponse struct {
 	BillingPeriodCount *int32 `json:"billing_period_count,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
-	CreditGrants []DtoCreditGrantResponse `json:"credit_grants,omitempty"`
 	// Currency 3 digit ISO currency code in lowercase ex usd, eur, gbp
 	Currency *string `json:"currency,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Entitlements []DtoEntitlementResponse `json:"entitlements,omitempty"`
 	EnvironmentId *string `json:"environment_id,omitempty"`
 	Id *string `json:"id,omitempty"`
 	LookupKey *string `json:"lookup_key,omitempty"`
@@ -218,38 +216,6 @@ func (o *DtoPlanResponse) SetCreatedBy(v string) {
 	o.CreatedBy = &v
 }
 
-// GetCreditGrants returns the CreditGrants field value if set, zero value otherwise.
-func (o *DtoPlanResponse) GetCreditGrants() []DtoCreditGrantResponse {
-	if o == nil || IsNil(o.CreditGrants) {
-		var ret []DtoCreditGrantResponse
-		return ret
-	}
-	return o.CreditGrants
-}
-
-// GetCreditGrantsOk returns a tuple with the CreditGrants field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoPlanResponse) GetCreditGrantsOk() ([]DtoCreditGrantResponse, bool) {
-	if o == nil || IsNil(o.CreditGrants) {
-		return nil, false
-	}
-	return o.CreditGrants, true
-}
-
-// HasCreditGrants returns a boolean if a field has been set.
-func (o *DtoPlanResponse) HasCreditGrants() bool {
-	if o != nil && !IsNil(o.CreditGrants) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreditGrants gets a reference to the given []DtoCreditGrantResponse and assigns it to the CreditGrants field.
-func (o *DtoPlanResponse) SetCreditGrants(v []DtoCreditGrantResponse) {
-	o.CreditGrants = v
-}
-
 // GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *DtoPlanResponse) GetCurrency() string {
 	if o == nil || IsNil(o.Currency) {
@@ -312,38 +278,6 @@ func (o *DtoPlanResponse) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DtoPlanResponse) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *DtoPlanResponse) GetEntitlements() []DtoEntitlementResponse {
-	if o == nil || IsNil(o.Entitlements) {
-		var ret []DtoEntitlementResponse
-		return ret
-	}
-	return o.Entitlements
-}
-
-// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoPlanResponse) GetEntitlementsOk() ([]DtoEntitlementResponse, bool) {
-	if o == nil || IsNil(o.Entitlements) {
-		return nil, false
-	}
-	return o.Entitlements, true
-}
-
-// HasEntitlements returns a boolean if a field has been set.
-func (o *DtoPlanResponse) HasEntitlements() bool {
-	if o != nil && !IsNil(o.Entitlements) {
-		return true
-	}
-
-	return false
-}
-
-// SetEntitlements gets a reference to the given []DtoEntitlementResponse and assigns it to the Entitlements field.
-func (o *DtoPlanResponse) SetEntitlements(v []DtoEntitlementResponse) {
-	o.Entitlements = v
 }
 
 // GetEnvironmentId returns the EnvironmentId field value if set, zero value otherwise.
@@ -659,17 +593,11 @@ func (o DtoPlanResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatedBy) {
 		toSerialize["created_by"] = o.CreatedBy
 	}
-	if !IsNil(o.CreditGrants) {
-		toSerialize["credit_grants"] = o.CreditGrants
-	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Entitlements) {
-		toSerialize["entitlements"] = o.Entitlements
 	}
 	if !IsNil(o.EnvironmentId) {
 		toSerialize["environment_id"] = o.EnvironmentId

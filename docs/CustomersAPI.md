@@ -6,10 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CustomersGet**](CustomersAPI.md#CustomersGet) | **Get** /customers | Get customers
 [**CustomersIdDelete**](CustomersAPI.md#CustomersIdDelete) | **Delete** /customers/{id} | Delete a customer
-[**CustomersIdEntitlementsGet**](CustomersAPI.md#CustomersIdEntitlementsGet) | **Get** /customers/{id}/entitlements | Get customer entitlements
 [**CustomersIdGet**](CustomersAPI.md#CustomersIdGet) | **Get** /customers/{id} | Get a customer
 [**CustomersIdPut**](CustomersAPI.md#CustomersIdPut) | **Put** /customers/{id} | Update a customer
-[**CustomersIdUsageGet**](CustomersAPI.md#CustomersIdUsageGet) | **Get** /customers/{id}/usage | Get customer usage summary
 [**CustomersLookupLookupKeyGet**](CustomersAPI.md#CustomersLookupLookupKeyGet) | **Get** /customers/lookup/{lookup_key} | Get a customer by lookup key
 [**CustomersPost**](CustomersAPI.md#CustomersPost) | **Post** /customers | Create a customer
 [**CustomersSearchPost**](CustomersAPI.md#CustomersSearchPost) | **Post** /customers/search | List customers by filter
@@ -170,80 +168,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CustomersIdEntitlementsGet
-
-> DtoCustomerEntitlementsResponse CustomersIdEntitlementsGet(ctx, id).FeatureIds(featureIds).SubscriptionIds(subscriptionIds).Execute()
-
-Get customer entitlements
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/maozi-dev/billing-sdk/billing"
-)
-
-func main() {
-	id := "id_example" // string | Customer ID
-	featureIds := []string{"Inner_example"} // []string |  (optional)
-	subscriptionIds := []string{"Inner_example"} // []string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomersAPI.CustomersIdEntitlementsGet(context.Background(), id).FeatureIds(featureIds).SubscriptionIds(subscriptionIds).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersIdEntitlementsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CustomersIdEntitlementsGet`: DtoCustomerEntitlementsResponse
-	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersIdEntitlementsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCustomersIdEntitlementsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **featureIds** | **[]string** |  | 
- **subscriptionIds** | **[]string** |  | 
-
-### Return type
-
-[**DtoCustomerEntitlementsResponse**](DtoCustomerEntitlementsResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CustomersIdGet
 
 > DtoCustomerResponse CustomersIdGet(ctx, id).Execute()
@@ -379,80 +303,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CustomersIdUsageGet
-
-> DtoCustomerUsageSummaryResponse CustomersIdUsageGet(ctx, id).FeatureIds(featureIds).SubscriptionIds(subscriptionIds).Execute()
-
-Get customer usage summary
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/maozi-dev/billing-sdk/billing"
-)
-
-func main() {
-	id := "id_example" // string | Customer ID
-	featureIds := []string{"Inner_example"} // []string |  (optional)
-	subscriptionIds := []string{"Inner_example"} // []string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomersAPI.CustomersIdUsageGet(context.Background(), id).FeatureIds(featureIds).SubscriptionIds(subscriptionIds).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CustomersAPI.CustomersIdUsageGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CustomersIdUsageGet`: DtoCustomerUsageSummaryResponse
-	fmt.Fprintf(os.Stdout, "Response from `CustomersAPI.CustomersIdUsageGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Customer ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCustomersIdUsageGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **featureIds** | **[]string** |  | 
- **subscriptionIds** | **[]string** |  | 
-
-### Return type
-
-[**DtoCustomerUsageSummaryResponse**](DtoCustomerUsageSummaryResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

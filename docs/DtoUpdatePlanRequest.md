@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreditGrants** | Pointer to [**[]DtoUpdatePlanCreditGrantRequest**](DtoUpdatePlanCreditGrantRequest.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Entitlements** | Pointer to [**[]DtoUpdatePlanEntitlementRequest**](DtoUpdatePlanEntitlementRequest.md) |  | [optional] 
 **LookupKey** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Prices** | Pointer to [**[]DtoUpdatePlanPriceRequest**](DtoUpdatePlanPriceRequest.md) |  | [optional] 
@@ -29,31 +27,6 @@ will change when the set of required properties is changed
 NewDtoUpdatePlanRequestWithDefaults instantiates a new DtoUpdatePlanRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCreditGrants
-
-`func (o *DtoUpdatePlanRequest) GetCreditGrants() []DtoUpdatePlanCreditGrantRequest`
-
-GetCreditGrants returns the CreditGrants field if non-nil, zero value otherwise.
-
-### GetCreditGrantsOk
-
-`func (o *DtoUpdatePlanRequest) GetCreditGrantsOk() (*[]DtoUpdatePlanCreditGrantRequest, bool)`
-
-GetCreditGrantsOk returns a tuple with the CreditGrants field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreditGrants
-
-`func (o *DtoUpdatePlanRequest) SetCreditGrants(v []DtoUpdatePlanCreditGrantRequest)`
-
-SetCreditGrants sets CreditGrants field to given value.
-
-### HasCreditGrants
-
-`func (o *DtoUpdatePlanRequest) HasCreditGrants() bool`
-
-HasCreditGrants returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -79,31 +52,6 @@ SetDescription sets Description field to given value.
 `func (o *DtoUpdatePlanRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetEntitlements
-
-`func (o *DtoUpdatePlanRequest) GetEntitlements() []DtoUpdatePlanEntitlementRequest`
-
-GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
-
-### GetEntitlementsOk
-
-`func (o *DtoUpdatePlanRequest) GetEntitlementsOk() (*[]DtoUpdatePlanEntitlementRequest, bool)`
-
-GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntitlements
-
-`func (o *DtoUpdatePlanRequest) SetEntitlements(v []DtoUpdatePlanEntitlementRequest)`
-
-SetEntitlements sets Entitlements field to given value.
-
-### HasEntitlements
-
-`func (o *DtoUpdatePlanRequest) HasEntitlements() bool`
-
-HasEntitlements returns a boolean if a field has been set.
 
 ### GetLookupKey
 

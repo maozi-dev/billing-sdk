@@ -20,7 +20,6 @@ var _ MappedNullable = &DtoTenantBillingUsage{}
 // DtoTenantBillingUsage struct for DtoTenantBillingUsage
 type DtoTenantBillingUsage struct {
 	Subscriptions []DtoSubscriptionResponse `json:"subscriptions,omitempty"`
-	Usage *DtoCustomerUsageSummaryResponse `json:"usage,omitempty"`
 }
 
 // NewDtoTenantBillingUsage instantiates a new DtoTenantBillingUsage object
@@ -72,38 +71,6 @@ func (o *DtoTenantBillingUsage) SetSubscriptions(v []DtoSubscriptionResponse) {
 	o.Subscriptions = v
 }
 
-// GetUsage returns the Usage field value if set, zero value otherwise.
-func (o *DtoTenantBillingUsage) GetUsage() DtoCustomerUsageSummaryResponse {
-	if o == nil || IsNil(o.Usage) {
-		var ret DtoCustomerUsageSummaryResponse
-		return ret
-	}
-	return *o.Usage
-}
-
-// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DtoTenantBillingUsage) GetUsageOk() (*DtoCustomerUsageSummaryResponse, bool) {
-	if o == nil || IsNil(o.Usage) {
-		return nil, false
-	}
-	return o.Usage, true
-}
-
-// HasUsage returns a boolean if a field has been set.
-func (o *DtoTenantBillingUsage) HasUsage() bool {
-	if o != nil && !IsNil(o.Usage) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsage gets a reference to the given DtoCustomerUsageSummaryResponse and assigns it to the Usage field.
-func (o *DtoTenantBillingUsage) SetUsage(v DtoCustomerUsageSummaryResponse) {
-	o.Usage = &v
-}
-
 func (o DtoTenantBillingUsage) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,9 +83,6 @@ func (o DtoTenantBillingUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Subscriptions) {
 		toSerialize["subscriptions"] = o.Subscriptions
-	}
-	if !IsNil(o.Usage) {
-		toSerialize["usage"] = o.Usage
 	}
 	return toSerialize, nil
 }
