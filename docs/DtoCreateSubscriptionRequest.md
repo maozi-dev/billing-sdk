@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BillingCycle** | Pointer to [**TypesBillingCycle**](TypesBillingCycle.md) |  | [optional] 
 **BillingPeriodCount** | **int32** | BillingCadence     types.BillingCadence &#x60;json:\&quot;billing_cadence\&quot; validate:\&quot;required\&quot;&#x60; BillingPeriod      types.BillingPeriod  &#x60;json:\&quot;billing_period\&quot; validate:\&quot;required\&quot;&#x60; | 
-**CommitmentAmount** | Pointer to **float32** | CommitmentAmount is the minimum amount a customer commits to paying for a billing period | [optional] 
+**CommitmentAmount** | Pointer to **string** | CommitmentAmount is the minimum amount a customer commits to paying for a billing period | [optional] 
 **CustomerId** | Pointer to **string** | customer_id is the flexprice customer id and it is prioritized over external_customer_id in case both are provided. | [optional] 
 **EndDate** | Pointer to **string** |  | [optional] 
 **ExternalCustomerId** | Pointer to **string** | external_customer_id is the customer id in your DB and must be same as what you provided as external_id while creating the customer in flexprice. | [optional] 
 **LookupKey** | Pointer to **string** | Currency           string               &#x60;json:\&quot;currency\&quot; validate:\&quot;required,len&#x3D;3\&quot;&#x60; | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
-**OverageFactor** | Pointer to **float32** | OverageFactor is a multiplier applied to usage beyond the commitment amount | [optional] 
+**OverageFactor** | Pointer to **string** | OverageFactor is a multiplier applied to usage beyond the commitment amount | [optional] 
 **PlanId** | **string** |  | 
 **StartDate** | **string** |  | 
 **TrialEnd** | Pointer to **string** |  | [optional] 
@@ -84,20 +84,20 @@ SetBillingPeriodCount sets BillingPeriodCount field to given value.
 
 ### GetCommitmentAmount
 
-`func (o *DtoCreateSubscriptionRequest) GetCommitmentAmount() float32`
+`func (o *DtoCreateSubscriptionRequest) GetCommitmentAmount() string`
 
 GetCommitmentAmount returns the CommitmentAmount field if non-nil, zero value otherwise.
 
 ### GetCommitmentAmountOk
 
-`func (o *DtoCreateSubscriptionRequest) GetCommitmentAmountOk() (*float32, bool)`
+`func (o *DtoCreateSubscriptionRequest) GetCommitmentAmountOk() (*string, bool)`
 
 GetCommitmentAmountOk returns a tuple with the CommitmentAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCommitmentAmount
 
-`func (o *DtoCreateSubscriptionRequest) SetCommitmentAmount(v float32)`
+`func (o *DtoCreateSubscriptionRequest) SetCommitmentAmount(v string)`
 
 SetCommitmentAmount sets CommitmentAmount field to given value.
 
@@ -234,20 +234,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetOverageFactor
 
-`func (o *DtoCreateSubscriptionRequest) GetOverageFactor() float32`
+`func (o *DtoCreateSubscriptionRequest) GetOverageFactor() string`
 
 GetOverageFactor returns the OverageFactor field if non-nil, zero value otherwise.
 
 ### GetOverageFactorOk
 
-`func (o *DtoCreateSubscriptionRequest) GetOverageFactorOk() (*float32, bool)`
+`func (o *DtoCreateSubscriptionRequest) GetOverageFactorOk() (*string, bool)`
 
 GetOverageFactorOk returns a tuple with the OverageFactor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOverageFactor
 
-`func (o *DtoCreateSubscriptionRequest) SetOverageFactor(v float32)`
+`func (o *DtoCreateSubscriptionRequest) SetOverageFactor(v string)`
 
 SetOverageFactor sets OverageFactor field to given value.
 

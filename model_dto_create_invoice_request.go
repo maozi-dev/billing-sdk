@@ -22,9 +22,9 @@ var _ MappedNullable = &DtoCreateInvoiceRequest{}
 // DtoCreateInvoiceRequest struct for DtoCreateInvoiceRequest
 type DtoCreateInvoiceRequest struct {
 	// amount_due is the total amount that needs to be paid for this invoice
-	AmountDue float32 `json:"amount_due"`
+	AmountDue string `json:"amount_due"`
 	// amount_paid is the amount that has been paid towards this invoice
-	AmountPaid *float32 `json:"amount_paid,omitempty"`
+	AmountPaid *string `json:"amount_paid,omitempty"`
 	// billing_period is the period this invoice covers (e.g., \"monthly\", \"yearly\")
 	BillingPeriod *string `json:"billing_period,omitempty"`
 	BillingReason *TypesInvoiceBillingReason `json:"billing_reason,omitempty"`
@@ -55,9 +55,9 @@ type DtoCreateInvoiceRequest struct {
 	// subscription_id is the optional unique identifier of the subscription associated with this invoice
 	SubscriptionId *string `json:"subscription_id,omitempty"`
 	// subtotal is the amount before taxes and discounts are applied
-	Subtotal float32 `json:"subtotal"`
+	Subtotal string `json:"subtotal"`
 	// total is the total amount of the invoice including taxes and discounts
-	Total float32 `json:"total"`
+	Total string `json:"total"`
 }
 
 type _DtoCreateInvoiceRequest DtoCreateInvoiceRequest
@@ -66,7 +66,7 @@ type _DtoCreateInvoiceRequest DtoCreateInvoiceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreateInvoiceRequest(amountDue float32, currency string, customerId string, subtotal float32, total float32) *DtoCreateInvoiceRequest {
+func NewDtoCreateInvoiceRequest(amountDue string, currency string, customerId string, subtotal string, total string) *DtoCreateInvoiceRequest {
 	this := DtoCreateInvoiceRequest{}
 	this.AmountDue = amountDue
 	this.Currency = currency
@@ -85,9 +85,9 @@ func NewDtoCreateInvoiceRequestWithDefaults() *DtoCreateInvoiceRequest {
 }
 
 // GetAmountDue returns the AmountDue field value
-func (o *DtoCreateInvoiceRequest) GetAmountDue() float32 {
+func (o *DtoCreateInvoiceRequest) GetAmountDue() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -96,7 +96,7 @@ func (o *DtoCreateInvoiceRequest) GetAmountDue() float32 {
 
 // GetAmountDueOk returns a tuple with the AmountDue field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreateInvoiceRequest) GetAmountDueOk() (*float32, bool) {
+func (o *DtoCreateInvoiceRequest) GetAmountDueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -104,14 +104,14 @@ func (o *DtoCreateInvoiceRequest) GetAmountDueOk() (*float32, bool) {
 }
 
 // SetAmountDue sets field value
-func (o *DtoCreateInvoiceRequest) SetAmountDue(v float32) {
+func (o *DtoCreateInvoiceRequest) SetAmountDue(v string) {
 	o.AmountDue = v
 }
 
 // GetAmountPaid returns the AmountPaid field value if set, zero value otherwise.
-func (o *DtoCreateInvoiceRequest) GetAmountPaid() float32 {
+func (o *DtoCreateInvoiceRequest) GetAmountPaid() string {
 	if o == nil || IsNil(o.AmountPaid) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.AmountPaid
@@ -119,7 +119,7 @@ func (o *DtoCreateInvoiceRequest) GetAmountPaid() float32 {
 
 // GetAmountPaidOk returns a tuple with the AmountPaid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateInvoiceRequest) GetAmountPaidOk() (*float32, bool) {
+func (o *DtoCreateInvoiceRequest) GetAmountPaidOk() (*string, bool) {
 	if o == nil || IsNil(o.AmountPaid) {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *DtoCreateInvoiceRequest) HasAmountPaid() bool {
 	return false
 }
 
-// SetAmountPaid gets a reference to the given float32 and assigns it to the AmountPaid field.
-func (o *DtoCreateInvoiceRequest) SetAmountPaid(v float32) {
+// SetAmountPaid gets a reference to the given string and assigns it to the AmountPaid field.
+func (o *DtoCreateInvoiceRequest) SetAmountPaid(v string) {
 	o.AmountPaid = &v
 }
 
@@ -669,9 +669,9 @@ func (o *DtoCreateInvoiceRequest) SetSubscriptionId(v string) {
 }
 
 // GetSubtotal returns the Subtotal field value
-func (o *DtoCreateInvoiceRequest) GetSubtotal() float32 {
+func (o *DtoCreateInvoiceRequest) GetSubtotal() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -680,7 +680,7 @@ func (o *DtoCreateInvoiceRequest) GetSubtotal() float32 {
 
 // GetSubtotalOk returns a tuple with the Subtotal field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreateInvoiceRequest) GetSubtotalOk() (*float32, bool) {
+func (o *DtoCreateInvoiceRequest) GetSubtotalOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -688,14 +688,14 @@ func (o *DtoCreateInvoiceRequest) GetSubtotalOk() (*float32, bool) {
 }
 
 // SetSubtotal sets field value
-func (o *DtoCreateInvoiceRequest) SetSubtotal(v float32) {
+func (o *DtoCreateInvoiceRequest) SetSubtotal(v string) {
 	o.Subtotal = v
 }
 
 // GetTotal returns the Total field value
-func (o *DtoCreateInvoiceRequest) GetTotal() float32 {
+func (o *DtoCreateInvoiceRequest) GetTotal() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -704,7 +704,7 @@ func (o *DtoCreateInvoiceRequest) GetTotal() float32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreateInvoiceRequest) GetTotalOk() (*float32, bool) {
+func (o *DtoCreateInvoiceRequest) GetTotalOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -712,7 +712,7 @@ func (o *DtoCreateInvoiceRequest) GetTotalOk() (*float32, bool) {
 }
 
 // SetTotal sets field value
-func (o *DtoCreateInvoiceRequest) SetTotal(v float32) {
+func (o *DtoCreateInvoiceRequest) SetTotal(v string) {
 	o.Total = v
 }
 

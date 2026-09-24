@@ -25,7 +25,7 @@ type DtoCreateSubscriptionRequest struct {
 	// BillingCadence     types.BillingCadence `json:\"billing_cadence\" validate:\"required\"` BillingPeriod      types.BillingPeriod  `json:\"billing_period\" validate:\"required\"`
 	BillingPeriodCount int32 `json:"billing_period_count"`
 	// CommitmentAmount is the minimum amount a customer commits to paying for a billing period
-	CommitmentAmount *float32 `json:"commitment_amount,omitempty"`
+	CommitmentAmount *string `json:"commitment_amount,omitempty"`
 	// customer_id is the flexprice customer id and it is prioritized over external_customer_id in case both are provided.
 	CustomerId *string `json:"customer_id,omitempty"`
 	EndDate *string `json:"end_date,omitempty"`
@@ -35,7 +35,7 @@ type DtoCreateSubscriptionRequest struct {
 	LookupKey *string `json:"lookup_key,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	// OverageFactor is a multiplier applied to usage beyond the commitment amount
-	OverageFactor *float32 `json:"overage_factor,omitempty"`
+	OverageFactor *string `json:"overage_factor,omitempty"`
 	PlanId string `json:"plan_id"`
 	StartDate string `json:"start_date"`
 	TrialEnd *string `json:"trial_end,omitempty"`
@@ -121,9 +121,9 @@ func (o *DtoCreateSubscriptionRequest) SetBillingPeriodCount(v int32) {
 }
 
 // GetCommitmentAmount returns the CommitmentAmount field value if set, zero value otherwise.
-func (o *DtoCreateSubscriptionRequest) GetCommitmentAmount() float32 {
+func (o *DtoCreateSubscriptionRequest) GetCommitmentAmount() string {
 	if o == nil || IsNil(o.CommitmentAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.CommitmentAmount
@@ -131,7 +131,7 @@ func (o *DtoCreateSubscriptionRequest) GetCommitmentAmount() float32 {
 
 // GetCommitmentAmountOk returns a tuple with the CommitmentAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateSubscriptionRequest) GetCommitmentAmountOk() (*float32, bool) {
+func (o *DtoCreateSubscriptionRequest) GetCommitmentAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.CommitmentAmount) {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *DtoCreateSubscriptionRequest) HasCommitmentAmount() bool {
 	return false
 }
 
-// SetCommitmentAmount gets a reference to the given float32 and assigns it to the CommitmentAmount field.
-func (o *DtoCreateSubscriptionRequest) SetCommitmentAmount(v float32) {
+// SetCommitmentAmount gets a reference to the given string and assigns it to the CommitmentAmount field.
+func (o *DtoCreateSubscriptionRequest) SetCommitmentAmount(v string) {
 	o.CommitmentAmount = &v
 }
 
@@ -313,9 +313,9 @@ func (o *DtoCreateSubscriptionRequest) SetMetadata(v map[string]string) {
 }
 
 // GetOverageFactor returns the OverageFactor field value if set, zero value otherwise.
-func (o *DtoCreateSubscriptionRequest) GetOverageFactor() float32 {
+func (o *DtoCreateSubscriptionRequest) GetOverageFactor() string {
 	if o == nil || IsNil(o.OverageFactor) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.OverageFactor
@@ -323,7 +323,7 @@ func (o *DtoCreateSubscriptionRequest) GetOverageFactor() float32 {
 
 // GetOverageFactorOk returns a tuple with the OverageFactor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateSubscriptionRequest) GetOverageFactorOk() (*float32, bool) {
+func (o *DtoCreateSubscriptionRequest) GetOverageFactorOk() (*string, bool) {
 	if o == nil || IsNil(o.OverageFactor) {
 		return nil, false
 	}
@@ -339,8 +339,8 @@ func (o *DtoCreateSubscriptionRequest) HasOverageFactor() bool {
 	return false
 }
 
-// SetOverageFactor gets a reference to the given float32 and assigns it to the OverageFactor field.
-func (o *DtoCreateSubscriptionRequest) SetOverageFactor(v float32) {
+// SetOverageFactor gets a reference to the given string and assigns it to the OverageFactor field.
+func (o *DtoCreateSubscriptionRequest) SetOverageFactor(v string) {
 	o.OverageFactor = &v
 }
 

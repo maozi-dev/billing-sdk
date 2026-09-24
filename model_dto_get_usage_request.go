@@ -27,7 +27,7 @@ type DtoGetUsageRequest struct {
 	EventName string `json:"event_name"`
 	ExternalCustomerId *string `json:"external_customer_id,omitempty"`
 	Filters *map[string][]string `json:"filters,omitempty"`
-	Multiplier *float32 `json:"multiplier,omitempty"`
+	Multiplier *string `json:"multiplier,omitempty"`
 	// will be empty/ignored in case of COUNT
 	PropertyName *string `json:"property_name,omitempty"`
 	StartTime *string `json:"start_time,omitempty"`
@@ -232,9 +232,9 @@ func (o *DtoGetUsageRequest) SetFilters(v map[string][]string) {
 }
 
 // GetMultiplier returns the Multiplier field value if set, zero value otherwise.
-func (o *DtoGetUsageRequest) GetMultiplier() float32 {
+func (o *DtoGetUsageRequest) GetMultiplier() string {
 	if o == nil || IsNil(o.Multiplier) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Multiplier
@@ -242,7 +242,7 @@ func (o *DtoGetUsageRequest) GetMultiplier() float32 {
 
 // GetMultiplierOk returns a tuple with the Multiplier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoGetUsageRequest) GetMultiplierOk() (*float32, bool) {
+func (o *DtoGetUsageRequest) GetMultiplierOk() (*string, bool) {
 	if o == nil || IsNil(o.Multiplier) {
 		return nil, false
 	}
@@ -258,8 +258,8 @@ func (o *DtoGetUsageRequest) HasMultiplier() bool {
 	return false
 }
 
-// SetMultiplier gets a reference to the given float32 and assigns it to the Multiplier field.
-func (o *DtoGetUsageRequest) SetMultiplier(v float32) {
+// SetMultiplier gets a reference to the given string and assigns it to the Multiplier field.
+func (o *DtoGetUsageRequest) SetMultiplier(v string) {
 	o.Multiplier = &v
 }
 

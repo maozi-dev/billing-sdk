@@ -19,8 +19,8 @@ var _ MappedNullable = &DtoRechargeResponse{}
 
 // DtoRechargeResponse struct for DtoRechargeResponse
 type DtoRechargeResponse struct {
-	Amount *float32 `json:"amount,omitempty"`
-	BonusAmount *float32 `json:"bonus_amount,omitempty"`
+	Amount *string `json:"amount,omitempty"`
+	BonusAmount *string `json:"bonus_amount,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	Gateway *string `json:"gateway,omitempty"`
@@ -53,9 +53,9 @@ func NewDtoRechargeResponseWithDefaults() *DtoRechargeResponse {
 }
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
-func (o *DtoRechargeResponse) GetAmount() float32 {
+func (o *DtoRechargeResponse) GetAmount() string {
 	if o == nil || IsNil(o.Amount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Amount
@@ -63,7 +63,7 @@ func (o *DtoRechargeResponse) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoRechargeResponse) GetAmountOk() (*float32, bool) {
+func (o *DtoRechargeResponse) GetAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
@@ -79,15 +79,15 @@ func (o *DtoRechargeResponse) HasAmount() bool {
 	return false
 }
 
-// SetAmount gets a reference to the given float32 and assigns it to the Amount field.
-func (o *DtoRechargeResponse) SetAmount(v float32) {
+// SetAmount gets a reference to the given string and assigns it to the Amount field.
+func (o *DtoRechargeResponse) SetAmount(v string) {
 	o.Amount = &v
 }
 
 // GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
-func (o *DtoRechargeResponse) GetBonusAmount() float32 {
+func (o *DtoRechargeResponse) GetBonusAmount() string {
 	if o == nil || IsNil(o.BonusAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.BonusAmount
@@ -95,7 +95,7 @@ func (o *DtoRechargeResponse) GetBonusAmount() float32 {
 
 // GetBonusAmountOk returns a tuple with the BonusAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoRechargeResponse) GetBonusAmountOk() (*float32, bool) {
+func (o *DtoRechargeResponse) GetBonusAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.BonusAmount) {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *DtoRechargeResponse) HasBonusAmount() bool {
 	return false
 }
 
-// SetBonusAmount gets a reference to the given float32 and assigns it to the BonusAmount field.
-func (o *DtoRechargeResponse) SetBonusAmount(v float32) {
+// SetBonusAmount gets a reference to the given string and assigns it to the BonusAmount field.
+func (o *DtoRechargeResponse) SetBonusAmount(v string) {
 	o.BonusAmount = &v
 }
 

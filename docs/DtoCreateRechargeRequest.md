@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **float32** |  | 
-**BonusAmount** | Pointer to **float32** |  | [optional] 
+**Amount** | **string** |  | 
+**BonusAmount** | Pointer to **string** |  | [optional] 
 **ClientIp** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Gateway** | **string** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewDtoCreateRechargeRequest
 
-`func NewDtoCreateRechargeRequest(amount float32, gateway string, walletId string, ) *DtoCreateRechargeRequest`
+`func NewDtoCreateRechargeRequest(amount string, gateway string, walletId string, ) *DtoCreateRechargeRequest`
 
 NewDtoCreateRechargeRequest instantiates a new DtoCreateRechargeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -37,40 +37,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoCreateRechargeRequest) GetAmount() float32`
+`func (o *DtoCreateRechargeRequest) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoCreateRechargeRequest) GetAmountOk() (*float32, bool)`
+`func (o *DtoCreateRechargeRequest) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoCreateRechargeRequest) SetAmount(v float32)`
+`func (o *DtoCreateRechargeRequest) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
 
 ### GetBonusAmount
 
-`func (o *DtoCreateRechargeRequest) GetBonusAmount() float32`
+`func (o *DtoCreateRechargeRequest) GetBonusAmount() string`
 
 GetBonusAmount returns the BonusAmount field if non-nil, zero value otherwise.
 
 ### GetBonusAmountOk
 
-`func (o *DtoCreateRechargeRequest) GetBonusAmountOk() (*float32, bool)`
+`func (o *DtoCreateRechargeRequest) GetBonusAmountOk() (*string, bool)`
 
 GetBonusAmountOk returns a tuple with the BonusAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBonusAmount
 
-`func (o *DtoCreateRechargeRequest) SetBonusAmount(v float32)`
+`func (o *DtoCreateRechargeRequest) SetBonusAmount(v string)`
 
 SetBonusAmount sets BonusAmount field to given value.
 

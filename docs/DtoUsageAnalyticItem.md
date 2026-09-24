@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Points** | Pointer to [**[]DtoUsageAnalyticPoint**](DtoUsageAnalyticPoint.md) |  | [optional] 
 **Source** | Pointer to **string** |  | [optional] 
-**TotalCost** | Pointer to **float32** |  | [optional] 
-**TotalUsage** | Pointer to **float32** |  | [optional] 
+**TotalCost** | Pointer to **string** |  | [optional] 
+**TotalUsage** | Pointer to **string** |  | [optional] 
 **Unit** | Pointer to **string** |  | [optional] 
 **UnitPlural** | Pointer to **string** |  | [optional] 
 
@@ -238,20 +238,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetTotalCost
 
-`func (o *DtoUsageAnalyticItem) GetTotalCost() float32`
+`func (o *DtoUsageAnalyticItem) GetTotalCost() string`
 
 GetTotalCost returns the TotalCost field if non-nil, zero value otherwise.
 
 ### GetTotalCostOk
 
-`func (o *DtoUsageAnalyticItem) GetTotalCostOk() (*float32, bool)`
+`func (o *DtoUsageAnalyticItem) GetTotalCostOk() (*string, bool)`
 
 GetTotalCostOk returns a tuple with the TotalCost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalCost
 
-`func (o *DtoUsageAnalyticItem) SetTotalCost(v float32)`
+`func (o *DtoUsageAnalyticItem) SetTotalCost(v string)`
 
 SetTotalCost sets TotalCost field to given value.
 
@@ -263,20 +263,20 @@ HasTotalCost returns a boolean if a field has been set.
 
 ### GetTotalUsage
 
-`func (o *DtoUsageAnalyticItem) GetTotalUsage() float32`
+`func (o *DtoUsageAnalyticItem) GetTotalUsage() string`
 
 GetTotalUsage returns the TotalUsage field if non-nil, zero value otherwise.
 
 ### GetTotalUsageOk
 
-`func (o *DtoUsageAnalyticItem) GetTotalUsageOk() (*float32, bool)`
+`func (o *DtoUsageAnalyticItem) GetTotalUsageOk() (*string, bool)`
 
 GetTotalUsageOk returns a tuple with the TotalUsage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalUsage
 
-`func (o *DtoUsageAnalyticItem) SetTotalUsage(v float32)`
+`func (o *DtoUsageAnalyticItem) SetTotalUsage(v string)`
 
 SetTotalUsage sets TotalUsage field to given value.
 

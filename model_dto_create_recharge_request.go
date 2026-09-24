@@ -21,8 +21,8 @@ var _ MappedNullable = &DtoCreateRechargeRequest{}
 
 // DtoCreateRechargeRequest struct for DtoCreateRechargeRequest
 type DtoCreateRechargeRequest struct {
-	Amount float32 `json:"amount"`
-	BonusAmount *float32 `json:"bonus_amount,omitempty"`
+	Amount string `json:"amount"`
+	BonusAmount *string `json:"bonus_amount,omitempty"`
 	ClientIp *string `json:"client_ip,omitempty"`
 	Currency *string `json:"currency,omitempty"`
 	Gateway string `json:"gateway"`
@@ -40,7 +40,7 @@ type _DtoCreateRechargeRequest DtoCreateRechargeRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreateRechargeRequest(amount float32, gateway string, walletId string) *DtoCreateRechargeRequest {
+func NewDtoCreateRechargeRequest(amount string, gateway string, walletId string) *DtoCreateRechargeRequest {
 	this := DtoCreateRechargeRequest{}
 	this.Amount = amount
 	this.Gateway = gateway
@@ -57,9 +57,9 @@ func NewDtoCreateRechargeRequestWithDefaults() *DtoCreateRechargeRequest {
 }
 
 // GetAmount returns the Amount field value
-func (o *DtoCreateRechargeRequest) GetAmount() float32 {
+func (o *DtoCreateRechargeRequest) GetAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *DtoCreateRechargeRequest) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreateRechargeRequest) GetAmountOk() (*float32, bool) {
+func (o *DtoCreateRechargeRequest) GetAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,14 +76,14 @@ func (o *DtoCreateRechargeRequest) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *DtoCreateRechargeRequest) SetAmount(v float32) {
+func (o *DtoCreateRechargeRequest) SetAmount(v string) {
 	o.Amount = v
 }
 
 // GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
-func (o *DtoCreateRechargeRequest) GetBonusAmount() float32 {
+func (o *DtoCreateRechargeRequest) GetBonusAmount() string {
 	if o == nil || IsNil(o.BonusAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.BonusAmount
@@ -91,7 +91,7 @@ func (o *DtoCreateRechargeRequest) GetBonusAmount() float32 {
 
 // GetBonusAmountOk returns a tuple with the BonusAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateRechargeRequest) GetBonusAmountOk() (*float32, bool) {
+func (o *DtoCreateRechargeRequest) GetBonusAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.BonusAmount) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *DtoCreateRechargeRequest) HasBonusAmount() bool {
 	return false
 }
 
-// SetBonusAmount gets a reference to the given float32 and assigns it to the BonusAmount field.
-func (o *DtoCreateRechargeRequest) SetBonusAmount(v float32) {
+// SetBonusAmount gets a reference to the given string and assigns it to the BonusAmount field.
+func (o *DtoCreateRechargeRequest) SetBonusAmount(v string) {
 	o.BonusAmount = &v
 }
 

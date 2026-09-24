@@ -19,11 +19,11 @@ var _ MappedNullable = &DtoUsageAnalyticPoint{}
 
 // DtoUsageAnalyticPoint struct for DtoUsageAnalyticPoint
 type DtoUsageAnalyticPoint struct {
-	Cost *float32 `json:"cost,omitempty"`
+	Cost *string `json:"cost,omitempty"`
 	// Number of events in this time window
 	EventCount *int32 `json:"event_count,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
-	Usage *float32 `json:"usage,omitempty"`
+	Usage *string `json:"usage,omitempty"`
 }
 
 // NewDtoUsageAnalyticPoint instantiates a new DtoUsageAnalyticPoint object
@@ -44,9 +44,9 @@ func NewDtoUsageAnalyticPointWithDefaults() *DtoUsageAnalyticPoint {
 }
 
 // GetCost returns the Cost field value if set, zero value otherwise.
-func (o *DtoUsageAnalyticPoint) GetCost() float32 {
+func (o *DtoUsageAnalyticPoint) GetCost() string {
 	if o == nil || IsNil(o.Cost) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Cost
@@ -54,7 +54,7 @@ func (o *DtoUsageAnalyticPoint) GetCost() float32 {
 
 // GetCostOk returns a tuple with the Cost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoUsageAnalyticPoint) GetCostOk() (*float32, bool) {
+func (o *DtoUsageAnalyticPoint) GetCostOk() (*string, bool) {
 	if o == nil || IsNil(o.Cost) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *DtoUsageAnalyticPoint) HasCost() bool {
 	return false
 }
 
-// SetCost gets a reference to the given float32 and assigns it to the Cost field.
-func (o *DtoUsageAnalyticPoint) SetCost(v float32) {
+// SetCost gets a reference to the given string and assigns it to the Cost field.
+func (o *DtoUsageAnalyticPoint) SetCost(v string) {
 	o.Cost = &v
 }
 
@@ -140,9 +140,9 @@ func (o *DtoUsageAnalyticPoint) SetTimestamp(v string) {
 }
 
 // GetUsage returns the Usage field value if set, zero value otherwise.
-func (o *DtoUsageAnalyticPoint) GetUsage() float32 {
+func (o *DtoUsageAnalyticPoint) GetUsage() string {
 	if o == nil || IsNil(o.Usage) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.Usage
@@ -150,7 +150,7 @@ func (o *DtoUsageAnalyticPoint) GetUsage() float32 {
 
 // GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoUsageAnalyticPoint) GetUsageOk() (*float32, bool) {
+func (o *DtoUsageAnalyticPoint) GetUsageOk() (*string, bool) {
 	if o == nil || IsNil(o.Usage) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *DtoUsageAnalyticPoint) HasUsage() bool {
 	return false
 }
 
-// SetUsage gets a reference to the given float32 and assigns it to the Usage field.
-func (o *DtoUsageAnalyticPoint) SetUsage(v float32) {
+// SetUsage gets a reference to the given string and assigns it to the Usage field.
+func (o *DtoUsageAnalyticPoint) SetUsage(v string) {
 	o.Usage = &v
 }
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountDue** | Pointer to **float32** | amount_due is the total amount that needs to be paid for this invoice | [optional] 
-**AmountPaid** | Pointer to **float32** | amount_paid is the amount that has been paid towards this invoice | [optional] 
-**AmountRemaining** | Pointer to **float32** | amount_remaining is the amount still outstanding on this invoice | [optional] 
+**AmountDue** | Pointer to **string** | amount_due is the total amount that needs to be paid for this invoice | [optional] 
+**AmountPaid** | Pointer to **string** | amount_paid is the amount that has been paid towards this invoice | [optional] 
+**AmountRemaining** | Pointer to **string** | amount_remaining is the amount still outstanding on this invoice | [optional] 
 **BillingPeriod** | Pointer to **string** | billing_period is the period this invoice covers (e.g., \&quot;monthly\&quot;, \&quot;yearly\&quot;) | [optional] 
 **BillingReason** | Pointer to **string** | billing_reason indicates why this invoice was created (subscription_cycle, manual, etc.) | [optional] 
 **BillingSequence** | Pointer to **int32** | billing_sequence is the optional sequence number for billing cycles | [optional] 
@@ -33,9 +33,9 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | status represents the current status of this invoice | [optional] 
 **Subscription** | Pointer to [**DtoSubscriptionResponse**](DtoSubscriptionResponse.md) |  | [optional] 
 **SubscriptionId** | Pointer to **string** | subscription_id is the optional unique identifier of the subscription associated with this invoice | [optional] 
-**Subtotal** | Pointer to **float32** | subtotal is the amount before taxes and discounts are applied | [optional] 
+**Subtotal** | Pointer to **string** | subtotal is the amount before taxes and discounts are applied | [optional] 
 **TenantId** | Pointer to **string** | tenant_id is the unique identifier of the tenant this invoice belongs to | [optional] 
-**Total** | Pointer to **float32** | total is the total amount of the invoice including taxes and discounts | [optional] 
+**Total** | Pointer to **string** | total is the total amount of the invoice including taxes and discounts | [optional] 
 **UpdatedAt** | Pointer to **string** | updated_at is the timestamp when this invoice was last updated | [optional] 
 **UpdatedBy** | Pointer to **string** | updated_by is the identifier of the user who last updated this invoice | [optional] 
 **Version** | Pointer to **int32** | version is the version number of this invoice | [optional] 
@@ -62,20 +62,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmountDue
 
-`func (o *DtoInvoiceResponse) GetAmountDue() float32`
+`func (o *DtoInvoiceResponse) GetAmountDue() string`
 
 GetAmountDue returns the AmountDue field if non-nil, zero value otherwise.
 
 ### GetAmountDueOk
 
-`func (o *DtoInvoiceResponse) GetAmountDueOk() (*float32, bool)`
+`func (o *DtoInvoiceResponse) GetAmountDueOk() (*string, bool)`
 
 GetAmountDueOk returns a tuple with the AmountDue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountDue
 
-`func (o *DtoInvoiceResponse) SetAmountDue(v float32)`
+`func (o *DtoInvoiceResponse) SetAmountDue(v string)`
 
 SetAmountDue sets AmountDue field to given value.
 
@@ -87,20 +87,20 @@ HasAmountDue returns a boolean if a field has been set.
 
 ### GetAmountPaid
 
-`func (o *DtoInvoiceResponse) GetAmountPaid() float32`
+`func (o *DtoInvoiceResponse) GetAmountPaid() string`
 
 GetAmountPaid returns the AmountPaid field if non-nil, zero value otherwise.
 
 ### GetAmountPaidOk
 
-`func (o *DtoInvoiceResponse) GetAmountPaidOk() (*float32, bool)`
+`func (o *DtoInvoiceResponse) GetAmountPaidOk() (*string, bool)`
 
 GetAmountPaidOk returns a tuple with the AmountPaid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountPaid
 
-`func (o *DtoInvoiceResponse) SetAmountPaid(v float32)`
+`func (o *DtoInvoiceResponse) SetAmountPaid(v string)`
 
 SetAmountPaid sets AmountPaid field to given value.
 
@@ -112,20 +112,20 @@ HasAmountPaid returns a boolean if a field has been set.
 
 ### GetAmountRemaining
 
-`func (o *DtoInvoiceResponse) GetAmountRemaining() float32`
+`func (o *DtoInvoiceResponse) GetAmountRemaining() string`
 
 GetAmountRemaining returns the AmountRemaining field if non-nil, zero value otherwise.
 
 ### GetAmountRemainingOk
 
-`func (o *DtoInvoiceResponse) GetAmountRemainingOk() (*float32, bool)`
+`func (o *DtoInvoiceResponse) GetAmountRemainingOk() (*string, bool)`
 
 GetAmountRemainingOk returns a tuple with the AmountRemaining field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountRemaining
 
-`func (o *DtoInvoiceResponse) SetAmountRemaining(v float32)`
+`func (o *DtoInvoiceResponse) SetAmountRemaining(v string)`
 
 SetAmountRemaining sets AmountRemaining field to given value.
 
@@ -787,20 +787,20 @@ HasSubscriptionId returns a boolean if a field has been set.
 
 ### GetSubtotal
 
-`func (o *DtoInvoiceResponse) GetSubtotal() float32`
+`func (o *DtoInvoiceResponse) GetSubtotal() string`
 
 GetSubtotal returns the Subtotal field if non-nil, zero value otherwise.
 
 ### GetSubtotalOk
 
-`func (o *DtoInvoiceResponse) GetSubtotalOk() (*float32, bool)`
+`func (o *DtoInvoiceResponse) GetSubtotalOk() (*string, bool)`
 
 GetSubtotalOk returns a tuple with the Subtotal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubtotal
 
-`func (o *DtoInvoiceResponse) SetSubtotal(v float32)`
+`func (o *DtoInvoiceResponse) SetSubtotal(v string)`
 
 SetSubtotal sets Subtotal field to given value.
 
@@ -837,20 +837,20 @@ HasTenantId returns a boolean if a field has been set.
 
 ### GetTotal
 
-`func (o *DtoInvoiceResponse) GetTotal() float32`
+`func (o *DtoInvoiceResponse) GetTotal() string`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *DtoInvoiceResponse) GetTotalOk() (*float32, bool)`
+`func (o *DtoInvoiceResponse) GetTotalOk() (*string, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *DtoInvoiceResponse) SetTotal(v float32)`
+`func (o *DtoInvoiceResponse) SetTotal(v string)`
 
 SetTotal sets Total field to given value.
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **float32** |  | [optional] 
-**BonusAmount** | Pointer to **float32** |  | [optional] 
+**Amount** | Pointer to **string** |  | [optional] 
+**BonusAmount** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **Currency** | Pointer to **string** |  | [optional] 
 **Gateway** | Pointer to **string** |  | [optional] 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoRechargeResponse) GetAmount() float32`
+`func (o *DtoRechargeResponse) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoRechargeResponse) GetAmountOk() (*float32, bool)`
+`func (o *DtoRechargeResponse) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoRechargeResponse) SetAmount(v float32)`
+`func (o *DtoRechargeResponse) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
@@ -65,20 +65,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetBonusAmount
 
-`func (o *DtoRechargeResponse) GetBonusAmount() float32`
+`func (o *DtoRechargeResponse) GetBonusAmount() string`
 
 GetBonusAmount returns the BonusAmount field if non-nil, zero value otherwise.
 
 ### GetBonusAmountOk
 
-`func (o *DtoRechargeResponse) GetBonusAmountOk() (*float32, bool)`
+`func (o *DtoRechargeResponse) GetBonusAmountOk() (*string, bool)`
 
 GetBonusAmountOk returns a tuple with the BonusAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBonusAmount
 
-`func (o *DtoRechargeResponse) SetBonusAmount(v float32)`
+`func (o *DtoRechargeResponse) SetBonusAmount(v string)`
 
 SetBonusAmount sets BonusAmount field to given value.
 

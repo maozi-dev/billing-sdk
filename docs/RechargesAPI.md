@@ -388,7 +388,7 @@ import (
 )
 
 func main() {
-	recharge := *openapiclient.NewDtoCreateRechargeRequest(float32(123), "Gateway_example", "WalletId_example") // DtoCreateRechargeRequest | Recharge request
+	recharge := *openapiclient.NewDtoCreateRechargeRequest("Amount_example", "Gateway_example", "WalletId_example") // DtoCreateRechargeRequest | Recharge request
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

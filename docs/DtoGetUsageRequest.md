@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **EventName** | **string** |  | 
 **ExternalCustomerId** | Pointer to **string** |  | [optional] 
 **Filters** | Pointer to **map[string][]string** |  | [optional] 
-**Multiplier** | Pointer to **float32** |  | [optional] 
+**Multiplier** | Pointer to **string** |  | [optional] 
 **PropertyName** | Pointer to **string** | will be empty/ignored in case of COUNT | [optional] 
 **StartTime** | Pointer to **string** |  | [optional] 
 **WindowSize** | Pointer to [**TypesWindowSize**](TypesWindowSize.md) |  | [optional] 
@@ -176,20 +176,20 @@ HasFilters returns a boolean if a field has been set.
 
 ### GetMultiplier
 
-`func (o *DtoGetUsageRequest) GetMultiplier() float32`
+`func (o *DtoGetUsageRequest) GetMultiplier() string`
 
 GetMultiplier returns the Multiplier field if non-nil, zero value otherwise.
 
 ### GetMultiplierOk
 
-`func (o *DtoGetUsageRequest) GetMultiplierOk() (*float32, bool)`
+`func (o *DtoGetUsageRequest) GetMultiplierOk() (*string, bool)`
 
 GetMultiplierOk returns a tuple with the Multiplier field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMultiplier
 
-`func (o *DtoGetUsageRequest) SetMultiplier(v float32)`
+`func (o *DtoGetUsageRequest) SetMultiplier(v string)`
 
 SetMultiplier sets Multiplier field to given value.
 

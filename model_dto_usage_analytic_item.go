@@ -28,8 +28,8 @@ type DtoUsageAnalyticItem struct {
 	Name *string `json:"name,omitempty"`
 	Points []DtoUsageAnalyticPoint `json:"points,omitempty"`
 	Source *string `json:"source,omitempty"`
-	TotalCost *float32 `json:"total_cost,omitempty"`
-	TotalUsage *float32 `json:"total_usage,omitempty"`
+	TotalCost *string `json:"total_cost,omitempty"`
+	TotalUsage *string `json:"total_usage,omitempty"`
 	Unit *string `json:"unit,omitempty"`
 	UnitPlural *string `json:"unit_plural,omitempty"`
 }
@@ -308,9 +308,9 @@ func (o *DtoUsageAnalyticItem) SetSource(v string) {
 }
 
 // GetTotalCost returns the TotalCost field value if set, zero value otherwise.
-func (o *DtoUsageAnalyticItem) GetTotalCost() float32 {
+func (o *DtoUsageAnalyticItem) GetTotalCost() string {
 	if o == nil || IsNil(o.TotalCost) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.TotalCost
@@ -318,7 +318,7 @@ func (o *DtoUsageAnalyticItem) GetTotalCost() float32 {
 
 // GetTotalCostOk returns a tuple with the TotalCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoUsageAnalyticItem) GetTotalCostOk() (*float32, bool) {
+func (o *DtoUsageAnalyticItem) GetTotalCostOk() (*string, bool) {
 	if o == nil || IsNil(o.TotalCost) {
 		return nil, false
 	}
@@ -334,15 +334,15 @@ func (o *DtoUsageAnalyticItem) HasTotalCost() bool {
 	return false
 }
 
-// SetTotalCost gets a reference to the given float32 and assigns it to the TotalCost field.
-func (o *DtoUsageAnalyticItem) SetTotalCost(v float32) {
+// SetTotalCost gets a reference to the given string and assigns it to the TotalCost field.
+func (o *DtoUsageAnalyticItem) SetTotalCost(v string) {
 	o.TotalCost = &v
 }
 
 // GetTotalUsage returns the TotalUsage field value if set, zero value otherwise.
-func (o *DtoUsageAnalyticItem) GetTotalUsage() float32 {
+func (o *DtoUsageAnalyticItem) GetTotalUsage() string {
 	if o == nil || IsNil(o.TotalUsage) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.TotalUsage
@@ -350,7 +350,7 @@ func (o *DtoUsageAnalyticItem) GetTotalUsage() float32 {
 
 // GetTotalUsageOk returns a tuple with the TotalUsage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoUsageAnalyticItem) GetTotalUsageOk() (*float32, bool) {
+func (o *DtoUsageAnalyticItem) GetTotalUsageOk() (*string, bool) {
 	if o == nil || IsNil(o.TotalUsage) {
 		return nil, false
 	}
@@ -366,8 +366,8 @@ func (o *DtoUsageAnalyticItem) HasTotalUsage() bool {
 	return false
 }
 
-// SetTotalUsage gets a reference to the given float32 and assigns it to the TotalUsage field.
-func (o *DtoUsageAnalyticItem) SetTotalUsage(v float32) {
+// SetTotalUsage gets a reference to the given string and assigns it to the TotalUsage field.
+func (o *DtoUsageAnalyticItem) SetTotalUsage(v string) {
 	o.TotalUsage = &v
 }
 

@@ -22,7 +22,7 @@ var _ MappedNullable = &DtoCreateInvoiceLineItemRequest{}
 // DtoCreateInvoiceLineItemRequest struct for DtoCreateInvoiceLineItemRequest
 type DtoCreateInvoiceLineItemRequest struct {
 	// amount is the monetary amount for this line item
-	Amount float32 `json:"amount"`
+	Amount string `json:"amount"`
 	// display_name is the optional human-readable name for this line item
 	DisplayName *string `json:"display_name,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
@@ -43,7 +43,7 @@ type DtoCreateInvoiceLineItemRequest struct {
 	// price_type indicates the type of pricing (fixed, usage, tiered, etc.)
 	PriceType *string `json:"price_type,omitempty"`
 	// quantity is the quantity of units for this line item
-	Quantity float32 `json:"quantity"`
+	Quantity string `json:"quantity"`
 }
 
 type _DtoCreateInvoiceLineItemRequest DtoCreateInvoiceLineItemRequest
@@ -52,7 +52,7 @@ type _DtoCreateInvoiceLineItemRequest DtoCreateInvoiceLineItemRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreateInvoiceLineItemRequest(amount float32, quantity float32) *DtoCreateInvoiceLineItemRequest {
+func NewDtoCreateInvoiceLineItemRequest(amount string, quantity string) *DtoCreateInvoiceLineItemRequest {
 	this := DtoCreateInvoiceLineItemRequest{}
 	this.Amount = amount
 	this.Quantity = quantity
@@ -68,9 +68,9 @@ func NewDtoCreateInvoiceLineItemRequestWithDefaults() *DtoCreateInvoiceLineItemR
 }
 
 // GetAmount returns the Amount field value
-func (o *DtoCreateInvoiceLineItemRequest) GetAmount() float32 {
+func (o *DtoCreateInvoiceLineItemRequest) GetAmount() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *DtoCreateInvoiceLineItemRequest) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreateInvoiceLineItemRequest) GetAmountOk() (*float32, bool) {
+func (o *DtoCreateInvoiceLineItemRequest) GetAmountOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *DtoCreateInvoiceLineItemRequest) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *DtoCreateInvoiceLineItemRequest) SetAmount(v float32) {
+func (o *DtoCreateInvoiceLineItemRequest) SetAmount(v string) {
 	o.Amount = v
 }
 
@@ -412,9 +412,9 @@ func (o *DtoCreateInvoiceLineItemRequest) SetPriceType(v string) {
 }
 
 // GetQuantity returns the Quantity field value
-func (o *DtoCreateInvoiceLineItemRequest) GetQuantity() float32 {
+func (o *DtoCreateInvoiceLineItemRequest) GetQuantity() string {
 	if o == nil {
-		var ret float32
+		var ret string
 		return ret
 	}
 
@@ -423,7 +423,7 @@ func (o *DtoCreateInvoiceLineItemRequest) GetQuantity() float32 {
 
 // GetQuantityOk returns a tuple with the Quantity field value
 // and a boolean to check if the value has been set.
-func (o *DtoCreateInvoiceLineItemRequest) GetQuantityOk() (*float32, bool) {
+func (o *DtoCreateInvoiceLineItemRequest) GetQuantityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -431,7 +431,7 @@ func (o *DtoCreateInvoiceLineItemRequest) GetQuantityOk() (*float32, bool) {
 }
 
 // SetQuantity sets field value
-func (o *DtoCreateInvoiceLineItemRequest) SetQuantity(v float32) {
+func (o *DtoCreateInvoiceLineItemRequest) SetQuantity(v string) {
 	o.Quantity = v
 }
 

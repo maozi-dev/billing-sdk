@@ -21,19 +21,19 @@ var _ MappedNullable = &DtoCreateWalletRequest{}
 
 // DtoCreateWalletRequest struct for DtoCreateWalletRequest
 type DtoCreateWalletRequest struct {
-	AutoTopupAmount *float32 `json:"auto_topup_amount,omitempty"`
-	AutoTopupMinBalance *float32 `json:"auto_topup_min_balance,omitempty"`
+	AutoTopupAmount *string `json:"auto_topup_amount,omitempty"`
+	AutoTopupMinBalance *string `json:"auto_topup_min_balance,omitempty"`
 	AutoTopupTrigger *TypesAutoTopupTrigger `json:"auto_topup_trigger,omitempty"`
 	Config *TypesWalletConfig `json:"config,omitempty"`
 	// amount in the currency =  number of credits * conversion_rate ex if conversion_rate is 1, then 1 USD = 1 credit ex if conversion_rate is 2, then 1 USD = 0.5 credits ex if conversion_rate is 0.5, then 1 USD = 2 credits
-	ConversionRate *float32 `json:"conversion_rate,omitempty"`
+	ConversionRate *string `json:"conversion_rate,omitempty"`
 	Currency string `json:"currency"`
 	CustomerId *string `json:"customer_id,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// external_customer_id is the customer id in the external system
 	ExternalCustomerId *string `json:"external_customer_id,omitempty"`
 	// initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits InitialCreditsToLoad decimal.Decimal `json:\"initial_credits_to_load,omitempty\" default:\"0\"`
-	InitialBonusAmount *float32 `json:"initial_bonus_amount,omitempty"`
+	InitialBonusAmount *string `json:"initial_bonus_amount,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
 	WalletType *TypesWalletType `json:"wallet_type,omitempty"`
@@ -47,7 +47,11 @@ type _DtoCreateWalletRequest DtoCreateWalletRequest
 // will change when the set of required properties is changed
 func NewDtoCreateWalletRequest(currency string) *DtoCreateWalletRequest {
 	this := DtoCreateWalletRequest{}
+	var conversionRate string = "1"
+	this.ConversionRate = &conversionRate
 	this.Currency = currency
+	var initialBonusAmount string = "0"
+	this.InitialBonusAmount = &initialBonusAmount
 	return &this
 }
 
@@ -56,13 +60,17 @@ func NewDtoCreateWalletRequest(currency string) *DtoCreateWalletRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewDtoCreateWalletRequestWithDefaults() *DtoCreateWalletRequest {
 	this := DtoCreateWalletRequest{}
+	var conversionRate string = "1"
+	this.ConversionRate = &conversionRate
+	var initialBonusAmount string = "0"
+	this.InitialBonusAmount = &initialBonusAmount
 	return &this
 }
 
 // GetAutoTopupAmount returns the AutoTopupAmount field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetAutoTopupAmount() float32 {
+func (o *DtoCreateWalletRequest) GetAutoTopupAmount() string {
 	if o == nil || IsNil(o.AutoTopupAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.AutoTopupAmount
@@ -70,7 +78,7 @@ func (o *DtoCreateWalletRequest) GetAutoTopupAmount() float32 {
 
 // GetAutoTopupAmountOk returns a tuple with the AutoTopupAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetAutoTopupAmountOk() (*float32, bool) {
+func (o *DtoCreateWalletRequest) GetAutoTopupAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.AutoTopupAmount) {
 		return nil, false
 	}
@@ -86,15 +94,15 @@ func (o *DtoCreateWalletRequest) HasAutoTopupAmount() bool {
 	return false
 }
 
-// SetAutoTopupAmount gets a reference to the given float32 and assigns it to the AutoTopupAmount field.
-func (o *DtoCreateWalletRequest) SetAutoTopupAmount(v float32) {
+// SetAutoTopupAmount gets a reference to the given string and assigns it to the AutoTopupAmount field.
+func (o *DtoCreateWalletRequest) SetAutoTopupAmount(v string) {
 	o.AutoTopupAmount = &v
 }
 
 // GetAutoTopupMinBalance returns the AutoTopupMinBalance field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetAutoTopupMinBalance() float32 {
+func (o *DtoCreateWalletRequest) GetAutoTopupMinBalance() string {
 	if o == nil || IsNil(o.AutoTopupMinBalance) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.AutoTopupMinBalance
@@ -102,7 +110,7 @@ func (o *DtoCreateWalletRequest) GetAutoTopupMinBalance() float32 {
 
 // GetAutoTopupMinBalanceOk returns a tuple with the AutoTopupMinBalance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetAutoTopupMinBalanceOk() (*float32, bool) {
+func (o *DtoCreateWalletRequest) GetAutoTopupMinBalanceOk() (*string, bool) {
 	if o == nil || IsNil(o.AutoTopupMinBalance) {
 		return nil, false
 	}
@@ -118,8 +126,8 @@ func (o *DtoCreateWalletRequest) HasAutoTopupMinBalance() bool {
 	return false
 }
 
-// SetAutoTopupMinBalance gets a reference to the given float32 and assigns it to the AutoTopupMinBalance field.
-func (o *DtoCreateWalletRequest) SetAutoTopupMinBalance(v float32) {
+// SetAutoTopupMinBalance gets a reference to the given string and assigns it to the AutoTopupMinBalance field.
+func (o *DtoCreateWalletRequest) SetAutoTopupMinBalance(v string) {
 	o.AutoTopupMinBalance = &v
 }
 
@@ -188,9 +196,9 @@ func (o *DtoCreateWalletRequest) SetConfig(v TypesWalletConfig) {
 }
 
 // GetConversionRate returns the ConversionRate field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetConversionRate() float32 {
+func (o *DtoCreateWalletRequest) GetConversionRate() string {
 	if o == nil || IsNil(o.ConversionRate) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.ConversionRate
@@ -198,7 +206,7 @@ func (o *DtoCreateWalletRequest) GetConversionRate() float32 {
 
 // GetConversionRateOk returns a tuple with the ConversionRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetConversionRateOk() (*float32, bool) {
+func (o *DtoCreateWalletRequest) GetConversionRateOk() (*string, bool) {
 	if o == nil || IsNil(o.ConversionRate) {
 		return nil, false
 	}
@@ -214,8 +222,8 @@ func (o *DtoCreateWalletRequest) HasConversionRate() bool {
 	return false
 }
 
-// SetConversionRate gets a reference to the given float32 and assigns it to the ConversionRate field.
-func (o *DtoCreateWalletRequest) SetConversionRate(v float32) {
+// SetConversionRate gets a reference to the given string and assigns it to the ConversionRate field.
+func (o *DtoCreateWalletRequest) SetConversionRate(v string) {
 	o.ConversionRate = &v
 }
 
@@ -340,9 +348,9 @@ func (o *DtoCreateWalletRequest) SetExternalCustomerId(v string) {
 }
 
 // GetInitialBonusAmount returns the InitialBonusAmount field value if set, zero value otherwise.
-func (o *DtoCreateWalletRequest) GetInitialBonusAmount() float32 {
+func (o *DtoCreateWalletRequest) GetInitialBonusAmount() string {
 	if o == nil || IsNil(o.InitialBonusAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.InitialBonusAmount
@@ -350,7 +358,7 @@ func (o *DtoCreateWalletRequest) GetInitialBonusAmount() float32 {
 
 // GetInitialBonusAmountOk returns a tuple with the InitialBonusAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoCreateWalletRequest) GetInitialBonusAmountOk() (*float32, bool) {
+func (o *DtoCreateWalletRequest) GetInitialBonusAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.InitialBonusAmount) {
 		return nil, false
 	}
@@ -366,8 +374,8 @@ func (o *DtoCreateWalletRequest) HasInitialBonusAmount() bool {
 	return false
 }
 
-// SetInitialBonusAmount gets a reference to the given float32 and assigns it to the InitialBonusAmount field.
-func (o *DtoCreateWalletRequest) SetInitialBonusAmount(v float32) {
+// SetInitialBonusAmount gets a reference to the given string and assigns it to the InitialBonusAmount field.
+func (o *DtoCreateWalletRequest) SetInitialBonusAmount(v string) {
 	o.InitialBonusAmount = &v
 }
 

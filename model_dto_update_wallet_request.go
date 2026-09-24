@@ -19,8 +19,8 @@ var _ MappedNullable = &DtoUpdateWalletRequest{}
 
 // DtoUpdateWalletRequest struct for DtoUpdateWalletRequest
 type DtoUpdateWalletRequest struct {
-	AutoTopupAmount *float32 `json:"auto_topup_amount,omitempty"`
-	AutoTopupMinBalance *float32 `json:"auto_topup_min_balance,omitempty"`
+	AutoTopupAmount *string `json:"auto_topup_amount,omitempty"`
+	AutoTopupMinBalance *string `json:"auto_topup_min_balance,omitempty"`
 	AutoTopupTrigger *TypesAutoTopupTrigger `json:"auto_topup_trigger,omitempty"`
 	Config *TypesWalletConfig `json:"config,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -46,9 +46,9 @@ func NewDtoUpdateWalletRequestWithDefaults() *DtoUpdateWalletRequest {
 }
 
 // GetAutoTopupAmount returns the AutoTopupAmount field value if set, zero value otherwise.
-func (o *DtoUpdateWalletRequest) GetAutoTopupAmount() float32 {
+func (o *DtoUpdateWalletRequest) GetAutoTopupAmount() string {
 	if o == nil || IsNil(o.AutoTopupAmount) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.AutoTopupAmount
@@ -56,7 +56,7 @@ func (o *DtoUpdateWalletRequest) GetAutoTopupAmount() float32 {
 
 // GetAutoTopupAmountOk returns a tuple with the AutoTopupAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoUpdateWalletRequest) GetAutoTopupAmountOk() (*float32, bool) {
+func (o *DtoUpdateWalletRequest) GetAutoTopupAmountOk() (*string, bool) {
 	if o == nil || IsNil(o.AutoTopupAmount) {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *DtoUpdateWalletRequest) HasAutoTopupAmount() bool {
 	return false
 }
 
-// SetAutoTopupAmount gets a reference to the given float32 and assigns it to the AutoTopupAmount field.
-func (o *DtoUpdateWalletRequest) SetAutoTopupAmount(v float32) {
+// SetAutoTopupAmount gets a reference to the given string and assigns it to the AutoTopupAmount field.
+func (o *DtoUpdateWalletRequest) SetAutoTopupAmount(v string) {
 	o.AutoTopupAmount = &v
 }
 
 // GetAutoTopupMinBalance returns the AutoTopupMinBalance field value if set, zero value otherwise.
-func (o *DtoUpdateWalletRequest) GetAutoTopupMinBalance() float32 {
+func (o *DtoUpdateWalletRequest) GetAutoTopupMinBalance() string {
 	if o == nil || IsNil(o.AutoTopupMinBalance) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.AutoTopupMinBalance
@@ -88,7 +88,7 @@ func (o *DtoUpdateWalletRequest) GetAutoTopupMinBalance() float32 {
 
 // GetAutoTopupMinBalanceOk returns a tuple with the AutoTopupMinBalance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoUpdateWalletRequest) GetAutoTopupMinBalanceOk() (*float32, bool) {
+func (o *DtoUpdateWalletRequest) GetAutoTopupMinBalanceOk() (*string, bool) {
 	if o == nil || IsNil(o.AutoTopupMinBalance) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *DtoUpdateWalletRequest) HasAutoTopupMinBalance() bool {
 	return false
 }
 
-// SetAutoTopupMinBalance gets a reference to the given float32 and assigns it to the AutoTopupMinBalance field.
-func (o *DtoUpdateWalletRequest) SetAutoTopupMinBalance(v float32) {
+// SetAutoTopupMinBalance gets a reference to the given string and assigns it to the AutoTopupMinBalance field.
+func (o *DtoUpdateWalletRequest) SetAutoTopupMinBalance(v string) {
 	o.AutoTopupMinBalance = &v
 }
 

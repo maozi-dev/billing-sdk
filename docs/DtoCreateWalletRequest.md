@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoTopupAmount** | Pointer to **float32** |  | [optional] 
-**AutoTopupMinBalance** | Pointer to **float32** |  | [optional] 
+**AutoTopupAmount** | Pointer to **string** |  | [optional] 
+**AutoTopupMinBalance** | Pointer to **string** |  | [optional] 
 **AutoTopupTrigger** | Pointer to [**TypesAutoTopupTrigger**](TypesAutoTopupTrigger.md) |  | [optional] 
 **Config** | Pointer to [**TypesWalletConfig**](TypesWalletConfig.md) |  | [optional] 
-**ConversionRate** | Pointer to **float32** | amount in the currency &#x3D;  number of credits * conversion_rate ex if conversion_rate is 1, then 1 USD &#x3D; 1 credit ex if conversion_rate is 2, then 1 USD &#x3D; 0.5 credits ex if conversion_rate is 0.5, then 1 USD &#x3D; 2 credits | [optional] 
+**ConversionRate** | Pointer to **string** | amount in the currency &#x3D;  number of credits * conversion_rate ex if conversion_rate is 1, then 1 USD &#x3D; 1 credit ex if conversion_rate is 2, then 1 USD &#x3D; 0.5 credits ex if conversion_rate is 0.5, then 1 USD &#x3D; 2 credits | [optional] [default to "1"]
 **Currency** | **string** |  | 
 **CustomerId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **ExternalCustomerId** | Pointer to **string** | external_customer_id is the customer id in the external system | [optional] 
-**InitialBonusAmount** | Pointer to **float32** | initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits InitialCreditsToLoad decimal.Decimal &#x60;json:\&quot;initial_credits_to_load,omitempty\&quot; default:\&quot;0\&quot;&#x60; | [optional] 
+**InitialBonusAmount** | Pointer to **string** | initial_credits_to_load is the number of credits to load to the wallet if not provided, the wallet will be created with 0 balance NOTE: this is not the amount in the currency, but the number of credits InitialCreditsToLoad decimal.Decimal &#x60;json:\&quot;initial_credits_to_load,omitempty\&quot; default:\&quot;0\&quot;&#x60; | [optional] [default to "0"]
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **WalletType** | Pointer to [**TypesWalletType**](TypesWalletType.md) |  | [optional] 
@@ -39,20 +39,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAutoTopupAmount
 
-`func (o *DtoCreateWalletRequest) GetAutoTopupAmount() float32`
+`func (o *DtoCreateWalletRequest) GetAutoTopupAmount() string`
 
 GetAutoTopupAmount returns the AutoTopupAmount field if non-nil, zero value otherwise.
 
 ### GetAutoTopupAmountOk
 
-`func (o *DtoCreateWalletRequest) GetAutoTopupAmountOk() (*float32, bool)`
+`func (o *DtoCreateWalletRequest) GetAutoTopupAmountOk() (*string, bool)`
 
 GetAutoTopupAmountOk returns a tuple with the AutoTopupAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoTopupAmount
 
-`func (o *DtoCreateWalletRequest) SetAutoTopupAmount(v float32)`
+`func (o *DtoCreateWalletRequest) SetAutoTopupAmount(v string)`
 
 SetAutoTopupAmount sets AutoTopupAmount field to given value.
 
@@ -64,20 +64,20 @@ HasAutoTopupAmount returns a boolean if a field has been set.
 
 ### GetAutoTopupMinBalance
 
-`func (o *DtoCreateWalletRequest) GetAutoTopupMinBalance() float32`
+`func (o *DtoCreateWalletRequest) GetAutoTopupMinBalance() string`
 
 GetAutoTopupMinBalance returns the AutoTopupMinBalance field if non-nil, zero value otherwise.
 
 ### GetAutoTopupMinBalanceOk
 
-`func (o *DtoCreateWalletRequest) GetAutoTopupMinBalanceOk() (*float32, bool)`
+`func (o *DtoCreateWalletRequest) GetAutoTopupMinBalanceOk() (*string, bool)`
 
 GetAutoTopupMinBalanceOk returns a tuple with the AutoTopupMinBalance field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoTopupMinBalance
 
-`func (o *DtoCreateWalletRequest) SetAutoTopupMinBalance(v float32)`
+`func (o *DtoCreateWalletRequest) SetAutoTopupMinBalance(v string)`
 
 SetAutoTopupMinBalance sets AutoTopupMinBalance field to given value.
 
@@ -139,20 +139,20 @@ HasConfig returns a boolean if a field has been set.
 
 ### GetConversionRate
 
-`func (o *DtoCreateWalletRequest) GetConversionRate() float32`
+`func (o *DtoCreateWalletRequest) GetConversionRate() string`
 
 GetConversionRate returns the ConversionRate field if non-nil, zero value otherwise.
 
 ### GetConversionRateOk
 
-`func (o *DtoCreateWalletRequest) GetConversionRateOk() (*float32, bool)`
+`func (o *DtoCreateWalletRequest) GetConversionRateOk() (*string, bool)`
 
 GetConversionRateOk returns a tuple with the ConversionRate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConversionRate
 
-`func (o *DtoCreateWalletRequest) SetConversionRate(v float32)`
+`func (o *DtoCreateWalletRequest) SetConversionRate(v string)`
 
 SetConversionRate sets ConversionRate field to given value.
 
@@ -259,20 +259,20 @@ HasExternalCustomerId returns a boolean if a field has been set.
 
 ### GetInitialBonusAmount
 
-`func (o *DtoCreateWalletRequest) GetInitialBonusAmount() float32`
+`func (o *DtoCreateWalletRequest) GetInitialBonusAmount() string`
 
 GetInitialBonusAmount returns the InitialBonusAmount field if non-nil, zero value otherwise.
 
 ### GetInitialBonusAmountOk
 
-`func (o *DtoCreateWalletRequest) GetInitialBonusAmountOk() (*float32, bool)`
+`func (o *DtoCreateWalletRequest) GetInitialBonusAmountOk() (*string, bool)`
 
 GetInitialBonusAmountOk returns a tuple with the InitialBonusAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInitialBonusAmount
 
-`func (o *DtoCreateWalletRequest) SetInitialBonusAmount(v float32)`
+`func (o *DtoCreateWalletRequest) SetInitialBonusAmount(v string)`
 
 SetInitialBonusAmount sets InitialBonusAmount field to given value.
 

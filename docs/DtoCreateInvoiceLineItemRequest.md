@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **float32** | amount is the monetary amount for this line item | 
+**Amount** | **string** | amount is the monetary amount for this line item | 
 **DisplayName** | Pointer to **string** | display_name is the optional human-readable name for this line item | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **MeterDisplayName** | Pointer to **string** | meter_display_name is the optional human-readable name of the meter | [optional] 
@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **PlanId** | Pointer to **string** | plan_id is the optional unique identifier of the plan associated with this line item | [optional] 
 **PriceId** | Pointer to **string** | price_id is the optional unique identifier of the price associated with this line item | [optional] 
 **PriceType** | Pointer to **string** | price_type indicates the type of pricing (fixed, usage, tiered, etc.) | [optional] 
-**Quantity** | **float32** | quantity is the quantity of units for this line item | 
+**Quantity** | **string** | quantity is the quantity of units for this line item | 
 
 ## Methods
 
 ### NewDtoCreateInvoiceLineItemRequest
 
-`func NewDtoCreateInvoiceLineItemRequest(amount float32, quantity float32, ) *DtoCreateInvoiceLineItemRequest`
+`func NewDtoCreateInvoiceLineItemRequest(amount string, quantity string, ) *DtoCreateInvoiceLineItemRequest`
 
 NewDtoCreateInvoiceLineItemRequest instantiates a new DtoCreateInvoiceLineItemRequest object
 This constructor will assign default values to properties that have it defined,
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoCreateInvoiceLineItemRequest) GetAmount() float32`
+`func (o *DtoCreateInvoiceLineItemRequest) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoCreateInvoiceLineItemRequest) GetAmountOk() (*float32, bool)`
+`func (o *DtoCreateInvoiceLineItemRequest) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoCreateInvoiceLineItemRequest) SetAmount(v float32)`
+`func (o *DtoCreateInvoiceLineItemRequest) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
@@ -308,20 +308,20 @@ HasPriceType returns a boolean if a field has been set.
 
 ### GetQuantity
 
-`func (o *DtoCreateInvoiceLineItemRequest) GetQuantity() float32`
+`func (o *DtoCreateInvoiceLineItemRequest) GetQuantity() string`
 
 GetQuantity returns the Quantity field if non-nil, zero value otherwise.
 
 ### GetQuantityOk
 
-`func (o *DtoCreateInvoiceLineItemRequest) GetQuantityOk() (*float32, bool)`
+`func (o *DtoCreateInvoiceLineItemRequest) GetQuantityOk() (*string, bool)`
 
 GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuantity
 
-`func (o *DtoCreateInvoiceLineItemRequest) SetQuantity(v float32)`
+`func (o *DtoCreateInvoiceLineItemRequest) SetQuantity(v string)`
 
 SetQuantity sets Quantity field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **float32** | amount is the monetary amount for this line item | [optional] 
+**Amount** | Pointer to **string** | amount is the monetary amount for this line item | [optional] 
 **CreatedAt** | Pointer to **string** | created_at is the timestamp when this line item was created | [optional] 
 **CreatedBy** | Pointer to **string** | created_by is the identifier of the user who created this line item | [optional] 
 **Currency** | Pointer to **string** | currency is the three-letter ISO currency code for this line item | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **PlanId** | Pointer to **string** | plan_id is the optional unique identifier of the plan associated with this line item | [optional] 
 **PriceId** | Pointer to **string** | price_id is the optional unique identifier of the price associated with this line item | [optional] 
 **PriceType** | Pointer to **string** | price_type indicates the type of pricing (fixed, usage, tiered, etc.) | [optional] 
-**Quantity** | Pointer to **float32** | quantity is the quantity of units for this line item | [optional] 
+**Quantity** | Pointer to **string** | quantity is the quantity of units for this line item | [optional] 
 **Status** | Pointer to **string** | status represents the current status of this line item | [optional] 
 **SubscriptionId** | Pointer to **string** | subscription_id is the optional unique identifier of the subscription associated with this line item | [optional] 
 **TenantId** | Pointer to **string** | tenant_id is the unique identifier of the tenant this line item belongs to | [optional] 
@@ -49,20 +49,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmount
 
-`func (o *DtoInvoiceLineItemResponse) GetAmount() float32`
+`func (o *DtoInvoiceLineItemResponse) GetAmount() string`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *DtoInvoiceLineItemResponse) GetAmountOk() (*float32, bool)`
+`func (o *DtoInvoiceLineItemResponse) GetAmountOk() (*string, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *DtoInvoiceLineItemResponse) SetAmount(v float32)`
+`func (o *DtoInvoiceLineItemResponse) SetAmount(v string)`
 
 SetAmount sets Amount field to given value.
 
@@ -474,20 +474,20 @@ HasPriceType returns a boolean if a field has been set.
 
 ### GetQuantity
 
-`func (o *DtoInvoiceLineItemResponse) GetQuantity() float32`
+`func (o *DtoInvoiceLineItemResponse) GetQuantity() string`
 
 GetQuantity returns the Quantity field if non-nil, zero value otherwise.
 
 ### GetQuantityOk
 
-`func (o *DtoInvoiceLineItemResponse) GetQuantityOk() (*float32, bool)`
+`func (o *DtoInvoiceLineItemResponse) GetQuantityOk() (*string, bool)`
 
 GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuantity
 
-`func (o *DtoInvoiceLineItemResponse) SetQuantity(v float32)`
+`func (o *DtoInvoiceLineItemResponse) SetQuantity(v string)`
 
 SetQuantity sets Quantity field to given value.
 

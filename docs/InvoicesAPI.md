@@ -703,7 +703,7 @@ import (
 )
 
 func main() {
-	invoice := *openapiclient.NewDtoCreateInvoiceRequest(float32(123), "Currency_example", "CustomerId_example", float32(123), float32(123)) // DtoCreateInvoiceRequest | Invoice details
+	invoice := *openapiclient.NewDtoCreateInvoiceRequest("AmountDue_example", "Currency_example", "CustomerId_example", "Subtotal_example", "Total_example") // DtoCreateInvoiceRequest | Invoice details
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

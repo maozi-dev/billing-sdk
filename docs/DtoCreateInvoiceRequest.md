@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AmountDue** | **float32** | amount_due is the total amount that needs to be paid for this invoice | 
-**AmountPaid** | Pointer to **float32** | amount_paid is the amount that has been paid towards this invoice | [optional] 
+**AmountDue** | **string** | amount_due is the total amount that needs to be paid for this invoice | 
+**AmountPaid** | Pointer to **string** | amount_paid is the amount that has been paid towards this invoice | [optional] 
 **BillingPeriod** | Pointer to **string** | billing_period is the period this invoice covers (e.g., \&quot;monthly\&quot;, \&quot;yearly\&quot;) | [optional] 
 **BillingReason** | Pointer to [**TypesInvoiceBillingReason**](TypesInvoiceBillingReason.md) |  | [optional] 
 **Currency** | **string** | currency is the three-letter ISO currency code (e.g., USD, EUR) for the invoice | 
@@ -23,14 +23,14 @@ Name | Type | Description | Notes
 **PeriodEnd** | Pointer to **string** | period_end is the end date of the billing period | [optional] 
 **PeriodStart** | Pointer to **string** | period_start is the start date of the billing period | [optional] 
 **SubscriptionId** | Pointer to **string** | subscription_id is the optional unique identifier of the subscription associated with this invoice | [optional] 
-**Subtotal** | **float32** | subtotal is the amount before taxes and discounts are applied | 
-**Total** | **float32** | total is the total amount of the invoice including taxes and discounts | 
+**Subtotal** | **string** | subtotal is the amount before taxes and discounts are applied | 
+**Total** | **string** | total is the total amount of the invoice including taxes and discounts | 
 
 ## Methods
 
 ### NewDtoCreateInvoiceRequest
 
-`func NewDtoCreateInvoiceRequest(amountDue float32, currency string, customerId string, subtotal float32, total float32, ) *DtoCreateInvoiceRequest`
+`func NewDtoCreateInvoiceRequest(amountDue string, currency string, customerId string, subtotal string, total string, ) *DtoCreateInvoiceRequest`
 
 NewDtoCreateInvoiceRequest instantiates a new DtoCreateInvoiceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,40 +47,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAmountDue
 
-`func (o *DtoCreateInvoiceRequest) GetAmountDue() float32`
+`func (o *DtoCreateInvoiceRequest) GetAmountDue() string`
 
 GetAmountDue returns the AmountDue field if non-nil, zero value otherwise.
 
 ### GetAmountDueOk
 
-`func (o *DtoCreateInvoiceRequest) GetAmountDueOk() (*float32, bool)`
+`func (o *DtoCreateInvoiceRequest) GetAmountDueOk() (*string, bool)`
 
 GetAmountDueOk returns a tuple with the AmountDue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountDue
 
-`func (o *DtoCreateInvoiceRequest) SetAmountDue(v float32)`
+`func (o *DtoCreateInvoiceRequest) SetAmountDue(v string)`
 
 SetAmountDue sets AmountDue field to given value.
 
 
 ### GetAmountPaid
 
-`func (o *DtoCreateInvoiceRequest) GetAmountPaid() float32`
+`func (o *DtoCreateInvoiceRequest) GetAmountPaid() string`
 
 GetAmountPaid returns the AmountPaid field if non-nil, zero value otherwise.
 
 ### GetAmountPaidOk
 
-`func (o *DtoCreateInvoiceRequest) GetAmountPaidOk() (*float32, bool)`
+`func (o *DtoCreateInvoiceRequest) GetAmountPaidOk() (*string, bool)`
 
 GetAmountPaidOk returns a tuple with the AmountPaid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmountPaid
 
-`func (o *DtoCreateInvoiceRequest) SetAmountPaid(v float32)`
+`func (o *DtoCreateInvoiceRequest) SetAmountPaid(v string)`
 
 SetAmountPaid sets AmountPaid field to given value.
 
@@ -507,40 +507,40 @@ HasSubscriptionId returns a boolean if a field has been set.
 
 ### GetSubtotal
 
-`func (o *DtoCreateInvoiceRequest) GetSubtotal() float32`
+`func (o *DtoCreateInvoiceRequest) GetSubtotal() string`
 
 GetSubtotal returns the Subtotal field if non-nil, zero value otherwise.
 
 ### GetSubtotalOk
 
-`func (o *DtoCreateInvoiceRequest) GetSubtotalOk() (*float32, bool)`
+`func (o *DtoCreateInvoiceRequest) GetSubtotalOk() (*string, bool)`
 
 GetSubtotalOk returns a tuple with the Subtotal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubtotal
 
-`func (o *DtoCreateInvoiceRequest) SetSubtotal(v float32)`
+`func (o *DtoCreateInvoiceRequest) SetSubtotal(v string)`
 
 SetSubtotal sets Subtotal field to given value.
 
 
 ### GetTotal
 
-`func (o *DtoCreateInvoiceRequest) GetTotal() float32`
+`func (o *DtoCreateInvoiceRequest) GetTotal() string`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *DtoCreateInvoiceRequest) GetTotalOk() (*float32, bool)`
+`func (o *DtoCreateInvoiceRequest) GetTotalOk() (*string, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *DtoCreateInvoiceRequest) SetTotal(v float32)`
+`func (o *DtoCreateInvoiceRequest) SetTotal(v string)`
 
 SetTotal sets Total field to given value.
 
