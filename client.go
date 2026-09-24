@@ -63,11 +63,15 @@ type APIClient struct {
 
 	InvoicesAPI *InvoicesAPIService
 
+	PaymentGatewaysAPI *PaymentGatewaysAPIService
+
 	PaymentsAPI *PaymentsAPIService
 
 	PlansAPI *PlansAPIService
 
 	PricesAPI *PricesAPIService
+
+	RechargesAPI *RechargesAPIService
 
 	SecretsAPI *SecretsAPIService
 
@@ -105,9 +109,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.FeaturesAPI = (*FeaturesAPIService)(&c.common)
 	c.IntegrationsAPI = (*IntegrationsAPIService)(&c.common)
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
+	c.PaymentGatewaysAPI = (*PaymentGatewaysAPIService)(&c.common)
 	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
 	c.PlansAPI = (*PlansAPIService)(&c.common)
 	c.PricesAPI = (*PricesAPIService)(&c.common)
+	c.RechargesAPI = (*RechargesAPIService)(&c.common)
 	c.SecretsAPI = (*SecretsAPIService)(&c.common)
 	c.SubscriptionsAPI = (*SubscriptionsAPIService)(&c.common)
 	c.TasksAPI = (*TasksAPIService)(&c.common)

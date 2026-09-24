@@ -4,12 +4,79 @@ All URIs are relative to */v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**PricesBulkPost**](PricesAPI.md#PricesBulkPost) | **Post** /prices/bulk | Create prices in bulk
 [**PricesGet**](PricesAPI.md#PricesGet) | **Get** /prices | Get prices
 [**PricesIdDelete**](PricesAPI.md#PricesIdDelete) | **Delete** /prices/{id} | Delete a price
 [**PricesIdGet**](PricesAPI.md#PricesIdGet) | **Get** /prices/{id} | Get a price by ID
 [**PricesIdPut**](PricesAPI.md#PricesIdPut) | **Put** /prices/{id} | Update a price
 [**PricesPost**](PricesAPI.md#PricesPost) | **Post** /prices | Create a new price
 
+
+
+## PricesBulkPost
+
+> []DtoPriceResponse PricesBulkPost(ctx).Prices(prices).Execute()
+
+Create prices in bulk
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/maozi-dev/billing-sdk/billing"
+)
+
+func main() {
+	prices := *openapiclient.NewDtoCreateBulkPriceRequest([]openapiclient.DtoCreatePriceRequest{*openapiclient.NewDtoCreatePriceRequest(openapiclient.types.BillingModel("FLAT_FEE"), openapiclient.types.PriceType("USAGE"))}) // DtoCreateBulkPriceRequest | Price configurations
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PricesAPI.PricesBulkPost(context.Background()).Prices(prices).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PricesAPI.PricesBulkPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PricesBulkPost`: []DtoPriceResponse
+	fmt.Fprintf(os.Stdout, "Response from `PricesAPI.PricesBulkPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPricesBulkPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **prices** | [**DtoCreateBulkPriceRequest**](DtoCreateBulkPriceRequest.md) | Price configurations | 
+
+### Return type
+
+[**[]DtoPriceResponse**](DtoPriceResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## PricesGet
@@ -329,7 +396,7 @@ import (
 )
 
 func main() {
-	price := *openapiclient.NewDtoCreatePriceRequest(openapiclient.types.BillingModel("FLAT_FEE"), openapiclient.types.PaymentCadence("ADVANCE"), openapiclient.types.PriceType("USAGE")) // DtoCreatePriceRequest | Price configuration
+	price := *openapiclient.NewDtoCreatePriceRequest(openapiclient.types.BillingModel("FLAT_FEE"), openapiclient.types.PriceType("USAGE")) // DtoCreatePriceRequest | Price configuration
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

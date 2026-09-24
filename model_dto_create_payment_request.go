@@ -21,7 +21,7 @@ var _ MappedNullable = &DtoCreatePaymentRequest{}
 
 // DtoCreatePaymentRequest struct for DtoCreatePaymentRequest
 type DtoCreatePaymentRequest struct {
-	Amount string `json:"amount"`
+	Amount *string `json:"amount,omitempty"`
 	BonusAmount *string `json:"bonus_amount,omitempty"`
 	Currency string `json:"currency"`
 	CustomerId *string `json:"customer_id,omitempty"`
@@ -45,9 +45,8 @@ type _DtoCreatePaymentRequest DtoCreatePaymentRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreatePaymentRequest(amount string, currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType) *DtoCreatePaymentRequest {
+func NewDtoCreatePaymentRequest(currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType) *DtoCreatePaymentRequest {
 	this := DtoCreatePaymentRequest{}
-	this.Amount = amount
 	this.Currency = currency
 	this.DestinationId = destinationId
 	this.DestinationType = destinationType
@@ -67,28 +66,36 @@ func NewDtoCreatePaymentRequestWithDefaults() *DtoCreatePaymentRequest {
 	return &this
 }
 
-// GetAmount returns the Amount field value
+// GetAmount returns the Amount field value if set, zero value otherwise.
 func (o *DtoCreatePaymentRequest) GetAmount() string {
-	if o == nil {
+	if o == nil || IsNil(o.Amount) {
 		var ret string
 		return ret
 	}
-
-	return o.Amount
+	return *o.Amount
 }
 
-// GetAmountOk returns a tuple with the Amount field value
+// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DtoCreatePaymentRequest) GetAmountOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Amount) {
 		return nil, false
 	}
-	return &o.Amount, true
+	return o.Amount, true
 }
 
-// SetAmount sets field value
+// HasAmount returns a boolean if a field has been set.
+func (o *DtoCreatePaymentRequest) HasAmount() bool {
+	if o != nil && !IsNil(o.Amount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmount gets a reference to the given string and assigns it to the Amount field.
 func (o *DtoCreatePaymentRequest) SetAmount(v string) {
-	o.Amount = v
+	o.Amount = &v
 }
 
 // GetBonusAmount returns the BonusAmount field value if set, zero value otherwise.
@@ -549,7 +556,9 @@ func (o DtoCreatePaymentRequest) MarshalJSON() ([]byte, error) {
 
 func (o DtoCreatePaymentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["amount"] = o.Amount
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
 	if !IsNil(o.BonusAmount) {
 		toSerialize["bonus_amount"] = o.BonusAmount
 	}
@@ -595,7 +604,6 @@ func (o *DtoCreatePaymentRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"amount",
 		"currency",
 		"destination_id",
 		"destination_type",

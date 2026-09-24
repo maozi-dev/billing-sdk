@@ -1874,6 +1874,236 @@ paths:
       summary: Void an invoice
       tags:
       - Invoices
+  /payment-gateways:
+    get:
+      description: List all payment gateway configurations; credentials are masked
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.ListPaymentGatewayConfigsResponse'
+          description: OK
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: List payment gateway configurations
+      tags:
+      - Payment Gateways
+    post:
+      description: Configure a payment gateway with encrypted credentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dto.CreatePaymentGatewayConfigRequest'
+        description: Gateway configuration
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.PaymentGatewayConfigResponse'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: Create a payment gateway configuration
+      tags:
+      - Payment Gateways
+      x-codegen-request-body-name: config
+  /payment-gateways/callback/{gateway}:
+    post:
+      description: Public endpoint that receives async payment notifications; authenticity
+        is verified via gateway signature
+      parameters:
+      - description: Gateway type (e.g. xunhupay)
+        explode: false
+        in: path
+        name: gateway
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: gateway-specific ack
+      summary: Payment gateway async callback
+      tags:
+      - Recharges
+  /payment-gateways/{id}:
+    delete:
+      description: Soft-delete a payment gateway configuration
+      parameters:
+      - description: Gateway configuration ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gin.H'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a payment gateway configuration
+      tags:
+      - Payment Gateways
+    get:
+      description: Get a payment gateway configuration by ID; credentials are masked
+      parameters:
+      - description: Gateway configuration ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.PaymentGatewayConfigResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Get a payment gateway configuration
+      tags:
+      - Payment Gateways
+    put:
+      description: Update a payment gateway configuration; credential is optional
+        and kept unchanged when omitted
+      parameters:
+      - description: Gateway configuration ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dto.UpdatePaymentGatewayConfigRequest'
+        description: Gateway configuration
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.PaymentGatewayConfigResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Update a payment gateway configuration
+      tags:
+      - Payment Gateways
+      x-codegen-request-body-name: config
+  /payment-gateways/{id}/test:
+    post:
+      description: Validate a gateway configuration by decrypting the credential and
+        constructing the provider
+      parameters:
+      - description: Gateway configuration ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.PaymentGatewayConfigResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Test a payment gateway configuration
+      tags:
+      - Payment Gateways
   /payments:
     get:
       description: List payments with the specified filter
@@ -2718,6 +2948,43 @@ paths:
       tags:
       - Prices
       x-codegen-request-body-name: price
+  /prices/bulk:
+    post:
+      description: Create multiple prices atomically
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dto.CreateBulkPriceRequest'
+        description: Price configurations
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/dto.PriceResponse'
+                type: array
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: Create prices in bulk
+      tags:
+      - Prices
+      x-codegen-request-body-name: prices
   /prices/{id}:
     delete:
       description: Delete a price
@@ -2832,6 +3099,218 @@ paths:
       tags:
       - Prices
       x-codegen-request-body-name: price
+  /recharges:
+    get:
+      description: List wallet recharge records with optional filters
+      parameters:
+      - description: Filter by wallet ID
+        explode: true
+        in: query
+        name: wallet_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by recharge status
+        explode: true
+        in: query
+        name: payment_status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by gateway
+        explode: true
+        in: query
+        name: gateway
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Offset
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.ListRechargesResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: List recharges
+      tags:
+      - Recharges
+    post:
+      description: Create a wallet recharge order and initiate a gateway payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dto.CreateRechargeRequest'
+        description: Recharge request
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.RechargeResponse'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: Create a wallet recharge
+      tags:
+      - Recharges
+      x-codegen-request-body-name: recharge
+  /recharges/{id}:
+    get:
+      description: Get a wallet recharge record by ID
+      parameters:
+      - description: Recharge ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.RechargeResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Get a recharge
+      tags:
+      - Recharges
+  /recharges/{id}/process:
+    post:
+      description: Actively query the gateway and settle a pending recharge (credits
+        the wallet if paid). Idempotent.
+      parameters:
+      - description: Recharge ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.RechargeResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Process a recharge
+      tags:
+      - Recharges
+  /recharges/{id}/query:
+    post:
+      description: Actively re-query the gateway for a pending recharge and settle
+        it if paid
+      parameters:
+      - description: Recharge ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dto.RechargeResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors.ErrorResponse'
+          description: Not Found
+      security:
+      - ApiKeyAuth: []
+      summary: Query and settle a recharge
+      tags:
+      - Recharges
   /secrets/api/keys:
     get:
       description: Get a paginated list of API keys
@@ -4653,6 +5132,17 @@ components:
         secret:
           $ref: '#/components/schemas/dto.SecretResponse'
       type: object
+    dto.CreateBulkPriceRequest:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/dto.CreatePriceRequest'
+          maxItems: 100
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
     dto.CreateCustomerRequest:
       properties:
         address_city:
@@ -4891,6 +5381,31 @@ components:
       - name
       - reset_usage
       type: object
+    dto.CreatePaymentGatewayConfigRequest:
+      properties:
+        credential:
+          additionalProperties:
+            type: string
+          type: object
+        display_name:
+          type: string
+        enabled_scenes:
+          items:
+            type: string
+          type: array
+        gateway_provider:
+          type: string
+        is_active:
+          type: boolean
+        notify_url:
+          type: string
+        return_url:
+          type: string
+      required:
+      - credential
+      - display_name
+      - gateway_provider
+      type: object
     dto.CreatePaymentRequest:
       properties:
         amount:
@@ -4930,7 +5445,6 @@ components:
         type:
           type: string
       required:
-      - amount
       - currency
       - destination_id
       - destination_type
@@ -4976,7 +5490,6 @@ components:
           $ref: '#/components/schemas/types.PriceType'
       required:
       - billing_model
-      - payment_cadence
       - type
       type: object
     dto.CreatePlanRequest:
@@ -5047,7 +5560,6 @@ components:
           $ref: '#/components/schemas/types.PriceType'
       required:
       - billing_model
-      - payment_cadence
       - type
       type: object
     dto.CreatePriceTier:
@@ -5060,6 +5572,37 @@ components:
           type: integer
       required:
       - unit_amount
+      type: object
+    dto.CreateRechargeRequest:
+      properties:
+        amount:
+          type: number
+        bonus_amount:
+          type: number
+        client_ip:
+          type: string
+        currency:
+          type: string
+        gateway:
+          type: string
+        idempotency_key:
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+        name:
+          type: string
+        payer_id:
+          type: string
+        scene:
+          type: string
+        wallet_id:
+          type: string
+      required:
+      - amount
+      - gateway
+      - wallet_id
       type: object
     dto.CreateSubscriptionRequest:
       properties:
@@ -7226,6 +7769,43 @@ components:
         pagination:
           $ref: '#/components/schemas/types.PaginationResponse'
       type: object
+    dto.ListPaymentGatewayConfigsResponse:
+      example:
+        items:
+        - gateway_provider: gateway_provider
+          is_active: true
+          last_tested_at: last_tested_at
+          updated_at: updated_at
+          public_config:
+            key: public_config
+          created_at: created_at
+          return_url: return_url
+          id: id
+          display_name: display_name
+          notify_url: notify_url
+          enabled_scenes:
+          - enabled_scenes
+          - enabled_scenes
+        - gateway_provider: gateway_provider
+          is_active: true
+          last_tested_at: last_tested_at
+          updated_at: updated_at
+          public_config:
+            key: public_config
+          created_at: created_at
+          return_url: return_url
+          id: id
+          display_name: display_name
+          notify_url: notify_url
+          enabled_scenes:
+          - enabled_scenes
+          - enabled_scenes
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/dto.PaymentGatewayConfigResponse'
+          type: array
+      type: object
     dto.ListPaymentsResponse:
       example:
         pagination:
@@ -7705,6 +8285,53 @@ components:
         items:
           items:
             $ref: '#/components/schemas/dto.PriceResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/types.PaginationResponse'
+      type: object
+    dto.ListRechargesResponse:
+      example:
+        pagination:
+          total: 1
+          offset: 6
+          limit: 0
+        items:
+        - amount: 0.8008281904610115
+          metadata:
+            key: metadata
+          bonus_amount: 6.027456183070403
+          created_at: created_at
+          gateway_order_id: gateway_order_id
+          pay_url: pay_url
+          pay_payload:
+            key: pay_payload
+          wallet_id: wallet_id
+          updated_at: updated_at
+          currency: currency
+          id: id
+          gateway: gateway
+          render_type: render_type
+          status: status
+        - amount: 0.8008281904610115
+          metadata:
+            key: metadata
+          bonus_amount: 6.027456183070403
+          created_at: created_at
+          gateway_order_id: gateway_order_id
+          pay_url: pay_url
+          pay_payload:
+            key: pay_payload
+          wallet_id: wallet_id
+          updated_at: updated_at
+          currency: currency
+          id: id
+          gateway: gateway
+          render_type: render_type
+          status: status
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/dto.RechargeResponse'
           type: array
         pagination:
           $ref: '#/components/schemas/types.PaginationResponse'
@@ -8392,6 +9019,50 @@ components:
         updated_by:
           type: string
       type: object
+    dto.PaymentGatewayConfigResponse:
+      example:
+        gateway_provider: gateway_provider
+        is_active: true
+        last_tested_at: last_tested_at
+        updated_at: updated_at
+        public_config:
+          key: public_config
+        created_at: created_at
+        return_url: return_url
+        id: id
+        display_name: display_name
+        notify_url: notify_url
+        enabled_scenes:
+        - enabled_scenes
+        - enabled_scenes
+      properties:
+        created_at:
+          type: string
+        display_name:
+          type: string
+        enabled_scenes:
+          items:
+            type: string
+          type: array
+        gateway_provider:
+          type: string
+        id:
+          type: string
+        is_active:
+          type: boolean
+        last_tested_at:
+          type: string
+        notify_url:
+          type: string
+        public_config:
+          additionalProperties:
+            type: string
+          type: object
+        return_url:
+          type: string
+        updated_at:
+          type: string
+      type: object
     dto.PaymentResponse:
       example:
         payment_method_type: CARD
@@ -8796,6 +9467,58 @@ components:
         updated_at:
           type: string
         updated_by:
+          type: string
+      type: object
+    dto.RechargeResponse:
+      example:
+        amount: 0.8008281904610115
+        metadata:
+          key: metadata
+        bonus_amount: 6.027456183070403
+        created_at: created_at
+        gateway_order_id: gateway_order_id
+        pay_url: pay_url
+        pay_payload:
+          key: pay_payload
+        wallet_id: wallet_id
+        updated_at: updated_at
+        currency: currency
+        id: id
+        gateway: gateway
+        render_type: render_type
+        status: status
+      properties:
+        amount:
+          type: number
+        bonus_amount:
+          type: number
+        created_at:
+          type: string
+        currency:
+          type: string
+        gateway:
+          type: string
+        gateway_order_id:
+          type: string
+        id:
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+        pay_payload:
+          additionalProperties:
+            type: string
+          type: object
+        pay_url:
+          type: string
+        render_type:
+          type: string
+        status:
+          type: string
+        updated_at:
+          type: string
+        wallet_id:
           type: string
       type: object
     dto.SecretResponse:
@@ -9690,9 +10413,9 @@ components:
             10 USD in the wallet wil add 5 credits in the wallet
           type: number
         bonus_amount:
-          description: |-
-            credits_to_add is the number of credits to add to the wallet
-            CreditsToAdd decimal.Decimal `json:"credits_to_add"`
+          type: number
+        credits_to_add:
+          description: credits_to_add is the number of credits to add to the wallet
           type: number
         description:
           description: description to add any specific details about the transaction
@@ -9778,6 +10501,25 @@ components:
         unit_singular:
           type: string
       type: object
+    dto.UpdatePaymentGatewayConfigRequest:
+      properties:
+        credential:
+          additionalProperties:
+            type: string
+          type: object
+        display_name:
+          type: string
+        enabled_scenes:
+          items:
+            type: string
+          type: array
+        is_active:
+          type: boolean
+        notify_url:
+          type: string
+        return_url:
+          type: string
+      type: object
     dto.UpdatePaymentRequest:
       properties:
         metadata:
@@ -9841,7 +10583,6 @@ components:
           $ref: '#/components/schemas/types.PriceType'
       required:
       - billing_model
-      - payment_cadence
       - type
       type: object
     dto.UpdatePlanRequest:

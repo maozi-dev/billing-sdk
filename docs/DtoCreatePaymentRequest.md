@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | **string** |  | 
+**Amount** | Pointer to **string** |  | [optional] 
 **BonusAmount** | Pointer to **string** |  | [optional] 
 **Currency** | **string** |  | 
 **CustomerId** | Pointer to **string** |  | [optional] 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewDtoCreatePaymentRequest
 
-`func NewDtoCreatePaymentRequest(amount string, currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType, ) *DtoCreatePaymentRequest`
+`func NewDtoCreatePaymentRequest(currency string, destinationId string, destinationType TypesPaymentDestinationType, paymentMethodType TypesPaymentMethodType, ) *DtoCreatePaymentRequest`
 
 NewDtoCreatePaymentRequest instantiates a new DtoCreatePaymentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -59,6 +59,11 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
+### HasAmount
+
+`func (o *DtoCreatePaymentRequest) HasAmount() bool`
+
+HasAmount returns a boolean if a field has been set.
 
 ### GetBonusAmount
 

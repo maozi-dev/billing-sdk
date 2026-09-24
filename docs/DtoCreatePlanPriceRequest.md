@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **LookupKey** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 **MeterId** | Pointer to **string** |  | [optional] 
-**PaymentCadence** | [**TypesPaymentCadence**](TypesPaymentCadence.md) |  | 
+**PaymentCadence** | Pointer to [**TypesPaymentCadence**](TypesPaymentCadence.md) |  | [optional] 
 **PlanId** | Pointer to **string** |  | [optional] 
 **TierMode** | Pointer to [**TypesBillingTier**](TypesBillingTier.md) |  | [optional] 
 **Tiers** | Pointer to [**[]DtoCreatePriceTier**](DtoCreatePriceTier.md) |  | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewDtoCreatePlanPriceRequest
 
-`func NewDtoCreatePlanPriceRequest(billingModel TypesBillingModel, paymentCadence TypesPaymentCadence, type_ TypesPriceType, ) *DtoCreatePlanPriceRequest`
+`func NewDtoCreatePlanPriceRequest(billingModel TypesBillingModel, type_ TypesPriceType, ) *DtoCreatePlanPriceRequest`
 
 NewDtoCreatePlanPriceRequest instantiates a new DtoCreatePlanPriceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -227,6 +227,11 @@ and a boolean to check if the value has been set.
 
 SetPaymentCadence sets PaymentCadence field to given value.
 
+### HasPaymentCadence
+
+`func (o *DtoCreatePlanPriceRequest) HasPaymentCadence() bool`
+
+HasPaymentCadence returns a boolean if a field has been set.
 
 ### GetPlanId
 

@@ -28,7 +28,7 @@ type DtoCreatePriceRequest struct {
 	LookupKey *string `json:"lookup_key,omitempty"`
 	Metadata *map[string]string `json:"metadata,omitempty"`
 	MeterId *string `json:"meter_id,omitempty"`
-	PaymentCadence TypesPaymentCadence `json:"payment_cadence"`
+	PaymentCadence *TypesPaymentCadence `json:"payment_cadence,omitempty"`
 	PlanId *string `json:"plan_id,omitempty"`
 	TierMode *TypesBillingTier `json:"tier_mode,omitempty"`
 	Tiers []DtoCreatePriceTier `json:"tiers,omitempty"`
@@ -43,10 +43,9 @@ type _DtoCreatePriceRequest DtoCreatePriceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoCreatePriceRequest(billingModel TypesBillingModel, paymentCadence TypesPaymentCadence, type_ TypesPriceType) *DtoCreatePriceRequest {
+func NewDtoCreatePriceRequest(billingModel TypesBillingModel, type_ TypesPriceType) *DtoCreatePriceRequest {
 	this := DtoCreatePriceRequest{}
 	this.BillingModel = billingModel
-	this.PaymentCadence = paymentCadence
 	this.Type = type_
 	return &this
 }
@@ -275,28 +274,36 @@ func (o *DtoCreatePriceRequest) SetMeterId(v string) {
 	o.MeterId = &v
 }
 
-// GetPaymentCadence returns the PaymentCadence field value
+// GetPaymentCadence returns the PaymentCadence field value if set, zero value otherwise.
 func (o *DtoCreatePriceRequest) GetPaymentCadence() TypesPaymentCadence {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentCadence) {
 		var ret TypesPaymentCadence
 		return ret
 	}
-
-	return o.PaymentCadence
+	return *o.PaymentCadence
 }
 
-// GetPaymentCadenceOk returns a tuple with the PaymentCadence field value
+// GetPaymentCadenceOk returns a tuple with the PaymentCadence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DtoCreatePriceRequest) GetPaymentCadenceOk() (*TypesPaymentCadence, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentCadence) {
 		return nil, false
 	}
-	return &o.PaymentCadence, true
+	return o.PaymentCadence, true
 }
 
-// SetPaymentCadence sets field value
+// HasPaymentCadence returns a boolean if a field has been set.
+func (o *DtoCreatePriceRequest) HasPaymentCadence() bool {
+	if o != nil && !IsNil(o.PaymentCadence) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentCadence gets a reference to the given TypesPaymentCadence and assigns it to the PaymentCadence field.
 func (o *DtoCreatePriceRequest) SetPaymentCadence(v TypesPaymentCadence) {
-	o.PaymentCadence = v
+	o.PaymentCadence = &v
 }
 
 // GetPlanId returns the PlanId field value if set, zero value otherwise.
@@ -512,7 +519,9 @@ func (o DtoCreatePriceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MeterId) {
 		toSerialize["meter_id"] = o.MeterId
 	}
-	toSerialize["payment_cadence"] = o.PaymentCadence
+	if !IsNil(o.PaymentCadence) {
+		toSerialize["payment_cadence"] = o.PaymentCadence
+	}
 	if !IsNil(o.PlanId) {
 		toSerialize["plan_id"] = o.PlanId
 	}
@@ -538,7 +547,6 @@ func (o *DtoCreatePriceRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"billing_model",
-		"payment_cadence",
 		"type",
 	}
 
