@@ -450,7 +450,7 @@ type InvoicesAPIInvoicesIdFinalizePostRequest struct {
 	id string
 }
 
-func (r InvoicesAPIInvoicesIdFinalizePostRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r InvoicesAPIInvoicesIdFinalizePostRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.InvoicesIdFinalizePostExecute(r)
 }
 
@@ -472,13 +472,13 @@ func (a *InvoicesAPIService) InvoicesIdFinalizePost(ctx context.Context, id stri
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *InvoicesAPIService) InvoicesIdFinalizePostExecute(r InvoicesAPIInvoicesIdFinalizePostRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *InvoicesAPIService) InvoicesIdFinalizePostExecute(r InvoicesAPIInvoicesIdFinalizePostRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesIdFinalizePost")
@@ -698,7 +698,7 @@ type InvoicesAPIInvoicesIdPaymentAttemptPostRequest struct {
 	id string
 }
 
-func (r InvoicesAPIInvoicesIdPaymentAttemptPostRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r InvoicesAPIInvoicesIdPaymentAttemptPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.InvoicesIdPaymentAttemptPostExecute(r)
 }
 
@@ -720,13 +720,13 @@ func (a *InvoicesAPIService) InvoicesIdPaymentAttemptPost(ctx context.Context, i
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *InvoicesAPIService) InvoicesIdPaymentAttemptPostExecute(r InvoicesAPIInvoicesIdPaymentAttemptPostRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *InvoicesAPIService) InvoicesIdPaymentAttemptPostExecute(r InvoicesAPIInvoicesIdPaymentAttemptPostRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesIdPaymentAttemptPost")
@@ -1284,7 +1284,7 @@ type InvoicesAPIInvoicesIdVoidPostRequest struct {
 	id string
 }
 
-func (r InvoicesAPIInvoicesIdVoidPostRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r InvoicesAPIInvoicesIdVoidPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.InvoicesIdVoidPostExecute(r)
 }
 
@@ -1306,13 +1306,13 @@ func (a *InvoicesAPIService) InvoicesIdVoidPost(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *InvoicesAPIService) InvoicesIdVoidPostExecute(r InvoicesAPIInvoicesIdVoidPostRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *InvoicesAPIService) InvoicesIdVoidPostExecute(r InvoicesAPIInvoicesIdVoidPostRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesIdVoidPost")

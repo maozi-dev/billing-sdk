@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ## PaymentsIdDelete
 
-> map[string]map[string]interface{} PaymentsIdDelete(ctx, id).Execute()
+> map[string]interface{} PaymentsIdDelete(ctx, id).Execute()
 
 Delete a payment
 
@@ -145,7 +145,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentsAPI.PaymentsIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PaymentsIdDelete`: map[string]map[string]interface{}
+	// response from `PaymentsIdDelete`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PaymentsAPI.PaymentsIdDelete`: %v\n", resp)
 }
 ```
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

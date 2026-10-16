@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ## FeaturesIdDelete
 
-> map[string]map[string]interface{} FeaturesIdDelete(ctx, id).Execute()
+> map[string]interface{} FeaturesIdDelete(ctx, id).Execute()
 
 Delete a feature
 
@@ -129,7 +129,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FeaturesAPI.FeaturesIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FeaturesIdDelete`: map[string]map[string]interface{}
+	// response from `FeaturesIdDelete`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `FeaturesAPI.FeaturesIdDelete`: %v\n", resp)
 }
 ```
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

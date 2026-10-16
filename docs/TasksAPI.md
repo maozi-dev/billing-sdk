@@ -172,7 +172,7 @@ No authorization required
 
 ## TasksIdProcessPost
 
-> map[string]map[string]interface{} TasksIdProcessPost(ctx, id).Execute()
+> map[string]interface{} TasksIdProcessPost(ctx, id).Execute()
 
 Process a task
 
@@ -200,7 +200,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TasksAPI.TasksIdProcessPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `TasksIdProcessPost`: map[string]map[string]interface{}
+	// response from `TasksIdProcessPost`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `TasksAPI.TasksIdProcessPost`: %v\n", resp)
 }
 ```
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

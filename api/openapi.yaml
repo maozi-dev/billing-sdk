@@ -10968,12 +10968,11 @@ components:
       example:
         internal_error: internal_error
         details:
-          key: "{}"
+          key: ""
         message: message
       properties:
         details:
-          additionalProperties:
-            type: object
+          additionalProperties: true
           type: object
         internal_error:
           type: string
@@ -10986,7 +10985,7 @@ components:
         error:
           internal_error: internal_error
           details:
-            key: "{}"
+            key: ""
           message: message
       properties:
         error:
@@ -10995,8 +10994,7 @@ components:
           type: boolean
       type: object
     gin.H:
-      additionalProperties:
-        type: object
+      additionalProperties: true
       type: object
     github_com_flexprice_flexprice_internal_types.Value:
       properties:

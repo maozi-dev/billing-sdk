@@ -76,7 +76,7 @@ Other parameters are passed through a pointer to a apiPaymentGatewaysGetRequest 
 
 ## PaymentGatewaysIdDelete
 
-> map[string]map[string]interface{} PaymentGatewaysIdDelete(ctx, id).Execute()
+> map[string]interface{} PaymentGatewaysIdDelete(ctx, id).Execute()
 
 Delete a payment gateway configuration
 
@@ -104,7 +104,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PaymentGatewaysAPI.PaymentGatewaysIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PaymentGatewaysIdDelete`: map[string]map[string]interface{}
+	// response from `PaymentGatewaysIdDelete`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PaymentGatewaysAPI.PaymentGatewaysIdDelete`: %v\n", resp)
 }
 ```
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ## SubscriptionsIdCancelPost
 
-> map[string]map[string]interface{} SubscriptionsIdCancelPost(ctx, id).CancelAtPeriodEnd(cancelAtPeriodEnd).Execute()
+> map[string]interface{} SubscriptionsIdCancelPost(ctx, id).CancelAtPeriodEnd(cancelAtPeriodEnd).Execute()
 
 Cancel subscription
 
@@ -140,7 +140,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubscriptionsAPI.SubscriptionsIdCancelPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `SubscriptionsIdCancelPost`: map[string]map[string]interface{}
+	// response from `SubscriptionsIdCancelPost`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `SubscriptionsAPI.SubscriptionsIdCancelPost`: %v\n", resp)
 }
 ```
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

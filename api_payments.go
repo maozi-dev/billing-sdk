@@ -334,7 +334,7 @@ type PaymentsAPIPaymentsIdDeleteRequest struct {
 	id string
 }
 
-func (r PaymentsAPIPaymentsIdDeleteRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r PaymentsAPIPaymentsIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.PaymentsIdDeleteExecute(r)
 }
 
@@ -356,13 +356,13 @@ func (a *PaymentsAPIService) PaymentsIdDelete(ctx context.Context, id string) Pa
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *PaymentsAPIService) PaymentsIdDeleteExecute(r PaymentsAPIPaymentsIdDeleteRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *PaymentsAPIService) PaymentsIdDeleteExecute(r PaymentsAPIPaymentsIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentsIdDelete")

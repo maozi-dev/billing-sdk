@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## PricesIdDelete
 
-> map[string]map[string]interface{} PricesIdDelete(ctx, id).Execute()
+> map[string]interface{} PricesIdDelete(ctx, id).Execute()
 
 Delete a price
 
@@ -193,7 +193,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PricesAPI.PricesIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PricesIdDelete`: map[string]map[string]interface{}
+	// response from `PricesIdDelete`: map[string]interface{}
 	fmt.Fprintf(os.Stdout, "Response from `PricesAPI.PricesIdDelete`: %v\n", resp)
 }
 ```
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]interface{}**
 
 ### Authorization
 

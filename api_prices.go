@@ -399,7 +399,7 @@ type PricesAPIPricesIdDeleteRequest struct {
 	id string
 }
 
-func (r PricesAPIPricesIdDeleteRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r PricesAPIPricesIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.PricesIdDeleteExecute(r)
 }
 
@@ -421,13 +421,13 @@ func (a *PricesAPIService) PricesIdDelete(ctx context.Context, id string) Prices
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *PricesAPIService) PricesIdDeleteExecute(r PricesAPIPricesIdDeleteRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *PricesAPIService) PricesIdDeleteExecute(r PricesAPIPricesIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PricesAPIService.PricesIdDelete")

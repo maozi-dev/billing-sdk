@@ -320,7 +320,7 @@ func (r SubscriptionsAPISubscriptionsIdCancelPostRequest) CancelAtPeriodEnd(canc
 	return r
 }
 
-func (r SubscriptionsAPISubscriptionsIdCancelPostRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r SubscriptionsAPISubscriptionsIdCancelPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.SubscriptionsIdCancelPostExecute(r)
 }
 
@@ -342,13 +342,13 @@ func (a *SubscriptionsAPIService) SubscriptionsIdCancelPost(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *SubscriptionsAPIService) SubscriptionsIdCancelPostExecute(r SubscriptionsAPISubscriptionsIdCancelPostRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *SubscriptionsAPIService) SubscriptionsIdCancelPostExecute(r SubscriptionsAPISubscriptionsIdCancelPostRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsAPIService.SubscriptionsIdCancelPost")

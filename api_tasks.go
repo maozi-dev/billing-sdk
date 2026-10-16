@@ -381,7 +381,7 @@ type TasksAPITasksIdProcessPostRequest struct {
 	id string
 }
 
-func (r TasksAPITasksIdProcessPostRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r TasksAPITasksIdProcessPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.TasksIdProcessPostExecute(r)
 }
 
@@ -403,13 +403,13 @@ func (a *TasksAPIService) TasksIdProcessPost(ctx context.Context, id string) Tas
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *TasksAPIService) TasksIdProcessPostExecute(r TasksAPITasksIdProcessPostRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *TasksAPIService) TasksIdProcessPostExecute(r TasksAPITasksIdProcessPostRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasksAPIService.TasksIdProcessPost")
